@@ -1,0 +1,111 @@
+C:\Users\stiiv\documents\visual studio 2010\Projects\MenuConsultas\MenuConsultas\bin\Debug\MenuConsultas.exe
+C:\Users\stiiv\documents\visual studio 2010\Projects\MenuConsultas\MenuConsultas\bin\Debug\MenuConsultas.pdb
+C:\Users\stiiv\documents\visual studio 2010\Projects\MenuConsultas\MenuConsultas\obj\x86\Debug\MenuConsultas.Form1.resources
+C:\Users\stiiv\documents\visual studio 2010\Projects\MenuConsultas\MenuConsultas\obj\x86\Debug\MenuConsultas.Properties.Resources.resources
+C:\Users\stiiv\documents\visual studio 2010\Projects\MenuConsultas\MenuConsultas\obj\x86\Debug\MenuConsultas.csproj.GenerateResource.Cache
+C:\Users\stiiv\documents\visual studio 2010\Projects\MenuConsultas\MenuConsultas\obj\x86\Debug\MenuConsultas.exe
+C:\Users\stiiv\documents\visual studio 2010\Projects\MenuConsultas\MenuConsultas\obj\x86\Debug\MenuConsultas.pdb
+C:\Users\stiiv\documents\visual studio 2010\Projects\MenuConsultas\MenuConsultas\obj\x86\Debug\MenuConsultas.dialog_Logear.resources
+C:\Users\Rocio\Desktop\PrototipoJuegoV1_14-03_Esteban\MenuConsultasV1_14-03_Esteban\MenuConsultas\obj\x86\Debug\MenuConsultas.exe
+C:\Users\Rocio\Desktop\PrototipoJuegoV1_14-03_Esteban\MenuConsultasV1_14-03_Esteban\MenuConsultas\obj\x86\Debug\MenuConsultas.pdb
+C:\Users\Rocio\Desktop\PrototipoJuegoV1_14-03_Esteban\MenuConsultasV1_14-03_Esteban\MenuConsultas\bin\Debug\MenuConsultas.exe
+C:\Users\Rocio\Desktop\PrototipoJuegoV1_14-03_Esteban\MenuConsultasV1_14-03_Esteban\MenuConsultas\bin\Debug\MenuConsultas.pdb
+C:\Users\Rocio\Desktop\PrototipoJuegoV1_14-03_Esteban\MenuConsultasV1_14-03_Esteban\MenuConsultas\obj\x86\Debug\MenuConsultas.dialog_Logear.resources
+C:\Users\Rocio\Desktop\PrototipoJuegoV1_14-03_Esteban\MenuConsultasV1_14-03_Esteban\MenuConsultas\obj\x86\Debug\MenuConsultas.Form1.resources
+C:\Users\Rocio\Desktop\PrototipoJuegoV1_14-03_Esteban\MenuConsultasV1_14-03_Esteban\MenuConsultas\obj\x86\Debug\MenuConsultas.Properties.Resources.resources
+C:\Users\Rocio\Desktop\PrototipoJuegoV1_14-03_Esteban\MenuConsultasV1_14-03_Esteban\MenuConsultas\obj\x86\Debug\MenuConsultas.csproj.GenerateResource.Cache
+C:\Users\Rocio\Desktop\PrototipoJuegoV1_14-03_Esteban\MenuConsultasV1_14-03\MenuConsultas\obj\x86\Debug\MenuConsultas.exe
+C:\Users\Rocio\Desktop\PrototipoJuegoV1_14-03_Esteban\MenuConsultasV1_14-03\MenuConsultas\obj\x86\Debug\MenuConsultas.pdb
+C:\Users\Rocio\Desktop\PrototipoJuegoV1_14-03_Esteban\MenuConsultasV1_14-03\MenuConsultas\bin\Debug\MenuConsultas.exe
+C:\Users\Rocio\Desktop\PrototipoJuegoV1_14-03_Esteban\MenuConsultasV1_14-03\MenuConsultas\bin\Debug\MenuConsultas.pdb
+C:\Users\Rocio\Desktop\PrototipoJuegoV1_14-03_Esteban\MenuConsultasV1_14-03\MenuConsultas\obj\x86\Debug\MenuConsultas.csprojResolveAssemblyReference.cache
+C:\Users\Rocio\Desktop\PrototipoJuegoV1_14-03_Esteban\MenuConsultasV1_14-03\MenuConsultas\obj\x86\Debug\MenuConsultas.dialog_Logear.resources
+C:\Users\Rocio\Desktop\PrototipoJuegoV1_14-03_Esteban\MenuConsultasV1_14-03\MenuConsultas\obj\x86\Debug\MenuConsultas.Form1.resources
+C:\Users\Rocio\Desktop\PrototipoJuegoV1_14-03_Esteban\MenuConsultasV1_14-03\MenuConsultas\obj\x86\Debug\MenuConsultas.Properties.Resources.resources
+C:\Users\Rocio\Desktop\PrototipoJuegoV1_14-03_Esteban\MenuConsultasV1_14-03\MenuConsultas\obj\x86\Debug\MenuConsultas.csproj.GenerateResource.Cache
+C:\Users\Rocio\Desktop\PrototipoJuego\MenuConsultasV1_14-03\MenuConsultas\obj\x86\Debug\MenuConsultas.exe
+C:\Users\Rocio\Desktop\PrototipoJuego\MenuConsultasV1_14-03\MenuConsultas\obj\x86\Debug\MenuConsultas.pdb
+C:\Users\Rocio\Desktop\PrototipoJuego\MenuConsultasV1_14-03\MenuConsultas\bin\Debug\MenuConsultas.exe
+C:\Users\Rocio\Desktop\PrototipoJuego\MenuConsultasV1_14-03\MenuConsultas\bin\Debug\MenuConsultas.pdb
+C:\Users\Rocio\Desktop\PrototipoJuego\MenuConsultasV1_14-03\MenuConsultas\obj\x86\Debug\MenuConsultas.csprojResolveAssemblyReference.cache
+C:\Users\Rocio\Desktop\PrototipoJuego\MenuConsultasV1_14-03\MenuConsultas\obj\x86\Debug\MenuConsultas.dialog_Logear.resources
+C:\Users\Rocio\Desktop\PrototipoJuego\MenuConsultasV1_14-03\MenuConsultas\obj\x86\Debug\MenuConsultas.Form1.resources
+C:\Users\Rocio\Desktop\PrototipoJuego\MenuConsultasV1_14-03\MenuConsultas\obj\x86\Debug\MenuConsultas.Properties.Resources.resources
+C:\Users\Rocio\Desktop\PrototipoJuego\MenuConsultasV1_14-03\MenuConsultas\obj\x86\Debug\MenuConsultas.csproj.GenerateResource.Cache
+C:\Users\stiiv\OneDrive\Documentos\Universidad\SO\Tema 05\MenuConsultasV1_14-03\MenuConsultas\obj\x86\Debug\MenuConsultas.exe
+C:\Users\stiiv\OneDrive\Documentos\Universidad\SO\Tema 05\MenuConsultasV1_14-03\MenuConsultas\obj\x86\Debug\MenuConsultas.pdb
+C:\Users\stiiv\OneDrive\Documentos\Universidad\SO\Tema 05\MenuConsultasV1_14-03\MenuConsultas\bin\Debug\MenuConsultas.exe
+C:\Users\stiiv\OneDrive\Documentos\Universidad\SO\Tema 05\MenuConsultasV1_14-03\MenuConsultas\bin\Debug\MenuConsultas.pdb
+C:\Users\stiiv\OneDrive\Documentos\Universidad\SO\Tema 05\MenuConsultasV1_14-03\MenuConsultas\obj\x86\Debug\MenuConsultas.csprojResolveAssemblyReference.cache
+C:\Users\stiiv\OneDrive\Documentos\Universidad\SO\Tema 05\MenuConsultasV1_14-03\MenuConsultas\obj\x86\Debug\MenuConsultas.dialog_Logear.resources
+C:\Users\stiiv\OneDrive\Documentos\Universidad\SO\Tema 05\MenuConsultasV1_14-03\MenuConsultas\obj\x86\Debug\MenuConsultas.Properties.Resources.resources
+C:\Users\stiiv\OneDrive\Documentos\Universidad\SO\Tema 05\MenuConsultasV1_14-03\MenuConsultas\obj\x86\Debug\MenuConsultas.csproj.GenerateResource.Cache
+C:\Users\stiiv\OneDrive\Documentos\Universidad\SO\Tema 05\MenuConsultasV1_14-03\MenuConsultas\obj\x86\Debug\MenuConsultas.dialogs.dialog_Registrar.resources
+C:\Users\stiiv\OneDrive\Documentos\Universidad\SO\Tema 05\MenuConsultasV1_14-03\MenuConsultas\obj\x86\Debug\MenuConsultas.Form1.resources
+C:\Users\Rocio\Desktop\PrototipoJuego\ProyectoSO_V1_EntregaConsultas\MenuConsultasV1_14-03\MenuConsultas\obj\x86\Debug\MenuConsultas.exe
+C:\Users\Rocio\Desktop\PrototipoJuego\ProyectoSO_V1_EntregaConsultas\MenuConsultasV1_14-03\MenuConsultas\obj\x86\Debug\MenuConsultas.pdb
+C:\Users\Rocio\Desktop\PrototipoJuego\ProyectoSO_V1_EntregaConsultas\MenuConsultasV1_14-03\MenuConsultas\bin\Debug\MenuConsultas.exe
+C:\Users\Rocio\Desktop\PrototipoJuego\ProyectoSO_V1_EntregaConsultas\MenuConsultasV1_14-03\MenuConsultas\bin\Debug\MenuConsultas.pdb
+C:\Users\Rocio\Desktop\PrototipoJuego\ProyectoSO_V1_EntregaConsultas\MenuConsultasV1_14-03\MenuConsultas\obj\x86\Debug\MenuConsultas.csprojResolveAssemblyReference.cache
+C:\Users\Rocio\Desktop\PrototipoJuego\ProyectoSO_V1_EntregaConsultas\MenuConsultasV1_14-03\MenuConsultas\obj\x86\Debug\MenuConsultas.dialog_Logear.resources
+C:\Users\Rocio\Desktop\PrototipoJuego\ProyectoSO_V1_EntregaConsultas\MenuConsultasV1_14-03\MenuConsultas\obj\x86\Debug\MenuConsultas.dialogs.dialog_Registrar.resources
+C:\Users\Rocio\Desktop\PrototipoJuego\ProyectoSO_V1_EntregaConsultas\MenuConsultasV1_14-03\MenuConsultas\obj\x86\Debug\MenuConsultas.Form1.resources
+C:\Users\Rocio\Desktop\PrototipoJuego\ProyectoSO_V1_EntregaConsultas\MenuConsultasV1_14-03\MenuConsultas\obj\x86\Debug\MenuConsultas.Properties.Resources.resources
+C:\Users\Rocio\Desktop\PrototipoJuego\ProyectoSO_V1_EntregaConsultas\MenuConsultasV1_14-03\MenuConsultas\obj\x86\Debug\MenuConsultas.csproj.GenerateResource.Cache
+C:\Users\stiiv\OneDrive\Documentos\Universidad\SO\Tema 09\MenuConsultasV1_14-03\MenuConsultas\obj\x86\Debug\MenuConsultas.exe
+C:\Users\stiiv\OneDrive\Documentos\Universidad\SO\Tema 09\MenuConsultasV1_14-03\MenuConsultas\obj\x86\Debug\MenuConsultas.pdb
+C:\Users\stiiv\OneDrive\Documentos\Universidad\SO\Tema 09\MenuConsultasV1_14-03\MenuConsultas\bin\Debug\MenuConsultas.exe
+C:\Users\stiiv\OneDrive\Documentos\Universidad\SO\Tema 09\MenuConsultasV1_14-03\MenuConsultas\bin\Debug\MenuConsultas.pdb
+C:\Users\stiiv\OneDrive\Documentos\Universidad\SO\Tema 09\MenuConsultasV1_14-03\MenuConsultas\obj\x86\Debug\MenuConsultas.csprojResolveAssemblyReference.cache
+C:\Users\stiiv\OneDrive\Documentos\Universidad\SO\Tema 09\MenuConsultasV1_14-03\MenuConsultas\obj\x86\Debug\MenuConsultas.dialog_Logear.resources
+C:\Users\stiiv\OneDrive\Documentos\Universidad\SO\Tema 09\MenuConsultasV1_14-03\MenuConsultas\obj\x86\Debug\MenuConsultas.dialogs.dialog_Registrar.resources
+C:\Users\stiiv\OneDrive\Documentos\Universidad\SO\Tema 09\MenuConsultasV1_14-03\MenuConsultas\obj\x86\Debug\MenuConsultas.Form1.resources
+C:\Users\stiiv\OneDrive\Documentos\Universidad\SO\Tema 09\MenuConsultasV1_14-03\MenuConsultas\obj\x86\Debug\MenuConsultas.Properties.Resources.resources
+C:\Users\stiiv\OneDrive\Documentos\Universidad\SO\Tema 09\MenuConsultasV1_14-03\MenuConsultas\obj\x86\Debug\MenuConsultas.csproj.GenerateResource.Cache
+C:\Users\Rocio\Desktop\PrototipoJuego\Proyecto_Version3-2_Shiva\MenuConsultas-27deAbril\MenuConsultas\obj\x86\Debug\MenuConsultas.exe
+C:\Users\Rocio\Desktop\PrototipoJuego\Proyecto_Version3-2_Shiva\MenuConsultas-27deAbril\MenuConsultas\obj\x86\Debug\MenuConsultas.pdb
+C:\Users\Rocio\Desktop\PrototipoJuego\Proyecto_Version3-2_Shiva\MenuConsultas-27deAbril\MenuConsultas\bin\Debug\MenuConsultas.exe
+C:\Users\Rocio\Desktop\PrototipoJuego\Proyecto_Version3-2_Shiva\MenuConsultas-27deAbril\MenuConsultas\bin\Debug\MenuConsultas.pdb
+C:\Users\Rocio\Desktop\PrototipoJuego\Proyecto_Version3-2_Shiva\MenuConsultas-27deAbril\MenuConsultas\obj\x86\Debug\MenuConsultas.csprojResolveAssemblyReference.cache
+C:\Users\Rocio\Desktop\PrototipoJuego\Proyecto_Version3-2_Shiva\MenuConsultas-27deAbril\MenuConsultas\obj\x86\Debug\MenuConsultas.dialog_Logear.resources
+C:\Users\Rocio\Desktop\PrototipoJuego\Proyecto_Version3-2_Shiva\MenuConsultas-27deAbril\MenuConsultas\obj\x86\Debug\MenuConsultas.dialogs.dialog_Registrar.resources
+C:\Users\Rocio\Desktop\PrototipoJuego\Proyecto_Version3-2_Shiva\MenuConsultas-27deAbril\MenuConsultas\obj\x86\Debug\MenuConsultas.Form1.resources
+C:\Users\Rocio\Desktop\PrototipoJuego\Proyecto_Version3-2_Shiva\MenuConsultas-27deAbril\MenuConsultas\obj\x86\Debug\MenuConsultas.Properties.Resources.resources
+C:\Users\Rocio\Desktop\PrototipoJuego\Proyecto_Version3-2_Shiva\MenuConsultas-27deAbril\MenuConsultas\obj\x86\Debug\MenuConsultas.csproj.GenerateResource.Cache
+C:\Users\stiiv\OneDrive\Documentos\Universidad\SO\Tema 10\MenuConsultas-27deAbril\MenuConsultas\obj\x86\Debug\MenuConsultas.exe
+C:\Users\stiiv\OneDrive\Documentos\Universidad\SO\Tema 10\MenuConsultas-27deAbril\MenuConsultas\obj\x86\Debug\MenuConsultas.pdb
+C:\Users\stiiv\OneDrive\Documentos\Universidad\SO\Tema 10\MenuConsultas-27deAbril\MenuConsultas\bin\Debug\MenuConsultas.exe
+C:\Users\stiiv\OneDrive\Documentos\Universidad\SO\Tema 10\MenuConsultas-27deAbril\MenuConsultas\bin\Debug\MenuConsultas.pdb
+C:\Users\stiiv\OneDrive\Documentos\Universidad\SO\Tema 10\MenuConsultas-27deAbril\MenuConsultas\obj\x86\Debug\MenuConsultas.csprojResolveAssemblyReference.cache
+C:\Users\stiiv\OneDrive\Documentos\Universidad\SO\Tema 10\MenuConsultas-27deAbril\MenuConsultas\obj\x86\Debug\MenuConsultas.dialog_Logear.resources
+C:\Users\stiiv\OneDrive\Documentos\Universidad\SO\Tema 10\MenuConsultas-27deAbril\MenuConsultas\obj\x86\Debug\MenuConsultas.dialogs.dialog_Registrar.resources
+C:\Users\stiiv\OneDrive\Documentos\Universidad\SO\Tema 10\MenuConsultas-27deAbril\MenuConsultas\obj\x86\Debug\MenuConsultas.Form1.resources
+C:\Users\stiiv\OneDrive\Documentos\Universidad\SO\Tema 10\MenuConsultas-27deAbril\MenuConsultas\obj\x86\Debug\MenuConsultas.Properties.Resources.resources
+C:\Users\stiiv\OneDrive\Documentos\Universidad\SO\Tema 10\MenuConsultas-27deAbril\MenuConsultas\obj\x86\Debug\MenuConsultas.csproj.GenerateResource.Cache
+C:\Users\stiiv\OneDrive\Documentos\Universidad\SO\Tema 10\MenuConsultas-27deAbril\MenuConsultas\obj\x86\Debug\MenuConsultas.dialogs.dialog_Invitación.resources
+C:\Users\stiiv\OneDrive\Documentos\Universidad\SO\Tema 10\ProyectoSO-master\MenuConsultas\MenuConsultas\obj\x86\Debug\MenuConsultas.exe
+C:\Users\stiiv\OneDrive\Documentos\Universidad\SO\Tema 10\ProyectoSO-master\MenuConsultas\MenuConsultas\obj\x86\Debug\MenuConsultas.pdb
+C:\Users\Rocio\Desktop\PrototipoJuego\Version4\MenuConsultas\MenuConsultas\obj\x86\Debug\MenuConsultas.exe
+C:\Users\Rocio\Desktop\PrototipoJuego\Version4\MenuConsultas\MenuConsultas\obj\x86\Debug\MenuConsultas.pdb
+C:\Users\Rocio\Desktop\PrototipoJuego\Version4\MenuConsultas\MenuConsultas\bin\Debug\MenuConsultas.exe
+C:\Users\Rocio\Desktop\PrototipoJuego\Version4\MenuConsultas\MenuConsultas\bin\Debug\MenuConsultas.pdb
+C:\Users\Rocio\Desktop\PrototipoJuego\Version4\MenuConsultas\MenuConsultas\obj\x86\Debug\MenuConsultas.csprojResolveAssemblyReference.cache
+C:\Users\Rocio\Desktop\PrototipoJuego\Version4\MenuConsultas\MenuConsultas\obj\x86\Debug\MenuConsultas.dialogs.dialog_Invitación.resources
+C:\Users\Rocio\Desktop\PrototipoJuego\Version4\MenuConsultas\MenuConsultas\obj\x86\Debug\MenuConsultas.dialog_Logear.resources
+C:\Users\Rocio\Desktop\PrototipoJuego\Version4\MenuConsultas\MenuConsultas\obj\x86\Debug\MenuConsultas.dialogs.dialog_Registrar.resources
+C:\Users\Rocio\Desktop\PrototipoJuego\Version4\MenuConsultas\MenuConsultas\obj\x86\Debug\MenuConsultas.Form1.resources
+C:\Users\Rocio\Desktop\PrototipoJuego\Version4\MenuConsultas\MenuConsultas\obj\x86\Debug\MenuConsultas.Partida.resources
+C:\Users\Rocio\Desktop\PrototipoJuego\Version4\MenuConsultas\MenuConsultas\obj\x86\Debug\MenuConsultas.Properties.Resources.resources
+C:\Users\Rocio\Desktop\PrototipoJuego\Version4\MenuConsultas\MenuConsultas\obj\x86\Debug\MenuConsultas.csproj.GenerateResource.Cache
+C:\Users\Rocio\Desktop\PrototipoJuego\SO_Version5-1-master\SO_Version5-1-master\MenuConsultas\obj\x86\Debug\MenuConsultas.exe
+C:\Users\Rocio\Desktop\PrototipoJuego\SO_Version5-1-master\SO_Version5-1-master\MenuConsultas\obj\x86\Debug\MenuConsultas.pdb
+C:\Users\Rocio\Desktop\PrototipoJuego\SO_Version5-1-master\SO_Version5-1-master\MenuConsultas\bin\Debug\MenuConsultas.exe
+C:\Users\Rocio\Desktop\PrototipoJuego\SO_Version5-1-master\SO_Version5-1-master\MenuConsultas\bin\Debug\MenuConsultas.pdb
+C:\Users\Rocio\Desktop\PrototipoJuego\SO_Version5-1-master\SO_Version5-1-master\MenuConsultas\obj\x86\Debug\MenuConsultas.csprojResolveAssemblyReference.cache
+C:\Users\Rocio\Desktop\PrototipoJuego\SO_Version5-1-master\SO_Version5-1-master\MenuConsultas\obj\x86\Debug\MenuConsultas.dialogs.dialog_Invitación.resources
+C:\Users\Rocio\Desktop\PrototipoJuego\SO_Version5-1-master\SO_Version5-1-master\MenuConsultas\obj\x86\Debug\MenuConsultas.dialog_Logear.resources
+C:\Users\Rocio\Desktop\PrototipoJuego\SO_Version5-1-master\SO_Version5-1-master\MenuConsultas\obj\x86\Debug\MenuConsultas.dialogs.dialog_Registrar.resources
+C:\Users\Rocio\Desktop\PrototipoJuego\SO_Version5-1-master\SO_Version5-1-master\MenuConsultas\obj\x86\Debug\MenuConsultas.Form1.resources
+C:\Users\Rocio\Desktop\PrototipoJuego\SO_Version5-1-master\SO_Version5-1-master\MenuConsultas\obj\x86\Debug\MenuConsultas.Partida.resources
+C:\Users\Rocio\Desktop\PrototipoJuego\SO_Version5-1-master\SO_Version5-1-master\MenuConsultas\obj\x86\Debug\MenuConsultas.Properties.Resources.resources
+C:\Users\Rocio\Desktop\PrototipoJuego\SO_Version5-1-master\SO_Version5-1-master\MenuConsultas\obj\x86\Debug\MenuConsultas.csproj.GenerateResource.Cache
