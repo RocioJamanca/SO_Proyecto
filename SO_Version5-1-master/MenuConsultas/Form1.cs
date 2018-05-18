@@ -178,11 +178,15 @@ namespace MenuConsultas
                         int code2 = Convert.ToInt32(trozos[1]);
                         if (code2 == 0)
                         {
-                            MessageBox.Show("Registro sin exito\n");
+                            MessageBox.Show("El usuario ya \n");
                         }
-                        else
+                        else if (code2==1)
                         {
                             MessageBox.Show("Registro con exito\n");
+                        }
+                        else if (code2 == 2)
+                        {
+                            MessageBox.Show("El usuario ya ha sido registrado\n");
                         }
 
                         break;
@@ -283,14 +287,44 @@ namespace MenuConsultas
                     break;
 
                     case 11: //chat
-                    int numForm = idsPartidas.IndexOf(trozos[1]);
-                        //Convert.ToInt32(trozos[1]); //Es el mismo que id Partida 
-                        
+                    int numForm = idsPartidas.IndexOf(trozos[1]);  
                     string frase = trozos[2]; //Mensaje que aparecerá en la listBox
-                    //formularios.Find(x=> x.Equals(numForm));
-                    //formularios.IndexOf(numForm).tomaFrase();
                     formularios[numForm].tomaFrase(frase);
                     break;
+                     
+                    case 12:
+                    string nombreAbandona=trozos[1];
+                    numForm = idsPartidas.IndexOf(trozos[2]);
+                    string nombresJugadores = trozos[3];
+                    if (nombreAbandona == nombre)
+                    {
+                        
+                        formularios[numForm].tomaNombreJugadores(nombresJugadores);
+                    
+                    }
+                    else
+                    {
+                        formularios[numForm].tomaNombreAbandona(nombreAbandona);
+                    }
+                        break;
+                    
+                    case 13:
+                        string nombreResponde = trozos[1];
+                        numForm = idsPartidas.IndexOf(trozos[2]);
+                        int deacuerdo = Convert.ToInt32(trozos[3]);
+                        nombresJugadores = trozos[4];
+                        int numeroJugadores = Convert.ToInt32(trozos[5]);
+                        if (deacuerdo == 1)
+                        {
+                            MessageBox.Show("El jugador:" + nombreResponde + " ACEPTA abandonar partida");
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("El jugador:" + nombreResponde + " NOOOO ACEPTA abandonar partida");
+                        }
+                        formularios[numForm].tomaDatosAbandonar(nombreResponde,deacuerdo,nombresJugadores,numeroJugadores);
+                        break;
                 }
             }
         }

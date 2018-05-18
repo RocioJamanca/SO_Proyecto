@@ -17,6 +17,7 @@ namespace MenuConsultas
         Socket server;
         string nombre;
         List<string> listaChat = new List<string>();
+        List<string> listaAbandonar = new List<string>();
 
 
         public void mostrarNombre(string nombre)
@@ -36,6 +37,14 @@ namespace MenuConsultas
             panel_abandonar.Visible=true;
         }
         delegate void DelegadoParaAbandonar(string nombre);
+
+        public void mostrarPanelDejarPartida(string nombreAbandonador)
+        {
+            panel_dejarPartida.Visible = true;
+            label_nombreAbandona.Text = nombreAbandonador;
+        }
+        delegate void DelegadoParaDejarPartida(string nombreAbandonador);
+
         public void ocultarPanelAbandonar(string nombre)
         {
             panel_abandonar.Visible = false;
@@ -79,8 +88,38 @@ namespace MenuConsultas
             DelegadoParaMostrarChat delegadoMostrarChat = new DelegadoParaMostrarChat(mostrarChat);
             label1.Invoke(delegadoMostrarChat, new object[] { frase }); //Invoca al thread que crea el objeto(label1)
         }
-
-
+        public void tomaNombreAbandona(string nombreAbandona)
+        {
+            listaAbandonar.Add(nombreAbandona);
+            DelegadoParaDejarPartida delegadoDejar= new DelegadoParaDejarPartida(mostrarPanelDejarPartida);
+            panel_dejarPartida.Invoke(delegadoDejar, new object[] { nombreAbandona }); //Invoca al thread que crea el objeto(label1)
+        }
+        public void tomaNombreJugadores(string nombresJugadores)
+        {
+            MessageBox.Show(nombre + " los jugadores acaban de recibir el mensaje");
+            MessageBox.Show("Los jugadores de la partida son: " + nombresJugadores);
+        }
+        public void tomaDatosAbandonar(string nombreResponde,int deacuerdo,string nombresJugadores, int numeroJugadores) 
+        {
+            
+            if (deacuerdo == 1)
+            {
+                listaAbandonar.Add(nombreResponde);
+                MessageBox.Show(listaAbandonar.Count+"   "+numeroJugadores);
+                if (listaAbandonar.Count == numeroJugadores)
+                {
+                    MessageBox.Show(nombre+ " Todos los jugadores han aceptado abandonar");
+                }
+                else
+                {
+                    MessageBox.Show(nombre +"No todos los jugadores han aceptado abandonar");
+                }
+            }
+            else
+            {
+                MessageBox.Show("El jugador" + nombreResponde + " no acepta abandonar la partida");
+            }
+        }
 
         private void textBox_Chat_KeyDown(object sender, KeyEventArgs e)
         {
@@ -106,6 +145,33 @@ namespace MenuConsultas
         {
             DelegadoParaOcultar delegadoOcultar = new DelegadoParaOcultar(ocultarPanelAbandonar);
             panel_abandonar.Invoke(delegadoOcultar, new object[] { nombre }); 
+        }
+
+        private void btn_si_Click(object sender, EventArgs e)
+        {
+            listaAbandonar.Add(nombre);
+            string mensaje = "12/" + nombre + "/" + idPartida;
+            byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);
+            server.Send(msg);
+
+            DelegadoParaOcultar delegadoOcultar = new DelegadoParaOcultar(ocultarPanelAbandonar);
+            panel_abandonar.Invoke(delegadoOcultar, new object[] { nombre }); 
+        }
+
+        private void btn_abandonar_sI_Click(object sender, EventArgs e)
+        {
+            
+            string mensaje = "13/" + nombre + "/" + idPartida+"/1";
+            byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);
+            server.Send(msg);
+            
+        }
+
+        private void btn_abandonar_no_Click(object sender, EventArgs e)
+        {
+            string mensaje = "13/" + nombre + "/" + idPartida + "/0";
+            byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);
+            server.Send(msg);
         }
     }
 }
