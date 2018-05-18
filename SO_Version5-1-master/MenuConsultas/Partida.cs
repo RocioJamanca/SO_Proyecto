@@ -18,6 +18,7 @@ namespace MenuConsultas
         string nombre;
         List<string> listaChat = new List<string>();
 
+
         public void mostrarNombre(string nombre)
         {
             label1.Text = nombre;
