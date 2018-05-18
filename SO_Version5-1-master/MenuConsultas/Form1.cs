@@ -318,10 +318,11 @@ namespace MenuConsultas
                         numForm = idsPartidas.IndexOf(trozos[1]);
                         formularios[numForm].cerrarForm();
                         break;
-                    case 15: 
-                        idPartida=trozos[2];
+                    case 15:
+                        numForm = idsPartidas.IndexOf(trozos[2]);
                         int palo=Convert.ToInt32(trozos[3]);
                         int numero = Convert.ToInt32(trozos[4]);
+                        formularios[numForm].tomaCarta(palo,numero);
                         break;
                     case 16:
                         break;

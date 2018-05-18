@@ -18,7 +18,9 @@ namespace MenuConsultas
         string nombre;
         List<string> listaChat = new List<string>();
         List<string> listaAbandonar = new List<string>();
-
+        List<int> numCartas = new List<int>();
+        List<int> puntos = new List<int>();
+        Image[,] cartas = new Image[13, 4];
 
         public void mostrarNombre(string nombre)
         {
@@ -138,6 +140,34 @@ namespace MenuConsultas
         }
         delegate void DelegadoParaMostrarBtnAbandonar();
 
+        public void mostrarCarta(int palo,int numero)
+        {
+            if (numCartas.Count == 1)
+            {
+                pictureBox_carta1.Image = cartas[numero, palo];
+                int puntosFinal = puntos[0];
+                textBox_puntos.Text = puntosFinal.ToString();
+            }
+            else if (numCartas.Count == 2)
+            {
+                pictureBox_carta2.Image = cartas[numero, palo];
+                int puntosFinal = puntos[0]+puntos[1];
+                textBox_puntos.Text = puntosFinal.ToString();
+            }
+            else if (numCartas.Count == 3)
+            {
+                pictureBox_carta3.Image = cartas[numero, palo];
+                int puntosFinal = puntos[0] + puntos[1]+puntos[2];
+                textBox_puntos.Text = puntosFinal.ToString();
+            }
+            else if (numCartas.Count == 4)
+            {
+                pictureBox_carta4.Image = cartas[numero, palo];
+                int puntosFinal = puntos[0] + puntos[1]+puntos[2]+puntos[3];
+                textBox_puntos.Text = puntosFinal.ToString();
+            }
+        }
+        delegate void DelegadoParaMostrarCarta(int palo,int numero);
 
         public Partida(string idPartida, Socket server, string nombre)
         {
@@ -152,6 +182,65 @@ namespace MenuConsultas
             numero_partida.Text = idPartida.ToString();
             DelegadoParaEscribirNombre delegado = new DelegadoParaEscribirNombre(mostrarNombre);
             label1.Invoke(delegado, new object[] { nombre }); //Invoca al thread que crea el objeto(label1)     
+
+            //0 diamante; 1 picas; 2 corazones; 3 treboles ;
+            //0 diamante; 1 picas; 2 corazones; 3 treboles ;
+            cartas[0, 0] = MenuConsultas.Properties.Resources._01_diamonds;
+            cartas[1, 0] = MenuConsultas.Properties.Resources._02_diamonds;
+            cartas[2, 0] = MenuConsultas.Properties.Resources._03_diamonds;
+            cartas[3, 0] = MenuConsultas.Properties.Resources._04_diamonds;
+            cartas[4, 0] = MenuConsultas.Properties.Resources._05_diamonds;
+            cartas[5, 0] = MenuConsultas.Properties.Resources._06_diamonds;
+            cartas[6, 0] = MenuConsultas.Properties.Resources._07_diamonds;
+            cartas[7, 0] = MenuConsultas.Properties.Resources._08_diamonds;
+            cartas[8, 0] = MenuConsultas.Properties.Resources._09_diamonds;
+            cartas[9, 0] = MenuConsultas.Properties.Resources._10_diamonds;
+            cartas[10, 0] = MenuConsultas.Properties.Resources.J_diamonds;
+            cartas[11, 0] = MenuConsultas.Properties.Resources.Q_diamonds;
+            cartas[12, 0] = MenuConsultas.Properties.Resources.K_diamonds;
+
+            cartas[0, 1] = MenuConsultas.Properties.Resources._01_spades;
+            cartas[1, 1] = MenuConsultas.Properties.Resources._02_spades;
+            cartas[2, 1] = MenuConsultas.Properties.Resources._03_spades;
+            cartas[3, 1] = MenuConsultas.Properties.Resources._04_spades;
+            cartas[4, 1] = MenuConsultas.Properties.Resources._05_spades;
+            cartas[5, 1] = MenuConsultas.Properties.Resources._06_spades;
+            cartas[6, 1] = MenuConsultas.Properties.Resources._07_spades;
+            cartas[7, 1] = MenuConsultas.Properties.Resources._08_spades;
+            cartas[8, 1] = MenuConsultas.Properties.Resources._09_spades;
+            cartas[9, 1] = MenuConsultas.Properties.Resources._10_spades;
+            cartas[10, 1] = MenuConsultas.Properties.Resources.J_spades;
+            cartas[11, 1] = MenuConsultas.Properties.Resources.Q_spades;
+            cartas[12, 1] = MenuConsultas.Properties.Resources.K_spades;
+
+            cartas[0, 2] = MenuConsultas.Properties.Resources._01_hearts;
+            cartas[1, 2] = MenuConsultas.Properties.Resources._02_hearts;
+            cartas[2, 2] = MenuConsultas.Properties.Resources._03_hearts;
+            cartas[3, 2] = MenuConsultas.Properties.Resources._04_hearts;
+            cartas[4, 2] = MenuConsultas.Properties.Resources._05_hearts;
+            cartas[5, 2] = MenuConsultas.Properties.Resources._06_hearts;
+            cartas[6, 2] = MenuConsultas.Properties.Resources._07_hearts;
+            cartas[7, 2] = MenuConsultas.Properties.Resources._08_hearts;
+            cartas[8, 2] = MenuConsultas.Properties.Resources._09_hearts;
+            cartas[9, 2] = MenuConsultas.Properties.Resources._10_hearts;
+            cartas[10, 2] = MenuConsultas.Properties.Resources.J_hearts;
+            cartas[11, 2] = MenuConsultas.Properties.Resources.Q_hearts;
+            cartas[12, 2] = MenuConsultas.Properties.Resources.K_hearts;
+
+            cartas[0, 3] = MenuConsultas.Properties.Resources._01_clubs;
+            cartas[1, 3] = MenuConsultas.Properties.Resources._02_clubs;
+            cartas[2, 3] = MenuConsultas.Properties.Resources._03_clubs;
+            cartas[3, 3] = MenuConsultas.Properties.Resources._04_clubs;
+            cartas[4, 3] = MenuConsultas.Properties.Resources._05_clubs;
+            cartas[5, 3] = MenuConsultas.Properties.Resources._06_clubs;
+            cartas[6, 3] = MenuConsultas.Properties.Resources._07_clubs;
+            cartas[7, 3] = MenuConsultas.Properties.Resources._08_clubs;
+            cartas[8, 3] = MenuConsultas.Properties.Resources._09_clubs;
+            cartas[9, 3] = MenuConsultas.Properties.Resources._10_clubs;
+            cartas[10, 3] = MenuConsultas.Properties.Resources.J_clubs;
+            cartas[11, 3] = MenuConsultas.Properties.Resources.Q_clubs;
+            cartas[12, 3] = MenuConsultas.Properties.Resources.K_clubs;
+
         }
 
 
@@ -235,7 +324,17 @@ namespace MenuConsultas
             DelegadoParaCerrar delegadoCerrar=new DelegadoParaCerrar(cierreForm);
             label_finPartida.Invoke(delegadoCerrar, new object[] { });
         }
-
+        public void tomaCarta(int palo, int numero)
+        {
+            numCartas.Add(1);
+            puntos.Add(numero+1);
+            DelegadoParaMostrarCarta delegadoCarta = new DelegadoParaMostrarCarta(mostrarCarta);
+            panel_tablero.Invoke(delegadoCarta, new object[] { palo,numero});
+            if(numCartas.Count==4)
+            {
+                //envio los puntos
+            }
+        }
 
         private void textBox_Chat_KeyDown(object sender, KeyEventArgs e)
         {
@@ -292,21 +391,18 @@ namespace MenuConsultas
             panel_ListaJugadores.Invoke(delegadoOcultarListaJugadores, new object[] { nombre }); 
            
         }
-
         private void btn_nuevaCarta_Click(object sender, EventArgs e)
         {
             string mensaje = "15/" + nombre + "/" + idPartida;
             byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
         }
-
         private void btn_plantarse_Click(object sender, EventArgs e)
         {
             string mensaje = "16/" + nombre + "/" + idPartida;
             byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
         }
-
 
 
     }

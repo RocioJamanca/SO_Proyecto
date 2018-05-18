@@ -54,10 +54,22 @@
             this.label_finPartida = new System.Windows.Forms.Label();
             this.btn_nuevaCarta = new System.Windows.Forms.Button();
             this.btn_plantarse = new System.Windows.Forms.Button();
+            this.pictureBox_carta1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox_carta2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox_carta3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox_carta4 = new System.Windows.Forms.PictureBox();
+            this.panel_tablero = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBox_puntos = new System.Windows.Forms.TextBox();
             this.panel_abandonar.SuspendLayout();
             this.panel_dejarPartida.SuspendLayout();
             this.panel_ListaJugadores.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_carta1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_carta2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_carta3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_carta4)).BeginInit();
+            this.panel_tablero.SuspendLayout();
             this.SuspendLayout();
             // 
             // numero_partida
@@ -194,7 +206,7 @@
             this.btn_abandonar.BackColor = System.Drawing.Color.Gray;
             this.btn_abandonar.Font = new System.Drawing.Font("Agency FB", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_abandonar.ForeColor = System.Drawing.Color.White;
-            this.btn_abandonar.Location = new System.Drawing.Point(421, 655);
+            this.btn_abandonar.Location = new System.Drawing.Point(698, 749);
             this.btn_abandonar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_abandonar.Name = "btn_abandonar";
             this.btn_abandonar.Padding = new System.Windows.Forms.Padding(0, 0, 0, 7);
@@ -347,7 +359,7 @@
             this.btn_nuevaCarta.BackColor = System.Drawing.Color.Gray;
             this.btn_nuevaCarta.Font = new System.Drawing.Font("Agency FB", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_nuevaCarta.ForeColor = System.Drawing.Color.White;
-            this.btn_nuevaCarta.Location = new System.Drawing.Point(595, 369);
+            this.btn_nuevaCarta.Location = new System.Drawing.Point(126, 624);
             this.btn_nuevaCarta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_nuevaCarta.Name = "btn_nuevaCarta";
             this.btn_nuevaCarta.Padding = new System.Windows.Forms.Padding(0, 0, 0, 7);
@@ -362,7 +374,7 @@
             this.btn_plantarse.BackColor = System.Drawing.Color.Gray;
             this.btn_plantarse.Font = new System.Drawing.Font("Agency FB", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_plantarse.ForeColor = System.Drawing.Color.White;
-            this.btn_plantarse.Location = new System.Drawing.Point(800, 381);
+            this.btn_plantarse.Location = new System.Drawing.Point(375, 624);
             this.btn_plantarse.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_plantarse.Name = "btn_plantarse";
             this.btn_plantarse.Padding = new System.Windows.Forms.Padding(0, 0, 0, 7);
@@ -372,15 +384,83 @@
             this.btn_plantarse.UseVisualStyleBackColor = false;
             this.btn_plantarse.Click += new System.EventHandler(this.btn_plantarse_Click);
             // 
+            // pictureBox_carta1
+            // 
+            this.pictureBox_carta1.Location = new System.Drawing.Point(48, 12);
+            this.pictureBox_carta1.Name = "pictureBox_carta1";
+            this.pictureBox_carta1.Size = new System.Drawing.Size(250, 300);
+            this.pictureBox_carta1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_carta1.TabIndex = 23;
+            this.pictureBox_carta1.TabStop = false;
+            // 
+            // pictureBox_carta2
+            // 
+            this.pictureBox_carta2.Location = new System.Drawing.Point(304, 12);
+            this.pictureBox_carta2.Name = "pictureBox_carta2";
+            this.pictureBox_carta2.Size = new System.Drawing.Size(250, 300);
+            this.pictureBox_carta2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_carta2.TabIndex = 24;
+            this.pictureBox_carta2.TabStop = false;
+            // 
+            // pictureBox_carta3
+            // 
+            this.pictureBox_carta3.Location = new System.Drawing.Point(48, 318);
+            this.pictureBox_carta3.Name = "pictureBox_carta3";
+            this.pictureBox_carta3.Size = new System.Drawing.Size(250, 300);
+            this.pictureBox_carta3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_carta3.TabIndex = 25;
+            this.pictureBox_carta3.TabStop = false;
+            // 
+            // pictureBox_carta4
+            // 
+            this.pictureBox_carta4.Location = new System.Drawing.Point(304, 318);
+            this.pictureBox_carta4.Name = "pictureBox_carta4";
+            this.pictureBox_carta4.Size = new System.Drawing.Size(250, 300);
+            this.pictureBox_carta4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_carta4.TabIndex = 26;
+            this.pictureBox_carta4.TabStop = false;
+            // 
+            // panel_tablero
+            // 
+            this.panel_tablero.Controls.Add(this.textBox_puntos);
+            this.panel_tablero.Controls.Add(this.label7);
+            this.panel_tablero.Controls.Add(this.pictureBox_carta4);
+            this.panel_tablero.Controls.Add(this.pictureBox_carta3);
+            this.panel_tablero.Controls.Add(this.pictureBox_carta2);
+            this.panel_tablero.Controls.Add(this.btn_plantarse);
+            this.panel_tablero.Controls.Add(this.pictureBox_carta1);
+            this.panel_tablero.Controls.Add(this.btn_nuevaCarta);
+            this.panel_tablero.Location = new System.Drawing.Point(449, 30);
+            this.panel_tablero.Name = "panel_tablero";
+            this.panel_tablero.Size = new System.Drawing.Size(861, 700);
+            this.panel_tablero.TabIndex = 27;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Agency FB", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(636, 104);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(75, 33);
+            this.label7.TabIndex = 27;
+            this.label7.Text = "Puntos:";
+            // 
+            // textBox_puntos
+            // 
+            this.textBox_puntos.Enabled = false;
+            this.textBox_puntos.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_puntos.Location = new System.Drawing.Point(642, 140);
+            this.textBox_puntos.Name = "textBox_puntos";
+            this.textBox_puntos.Size = new System.Drawing.Size(81, 34);
+            this.textBox_puntos.TabIndex = 28;
+            // 
             // Partida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(203)))), ((int)(((byte)(196)))));
-            this.ClientSize = new System.Drawing.Size(1130, 852);
-            this.Controls.Add(this.btn_plantarse);
+            this.ClientSize = new System.Drawing.Size(1336, 852);
             this.Controls.Add(this.btn_abandonar);
-            this.Controls.Add(this.btn_nuevaCarta);
             this.Controls.Add(this.label_finPartida);
             this.Controls.Add(this.panel_dejarPartida);
             this.Controls.Add(this.panel_abandonar);
@@ -392,6 +472,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.numero_partida);
+            this.Controls.Add(this.panel_tablero);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Partida";
             this.Text = "Partida";
@@ -403,6 +484,12 @@
             this.panel_ListaJugadores.ResumeLayout(false);
             this.panel_ListaJugadores.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_carta1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_carta2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_carta3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_carta4)).EndInit();
+            this.panel_tablero.ResumeLayout(false);
+            this.panel_tablero.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -435,5 +522,12 @@
         private System.Windows.Forms.Label label_finPartida;
         private System.Windows.Forms.Button btn_plantarse;
         private System.Windows.Forms.Button btn_nuevaCarta;
+        private System.Windows.Forms.PictureBox pictureBox_carta1;
+        private System.Windows.Forms.PictureBox pictureBox_carta2;
+        private System.Windows.Forms.PictureBox pictureBox_carta3;
+        private System.Windows.Forms.PictureBox pictureBox_carta4;
+        private System.Windows.Forms.Panel panel_tablero;
+        private System.Windows.Forms.TextBox textBox_puntos;
+        private System.Windows.Forms.Label label7;
     }
 }
