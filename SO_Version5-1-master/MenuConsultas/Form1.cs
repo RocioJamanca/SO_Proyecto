@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+//Hola
 //Para comentar:        Ctr K + Ctr C
 //Para descomentar:     Ctr K + Ctr U
 //Como he puesto todos ls dialogs dentro de una carpeta tengo que añadir esta linea.
