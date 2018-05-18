@@ -36,6 +36,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.panel_abandonar = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btn_abandonar = new System.Windows.Forms.Button();
+            this.btn_si = new System.Windows.Forms.Button();
+            this.btn_no = new System.Windows.Forms.Button();
+            this.panel_abandonar.SuspendLayout();
             this.SuspendLayout();
             // 
             // numero_partida
@@ -116,12 +122,79 @@
             this.label3.TabIndex = 16;
             this.label3.Text = "Jugador:";
             // 
+            // panel_abandonar
+            // 
+            this.panel_abandonar.Controls.Add(this.btn_no);
+            this.panel_abandonar.Controls.Add(this.btn_si);
+            this.panel_abandonar.Controls.Add(this.label4);
+            this.panel_abandonar.Location = new System.Drawing.Point(587, 70);
+            this.panel_abandonar.Name = "panel_abandonar";
+            this.panel_abandonar.Size = new System.Drawing.Size(314, 231);
+            this.panel_abandonar.TabIndex = 18;
+            this.panel_abandonar.Visible = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Agency FB", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(12, 13);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(261, 66);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "¿Estas seguro de que quieres\r\n      abandonar la partida?";
+            // 
+            // btn_abandonar
+            // 
+            this.btn_abandonar.BackColor = System.Drawing.Color.Gray;
+            this.btn_abandonar.Font = new System.Drawing.Font("Agency FB", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_abandonar.ForeColor = System.Drawing.Color.White;
+            this.btn_abandonar.Location = new System.Drawing.Point(673, 331);
+            this.btn_abandonar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_abandonar.Name = "btn_abandonar";
+            this.btn_abandonar.Padding = new System.Windows.Forms.Padding(0, 0, 0, 7);
+            this.btn_abandonar.Size = new System.Drawing.Size(120, 52);
+            this.btn_abandonar.TabIndex = 19;
+            this.btn_abandonar.Text = "Abandonar";
+            this.btn_abandonar.UseVisualStyleBackColor = false;
+            this.btn_abandonar.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btn_si
+            // 
+            this.btn_si.BackColor = System.Drawing.Color.Gray;
+            this.btn_si.Font = new System.Drawing.Font("Agency FB", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_si.ForeColor = System.Drawing.Color.White;
+            this.btn_si.Location = new System.Drawing.Point(31, 151);
+            this.btn_si.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_si.Name = "btn_si";
+            this.btn_si.Padding = new System.Windows.Forms.Padding(0, 0, 0, 7);
+            this.btn_si.Size = new System.Drawing.Size(120, 52);
+            this.btn_si.TabIndex = 20;
+            this.btn_si.Text = "Si";
+            this.btn_si.UseVisualStyleBackColor = false;
+            // 
+            // btn_no
+            // 
+            this.btn_no.BackColor = System.Drawing.Color.Gray;
+            this.btn_no.Font = new System.Drawing.Font("Agency FB", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_no.ForeColor = System.Drawing.Color.White;
+            this.btn_no.Location = new System.Drawing.Point(173, 151);
+            this.btn_no.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_no.Name = "btn_no";
+            this.btn_no.Padding = new System.Windows.Forms.Padding(0, 0, 0, 7);
+            this.btn_no.Size = new System.Drawing.Size(120, 52);
+            this.btn_no.TabIndex = 21;
+            this.btn_no.Text = "No";
+            this.btn_no.UseVisualStyleBackColor = false;
+            this.btn_no.Click += new System.EventHandler(this.btn_no_Click);
+            // 
             // Partida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(203)))), ((int)(((byte)(196)))));
-            this.ClientSize = new System.Drawing.Size(619, 454);
+            this.ClientSize = new System.Drawing.Size(913, 454);
+            this.Controls.Add(this.btn_abandonar);
+            this.Controls.Add(this.panel_abandonar);
             this.Controls.Add(this.textBox_chat);
             this.Controls.Add(this.btn_enviar);
             this.Controls.Add(this.listBox_chat);
@@ -133,6 +206,8 @@
             this.Name = "Partida";
             this.Text = "Partida";
             this.Load += new System.EventHandler(this.Partida_Load);
+            this.panel_abandonar.ResumeLayout(false);
+            this.panel_abandonar.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -147,5 +222,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel_abandonar;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btn_abandonar;
+        private System.Windows.Forms.Button btn_no;
+        private System.Windows.Forms.Button btn_si;
     }
 }

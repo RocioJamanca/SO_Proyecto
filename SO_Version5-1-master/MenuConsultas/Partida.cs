@@ -30,6 +30,17 @@ namespace MenuConsultas
         }
         delegate void DelegadoParaMostrarChat(string frase);
 
+        public void mostrarPanelAbandonar(string nombre)
+        {
+            panel_abandonar.Visible=true;
+        }
+        delegate void DelegadoParaAbandonar(string nombre);
+        public void ocultarPanelAbandonar(string nombre)
+        {
+            panel_abandonar.Visible = false;
+        }
+        delegate void DelegadoParaOcultar(string nombre);
+
         public Partida(string idPartida, Socket server, string nombre)
         {
             InitializeComponent();
@@ -58,6 +69,7 @@ namespace MenuConsultas
                 byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);
                 server.Send(msg);
                 textBox_chat.Clear();
+                listBox_chat.TopIndex = listBox_chat.Items.Count - 1;
             }
         }
         public void tomaFrase(string frase)
@@ -74,7 +86,25 @@ namespace MenuConsultas
             if (e.KeyCode == Keys.Enter)
             {
             btn_enviar_Click(this, new EventArgs());
+            
             }
+        }
+
+        private void btn_abandonar_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DelegadoParaAbandonar delegadoAbandonar = new DelegadoParaAbandonar(mostrarPanelAbandonar);
+            panel_abandonar.Invoke(delegadoAbandonar, new object[] { nombre }); 
+        }
+
+        private void btn_no_Click(object sender, EventArgs e)
+        {
+            DelegadoParaOcultar delegadoOcultar = new DelegadoParaOcultar(ocultarPanelAbandonar);
+            panel_abandonar.Invoke(delegadoOcultar, new object[] { nombre }); 
         }
     }
 }

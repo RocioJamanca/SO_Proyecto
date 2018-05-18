@@ -111,3 +111,13 @@ C:\Users\Rocio\Desktop\PrototipoJuego\SO_Version5-1-master\SO_Version5-1-master\
 C:\Users\Rocio\Desktop\PrototipoJuego\SO_Version5-1-master\SO_Version5-1-master\MenuConsultas\obj\x86\Debug\MenuConsultas.csproj.GenerateResource.Cache
 C:\Users\Rocio\Desktop\PrototipoJuego\SO_Version5-1-master\SO_Proyecto\SO_Version5-1-master\MenuConsultas\obj\x86\Debug\MenuConsultas.exe
 C:\Users\Rocio\Desktop\PrototipoJuego\SO_Version5-1-master\SO_Proyecto\SO_Version5-1-master\MenuConsultas\obj\x86\Debug\MenuConsultas.pdb
+C:\Users\Rocio\Desktop\PrototipoJuego\SO_Version5-1-master\SO_Proyecto\SO_Version5-1-master\MenuConsultas\bin\Debug\MenuConsultas.exe
+C:\Users\Rocio\Desktop\PrototipoJuego\SO_Version5-1-master\SO_Proyecto\SO_Version5-1-master\MenuConsultas\bin\Debug\MenuConsultas.pdb
+C:\Users\Rocio\Desktop\PrototipoJuego\SO_Version5-1-master\SO_Proyecto\SO_Version5-1-master\MenuConsultas\obj\x86\Debug\MenuConsultas.csprojResolveAssemblyReference.cache
+C:\Users\Rocio\Desktop\PrototipoJuego\SO_Version5-1-master\SO_Proyecto\SO_Version5-1-master\MenuConsultas\obj\x86\Debug\MenuConsultas.dialogs.dialog_Invitación.resources
+C:\Users\Rocio\Desktop\PrototipoJuego\SO_Version5-1-master\SO_Proyecto\SO_Version5-1-master\MenuConsultas\obj\x86\Debug\MenuConsultas.dialog_Logear.resources
+C:\Users\Rocio\Desktop\PrototipoJuego\SO_Version5-1-master\SO_Proyecto\SO_Version5-1-master\MenuConsultas\obj\x86\Debug\MenuConsultas.dialogs.dialog_Registrar.resources
+C:\Users\Rocio\Desktop\PrototipoJuego\SO_Version5-1-master\SO_Proyecto\SO_Version5-1-master\MenuConsultas\obj\x86\Debug\MenuConsultas.Form1.resources
+C:\Users\Rocio\Desktop\PrototipoJuego\SO_Version5-1-master\SO_Proyecto\SO_Version5-1-master\MenuConsultas\obj\x86\Debug\MenuConsultas.Partida.resources
+C:\Users\Rocio\Desktop\PrototipoJuego\SO_Version5-1-master\SO_Proyecto\SO_Version5-1-master\MenuConsultas\obj\x86\Debug\MenuConsultas.Properties.Resources.resources
+C:\Users\Rocio\Desktop\PrototipoJuego\SO_Version5-1-master\SO_Proyecto\SO_Version5-1-master\MenuConsultas\obj\x86\Debug\MenuConsultas.csproj.GenerateResource.Cache
