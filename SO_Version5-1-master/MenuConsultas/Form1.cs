@@ -178,7 +178,7 @@ namespace MenuConsultas
                         int code2 = Convert.ToInt32(trozos[1]);
                         if (code2 == 0)
                         {
-                            MessageBox.Show("El usuario ya \n");
+                            MessageBox.Show("Error\n");
                         }
                         else if (code2==1)
                         {
@@ -267,7 +267,7 @@ namespace MenuConsultas
                     }
                     else  //Aceptado
                     {
-                        MessageBox.Show("El jugador: " + nombreINVITADO + " ha aceptado tu invitación");
+                        //MessageBox.Show("El jugador: " + nombreINVITADO + " ha aceptado tu invitación");
                         DelegadoParaListaJugadores delegadoJugadores = new DelegadoParaListaJugadores(mostrarListaJugadores);
                         jugadores.Invoke(delegadoJugadores, new object[] { nombreINVITADO });
                     }
@@ -278,7 +278,7 @@ namespace MenuConsultas
                     string idPartida = trozos[1];
                     string nombreAnfitrion = trozos[2];
                     string nombreJugadores = trozos[3]; //Estos habrá que separarlos ya que estan en el formato nombre1*nombre2*nombre3*....
-                    MessageBox.Show("Se ha iniciado una Partida con id:  "+idPartida+" el anfitrión es:  "+nombreAnfitrion);
+                    //MessageBox.Show("Se ha iniciado una Partida con id:  "+idPartida+" el anfitrión es:  "+nombreAnfitrion);
                     //Enviar desde este form al nuevo -> nombre, nombreAnfitrion, id de la partida al nuevo form y las personas que estan jugando.
                     //pongo en marcha el thread  
                     ThreadStart ts = delegate { PonerMarchaFormulario(idPartida); };
@@ -297,10 +297,8 @@ namespace MenuConsultas
                     numForm = idsPartidas.IndexOf(trozos[2]);
                     string nombresJugadores = trozos[3];
                     if (nombreAbandona == nombre)
-                    {
-                        
+                    { 
                         formularios[numForm].tomaNombreJugadores(nombresJugadores);
-                    
                     }
                     else
                     {
@@ -314,16 +312,18 @@ namespace MenuConsultas
                         int deacuerdo = Convert.ToInt32(trozos[3]);
                         nombresJugadores = trozos[4];
                         int numeroJugadores = Convert.ToInt32(trozos[5]);
-                        if (deacuerdo == 1)
-                        {
-                            MessageBox.Show("El jugador:" + nombreResponde + " ACEPTA abandonar partida");
-
-                        }
-                        else
-                        {
-                            MessageBox.Show("El jugador:" + nombreResponde + " NOOOO ACEPTA abandonar partida");
-                        }
                         formularios[numForm].tomaDatosAbandonar(nombreResponde,deacuerdo,nombresJugadores,numeroJugadores);
+                        break;
+                    case 14:
+                        numForm = idsPartidas.IndexOf(trozos[1]);
+                        formularios[numForm].cerrarForm();
+                        break;
+                    case 15: 
+                        idPartida=trozos[2];
+                        int palo=Convert.ToInt32(trozos[3]);
+                        int numero = Convert.ToInt32(trozos[4]);
+                        break;
+                    case 16:
                         break;
                 }
             }
@@ -412,7 +412,7 @@ namespace MenuConsultas
             //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
             //al que deseamos conectarnos
             IPAddress direc = IPAddress.Parse(Ip);
-            IPEndPoint ipep = new IPEndPoint(direc, 50025);
+            IPEndPoint ipep = new IPEndPoint(direc, 50024);
             //Creamos el socket 
             server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             try
@@ -469,7 +469,7 @@ namespace MenuConsultas
             }
             else
             {
-                MessageBox.Show("Estas invitando a: " + persona);
+                //MessageBox.Show("Estas invitando a: " + persona);
                 //Creamos el mensaje que enviaremos al servidor
                 string mensaje = "8/" + nombre + "/" + persona;
                 byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);
