@@ -6,6 +6,7 @@
 #include <netinet/in.h>             
 #include <stdio.h>
 #include <mysql.h>
+#include <time.h>
 #include <my_global.h> //SHIVA
 #include <pthread.h>
 #define max 200
@@ -357,6 +358,9 @@ void *atender_cliente(void *conectados)
 			//  envio: 2/1  Todo correcto
 			p = strtok( NULL, "/"); //Extraemos la contrasena
 			strcpy (contra, p);
+			
+			
+			
 			int cont;
 			err=mysql_query (conn, "SELECT MAX(idJugador) FROM jugador"); 
 			if (err!=0) 
@@ -375,6 +379,31 @@ void *atender_cliente(void *conectados)
 			char code[20];
 			sprintf(code,"%d",id);
 			
+			///
+			strcpy (consulta,"SELECT password FROM jugador WHERE nombre = '"); 
+			strcat (consulta, nombre);
+			strcat(consulta,"'");
+			
+			//hacemos la consulta 
+			err=mysql_query (conn, consulta);
+			if (err!=0) 
+			{
+				printf ("Error en la base de datos %u %s\n", mysql_errno(conn), mysql_error(conn));
+				exit (1);
+			}
+			
+			strcpy(respuesta,"2/"); //-----
+			//recogemos el resultado de la consulta  
+			resultado = mysql_store_result(conn);
+			row = mysql_fetch_row (resultado);
+			
+			if (row != NULL) //No hay datos en la consulta
+			{
+				printf("La persona ya ha sido registrada\n");
+				strcat(respuesta,"2/");
+			}
+			else{
+			
 			//Consulta
 			strcpy(consulta,"INSERT INTO jugador(idJugador,nombre,password) VALUES (");	
 			strcat(consulta, "'");
@@ -386,7 +415,7 @@ void *atender_cliente(void *conectados)
 			strcat(consulta,contra);
 			strcat(consulta, "');");
 			printf("Codigo 2. Formulacion de consulta: %s\n",consulta);
-			strcpy(respuesta,"2/"); //-----
+			
 			err=mysql_query (conn, consulta); 
 			if (err!=0) {
 				printf ("Error al consultar datos de la base %u %s\n",
@@ -401,7 +430,9 @@ void *atender_cliente(void *conectados)
 				strcat(respuesta,"1/");
 			}
 			
+			}
 			write (sock_conn,respuesta, strlen(respuesta));
+			
 		}
 		
 		else if (codigo==3) 	//Fecha partida  recibo: 3/nombre/contrasena
@@ -670,6 +701,7 @@ void *atender_cliente(void *conectados)
 		
 		else if (codigo==11)   //Chat
 		{
+			printf("Codigo 11.\n");
 			//Recibo: 11/nombre/idPartida/mensaje
 			//Envio: 11/idPartida,mensaje
 			p = strtok( NULL, "/");
@@ -682,8 +714,100 @@ void *atender_cliente(void *conectados)
 			{
 				write(lp->listaP[idPartida].listaJugador[i].id,respuesta, strlen(respuesta));
 			}
+			printf("Codigo 11.Envio: %s\n",respuesta);
 			
 		}
+		else if (codigo==12)   //Abandonar partida
+		{
+			//Recibo: 12/nombre/idPartida
+			//Envio: 12/nombreAbandonar/idPartida/nom*nom*/   A todos
+			printf("Codigo 12.\n");
+			p = strtok( NULL, "/");
+			int idPartida=atoi(p); //extraemos idPartida
+			sprintf(respuesta,"12/%s/%d/",nombre,idPartida);
+			for(int i=0;i<lp->listaP[idPartida].numeroPersonas;i++)
+			{
+				strcat(respuesta,lp->listaP[idPartida].listaJugador[i].nombreUsuario);
+				strcat(respuesta,"*");
+			}
+			strcat(respuesta,"/");
+			
+			for(int i=0;i<lp->listaP[idPartida].numeroPersonas;i++)
+			{
+				write(lp->listaP[idPartida].listaJugador[i].id,respuesta, strlen(respuesta));
+			}
+			printf("Codigo 12. Envio: %s\n",respuesta);
+			
+		}
+		else if (codigo==13)  //Se desea abandonar?
+		{
+			//Recibo: 13/nombre/idPartida/1 SI ABANDONAR
+			//Recibo: 13/nombre/idPartida/0	NO ABANDONAR
+			//Envio: 13/nombre/idPartida/1 o 0/nom*nom*/numJugadores/
+			printf("Codigo 13.\n");
+			p = strtok( NULL, "/");
+			int idPartida=atoi(p); //extraemos idPartida
+			p = strtok( NULL, "/");
+			int deacuerdo=atoi(p); //1 o 0
+			sprintf(respuesta,"13/%s/%d/%d/",nombre,idPartida,deacuerdo);
+			for(int i=0;i<lp->listaP[idPartida].numeroPersonas;i++)
+			{
+				strcat(respuesta,lp->listaP[idPartida].listaJugador[i].nombreUsuario);
+				strcat(respuesta,"*");
+			}
+			strcat(respuesta,"/");
+			char numeroJugadores[512];
+			sprintf(numeroJugadores,"%d",lp->listaP[idPartida].numeroPersonas);
+			strcat(respuesta,numeroJugadores);
+			strcat(respuesta,"/");
+			
+			for(int i=0;i<lp->listaP[idPartida].numeroPersonas;i++)
+			{
+				write(lp->listaP[idPartida].listaJugador[i].id,respuesta, strlen(respuesta));
+			}
+			printf("Codigo 13. Envio: %s\n",respuesta);
+		}
+		else if(codigo==14)  //Final de partida
+		{
+			printf("Codigo 14.\n");
+			p = strtok( NULL, "/");
+			int idPartida=atoi(p); //extraemos idPartida
+			//Guardardatos de la partida en mysql
+			sprintf(respuesta,"14/%d/",idPartida);
+			write(sock_conn,respuesta,strlen(respuesta));
+			printf("Codigo 14. Envio: %s\n",respuesta);
+		}
+		else if (codigo==15)
+		{
+			printf("Codigo 15.\n");
+			p = strtok( NULL, "/");
+			int idPartida=atoi(p); //extraemos idPartida
+			
+			int cantidad=0;
+			int palo=0;
+			int numero=0;
+			
+			palo=rand()%(3-0)+1;
+			printf("%d/%d\n",palo,numero);
+			numero=rand()%(12-0)+1;
+			cantidad++;
+			printf("%d/%d\n",palo,numero);
+			
+			sprintf(respuesta,"15/%s/%d/%d/%d/",nombre,idPartida,palo,numero);
+			write(sock_conn,respuesta,strlen(respuesta));
+			printf("Codigo 15. Envio: %s\n",respuesta);
+		}
+		else if (codigo==16)
+		{
+			printf("Codigo 16.\n");
+			p = strtok( NULL, "/");
+			int idPartida=atoi(p); //extraemos idPartida
+			
+			sprintf(respuesta,"16/%d/",idPartida);
+			write(sock_conn,respuesta,strlen(respuesta));
+			printf("Codigo 16. Envio: %s\n",respuesta);
+		}
+		
 		
 	}
 	
@@ -723,7 +847,7 @@ int main(int argc, char *argv[])
 	//htonl formatea el numero que recibe al formato necesario
 	serv_adr.sin_addr.s_addr = htonl(INADDR_ANY); /* El fica IP local */
 	// establecemos el puerto de escucha
-	serv_adr.sin_port = htons(50025);
+	serv_adr.sin_port = htons(50024);
 	if (bind(sock_listen, (struct sockaddr *) &serv_adr, sizeof(serv_adr)) < 0)
 		printf("Error al bind");
 	
