@@ -275,6 +275,61 @@
   <ItemGroup>
     <None Include="Resources\03_diamonds.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Properties\imagenes cartas\01_clubs.png" />
+    <Content Include="Properties\imagenes cartas\01_diamonds.png" />
+    <Content Include="Properties\imagenes cartas\01_hearts.png" />
+    <Content Include="Properties\imagenes cartas\01_spades.png" />
+    <Content Include="Properties\imagenes cartas\02_clubs.png" />
+    <Content Include="Properties\imagenes cartas\02_diamonds.png" />
+    <Content Include="Properties\imagenes cartas\02_hearts.png" />
+    <Content Include="Properties\imagenes cartas\02_spades.png" />
+    <Content Include="Properties\imagenes cartas\03_clubs.png" />
+    <Content Include="Properties\imagenes cartas\03_diamonds.png" />
+    <Content Include="Properties\imagenes cartas\03_hearts.png" />
+    <Content Include="Properties\imagenes cartas\03_spades.png" />
+    <Content Include="Properties\imagenes cartas\04_clubs.png" />
+    <Content Include="Properties\imagenes cartas\04_diamonds.png" />
+    <Content Include="Properties\imagenes cartas\04_hearts.png" />
+    <Content Include="Properties\imagenes cartas\04_spades.png" />
+    <Content Include="Properties\imagenes cartas\05_clubs.png" />
+    <Content Include="Properties\imagenes cartas\05_diamonds.png" />
+    <Content Include="Properties\imagenes cartas\05_hearts.png" />
+    <Content Include="Properties\imagenes cartas\05_spades.png" />
+    <Content Include="Properties\imagenes cartas\06_clubs.png" />
+    <Content Include="Properties\imagenes cartas\06_diamonds.png" />
+    <Content Include="Properties\imagenes cartas\06_hearts.png" />
+    <Content Include="Properties\imagenes cartas\06_spades.png" />
+    <Content Include="Properties\imagenes cartas\07_clubs.png" />
+    <Content Include="Properties\imagenes cartas\07_diamonds.png" />
+    <Content Include="Properties\imagenes cartas\07_hearts.png" />
+    <Content Include="Properties\imagenes cartas\07_spades.png" />
+    <Content Include="Properties\imagenes cartas\08_clubs.png" />
+    <Content Include="Properties\imagenes cartas\08_diamonds.png" />
+    <Content Include="Properties\imagenes cartas\08_hearts.png" />
+    <Content Include="Properties\imagenes cartas\08_spades.png" />
+    <Content Include="Properties\imagenes cartas\09_clubs.png" />
+    <Content Include="Properties\imagenes cartas\09_diamonds.png" />
+    <Content Include="Properties\imagenes cartas\09_hearts.png" />
+    <Content Include="Properties\imagenes cartas\09_spades.png" />
+    <Content Include="Properties\imagenes cartas\10_clubs.png" />
+    <Content Include="Properties\imagenes cartas\10_diamonds.png" />
+    <Content Include="Properties\imagenes cartas\10_hearts.png" />
+    <Content Include="Properties\imagenes cartas\10_spades.png" />
+    <Content Include="Properties\imagenes cartas\back card - copia.png" />
+    <Content Include="Properties\imagenes cartas\J_clubs.png" />
+    <Content Include="Properties\imagenes cartas\J_diamonds.png" />
+    <Content Include="Properties\imagenes cartas\J_hearts.png" />
+    <Content Include="Properties\imagenes cartas\J_spades.png" />
+    <Content Include="Properties\imagenes cartas\K_clubs.png" />
+    <Content Include="Properties\imagenes cartas\K_diamonds.png" />
+    <Content Include="Properties\imagenes cartas\K_hearts.png" />
+    <Content Include="Properties\imagenes cartas\K_spades.png" />
+    <Content Include="Properties\imagenes cartas\Q_clubs.png" />
+    <Content Include="Properties\imagenes cartas\Q_diamonds.png" />
+    <Content Include="Properties\imagenes cartas\Q_hearts.png" />
+    <Content Include="Properties\imagenes cartas\Q_spades.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

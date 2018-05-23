@@ -25,12 +25,25 @@ namespace MenuConsultas
         String nombre;
         String password;
         int idPartida;
+
+        //Formulario Partida necesita estos datos.
+        String nombreAnfitrion; 
+        String nombreJugadores;
+
         Thread atender;
         List<String> listaJugadores = new List<string>();
         // Lista Genérica de formularios
         List<Partida> formularios= new List<Partida>();
         List<String> idsPartidas = new List<string>();
 
+        public String getNombreAnfitrion()
+        {
+            return this.nombreAnfitrion;
+        }
+        public String getNombresJugadores()
+        {
+            return this.nombreJugadores;
+        }
 
         public Form1()
         {
@@ -143,6 +156,8 @@ namespace MenuConsultas
                 codigo = Convert.ToInt32(trozos[0]);
                 // Averiguo el tipo de mensaje
                 
+                
+                
                 switch (codigo)
                 { 
                         //cambiar el salir, en vez del 7 el 0.
@@ -252,58 +267,61 @@ namespace MenuConsultas
                     break;
 
                    case 8:
-                    string nombreINVITADOR = trozos[1];
-                    AbrirInvitación(nombreINVITADOR);
-                    break;
+                        string nombreINVITADOR = trozos[1];
+                        AbrirInvitación(nombreINVITADOR);
+                        break;
 
                     case 9:
-                    //Recibo: 9/1/nombreINVITADO      ACEPTO
-                    //Recibo: 9/0/nombreINVITADO	  NO ACEPTO			
-                    int aceptar = Convert.ToInt32(trozos[1]);
-                    string nombreINVITADO = trozos[2].Split('\0')[0];
-                    if (aceptar == 0) //Denegado
-                    {
-                        MessageBox.Show("El jugador: " + nombreINVITADO + " ha declinado tu invitación" );
-                    }
-                    else  //Aceptado
-                    {
-                        //MessageBox.Show("El jugador: " + nombreINVITADO + " ha aceptado tu invitación");
-                        DelegadoParaListaJugadores delegadoJugadores = new DelegadoParaListaJugadores(mostrarListaJugadores);
-                        jugadores.Invoke(delegadoJugadores, new object[] { nombreINVITADO });
-                    }
+                        //Recibo: 9/1/nombreINVITADO      ACEPTO
+                        //Recibo: 9/0/nombreINVITADO	  NO ACEPTO			
+                        int aceptar = Convert.ToInt32(trozos[1]);
+                        string nombreINVITADO = trozos[2].Split('\0')[0];
+                        if (aceptar == 0) //Denegado
+                        {
+                            MessageBox.Show("El jugador: " + nombreINVITADO + " ha declinado tu invitación" );
+                        }
+                        else  //Aceptado
+                        {
+                            //MessageBox.Show("El jugador: " + nombreINVITADO + " ha aceptado tu invitación");
+                            DelegadoParaListaJugadores delegadoJugadores = new DelegadoParaListaJugadores(mostrarListaJugadores);
+                            jugadores.Invoke(delegadoJugadores, new object[] { nombreINVITADO });
+                        }
 
-                    break;
+                        break;
 
-                    case 10:
-                    string idPartida = trozos[1];
-                    string nombreAnfitrion = trozos[2];
-                    string nombreJugadores = trozos[3]; //Estos habrá que separarlos ya que estan en el formato nombre1*nombre2*nombre3*....
-                    //MessageBox.Show("Se ha iniciado una Partida con id:  "+idPartida+" el anfitrión es:  "+nombreAnfitrion);
-                    //Enviar desde este form al nuevo -> nombre, nombreAnfitrion, id de la partida al nuevo form y las personas que estan jugando.
-                    //pongo en marcha el thread  
-                    ThreadStart ts = delegate { PonerMarchaFormulario(idPartida); };
-                    Thread T = new Thread(ts);
-                    T.Start();
-                    break;
+                    case 10: //Recibo: 10/idPartida/nombreHost/nombreJugador1*nombreJugador2
+                        string idPartida = trozos[1];
+                        this.nombreAnfitrion = trozos[2];
+                        this.nombreJugadores = trozos[3]; //Estos habrá que separarlos ya que estan en el formato nombre1*nombre2*nombre3*....
+                        //MessageBox.Show("Se ha iniciado una Partida con id:  "+idPartida+" el anfitrión es:  "+nombreAnfitrion);
+                    
+                        //Enviar desde este form al nuevo -> nombre, nombreAnfitrion, id de la partida al nuevo form y las personas que estan jugando.
+                        
+                    
+                        //pongo en marcha el thread  
+                        ThreadStart ts = delegate { PonerMarchaFormulario(idPartida); };
+                        Thread T = new Thread(ts);
+                        T.Start();
+                        break;
 
                     case 11: //chat
-                    int numForm = idsPartidas.IndexOf(trozos[1]);  
-                    string frase = trozos[2]; //Mensaje que aparecerá en la listBox
-                    formularios[numForm].tomaFrase(frase);
-                    break;
+                        int numForm = idsPartidas.IndexOf(trozos[1]);  
+                        string frase = trozos[2]; //Mensaje que aparecerá en la listBox
+                        formularios[numForm].tomaFrase(frase);
+                        break;
                      
-                    case 12:
-                    string nombreAbandona=trozos[1];
-                    numForm = idsPartidas.IndexOf(trozos[2]);
-                    string nombresJugadores = trozos[3];
-                    if (nombreAbandona == nombre)
-                    { 
-                        formularios[numForm].tomaNombreJugadores(nombresJugadores);
-                    }
-                    else
-                    {
-                        formularios[numForm].tomaNombreAbandona(nombreAbandona);
-                    }
+                        case 12:
+                        string nombreAbandona=trozos[1];
+                        numForm = idsPartidas.IndexOf(trozos[2]);
+                        string nombresJugadores = trozos[3];
+                        if (nombreAbandona == nombre)
+                        { 
+                            formularios[numForm].tomaNombreJugadores(nombresJugadores);
+                        }
+                        else
+                        {
+                            formularios[numForm].tomaNombreAbandona(nombreAbandona);
+                        }
                         break;
                     
                     case 13:
@@ -314,17 +332,97 @@ namespace MenuConsultas
                         int numeroJugadores = Convert.ToInt32(trozos[5]);
                         formularios[numForm].tomaDatosAbandonar(nombreResponde,deacuerdo,nombresJugadores,numeroJugadores);
                         break;
+
                     case 14:
                         numForm = idsPartidas.IndexOf(trozos[1]);
                         formularios[numForm].cerrarForm();
                         break;
                     case 15:
+                        //Recibo: 15/nombre/idPartida/palo/numero/numeroJugador
                         numForm = idsPartidas.IndexOf(trozos[2]);
                         int palo=Convert.ToInt32(trozos[3]);
                         int numero = Convert.ToInt32(trozos[4]);
-                        formularios[numForm].tomaCarta(palo,numero);
+                        //Tenemos que distinguir entre si somos el Jug1 o el Jug2
+                        int aux_numJugador = Convert.ToInt32(trozos[5]);
+
+                        if(aux_numJugador == 1)
+                            formularios[numForm].tomaCartaJug1(palo,numero);
+                        if(aux_numJugador == 2)
+                            formularios[numForm].tomaCartaJug2(palo, numero);
+
                         break;
                     case 16:
+                        //Recibo 16/idPatida/turno
+                        numForm = idsPartidas.IndexOf(trozos[1]);
+                        formularios[numForm].turno = Convert.ToInt32(trozos[2]);
+
+                        if (formularios[numForm].numJugador == formularios[numForm].turno)
+                        {
+                            MessageBox.Show("Es tú turno");
+                        }
+
+
+                        if (formularios[numForm].turno == 3) //turno croupier
+                        {
+                            //El cliente del jugador 1 será el que ponga en marcha la logica del Croupier
+                            //Sin esto todos los clientes lo pondrian en marcha
+                            MessageBox.Show("Turno Croupier");
+                            
+                            if (formularios[numForm].numJugador == 1)
+                            {
+                                formularios[numForm].logicaCroupier();
+                            }
+                        }
+
+
+                        if (formularios[numForm].turno == 4) //Turno para ver los ganadores
+                        {
+                            formularios[numForm].logicaGanadores();
+                        }
+
+                        break;
+                    case 17: //Recibo 17/idPartida/paloCoupier/numCoupier/nombreAnfitrion*palo1*num1*palo2*num2/Jug2*palo1*num1*palo2*num2/...
+                        //ejemplo 17/5/2/3/esteban*2*6*1*9*/rocio*4*7*2*8*/  
+                        String cartasJug1 = trozos[4];
+                        String cartasJug2 = trozos[5];
+
+                        numForm = idsPartidas.IndexOf(trozos[1]);
+                        int palo_coupier = Convert.ToInt32(trozos[2]);
+                        int numero_coupier = Convert.ToInt32(trozos[3]);
+                        formularios[numForm].tomaCartaCroupier(palo_coupier, numero_coupier);
+                        
+                        String[] array_cartasJug1 = cartasJug1.Split('*'); //nombreAnfitrion*palo1*num1*palo2*num2
+                        int paloJug1 = Convert.ToInt32(array_cartasJug1[1]);
+                        int numJug1 = Convert.ToInt32(array_cartasJug1[2]);
+                        formularios[numForm].tomaCartaJug1(paloJug1, numJug1);
+                        
+                        paloJug1 = Convert.ToInt32(array_cartasJug1[3]);
+                        numJug1 = Convert.ToInt32(array_cartasJug1[4]);
+                        formularios[numForm].tomaCartaJug1(paloJug1, numJug1);
+
+                        String[] array_cartasJug2 = cartasJug2.Split('*'); //Jug2*palo1*num1*palo2*num2
+                        int paloJug2 = Convert.ToInt32(array_cartasJug2[1]);
+                        int numJug2 = Convert.ToInt32(array_cartasJug2[2]);
+                        formularios[numForm].tomaCartaJug2(paloJug2, numJug2);
+                        
+                        paloJug2 = Convert.ToInt32(array_cartasJug2[3]);
+                        numJug2 = Convert.ToInt32(array_cartasJug2[4]);
+                        formularios[numForm].tomaCartaJug2(paloJug2, numJug2);
+                        break;
+
+                    case 18: //Turno del croupier
+                        //Recibo 18/idPartida/palo/num/
+                        numForm = idsPartidas.IndexOf(trozos[1]);
+                        palo = Convert.ToInt32(trozos[2]);
+                        numero = Convert.ToInt32(trozos[3]);
+
+                        int puntosCroupier = formularios[numForm].tomaCartaCroupier(palo, numero);
+
+                        if (puntosCroupier < 16)
+                            formularios[numForm].logicaCroupier();
+                        else
+                            formularios[numForm].pasarTurno();
+
                         break;
                 }
             }
@@ -530,7 +628,7 @@ namespace MenuConsultas
         private void PonerMarchaFormulario(string idPartida)
         {
             //int n = formularios.Count();
-            Partida formPartida = new Partida(idPartida,server,nombre); //idPartida(será el numForm y server es el socket)
+            Partida formPartida = new Partida(idPartida,server,nombre, nombreAnfitrion, nombreJugadores); //idPartida(será el numForm y server es el socket)
             formularios.Add(formPartida);
             idsPartidas.Add(idPartida);
             formPartida.ShowDialog();
