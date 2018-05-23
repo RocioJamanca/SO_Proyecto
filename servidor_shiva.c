@@ -824,7 +824,7 @@ void *atender_cliente(void *conectados)
 
 			if(turno == 5)
 				turno=1;
-			
+
 			sprintf(respuesta,"16/%d/%d/",idPartida, turno);
 			
 			//Le enviamos a todos la respuesta
@@ -853,6 +853,7 @@ void *atender_cliente(void *conectados)
 			numero=rand()%(12-0)+1;
 			sprintf(respuesta, "17/%d/%d/%d/",idPartida, palo, numero); //Ejemplo; respuesta=17/5/2/3/
 
+			
 			//Cartas de los jugadores
 			for(int j=0; j<lp->listaP[idPartida].numeroPersonas; j++)
 			{
