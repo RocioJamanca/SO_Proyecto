@@ -21,7 +21,7 @@ namespace MenuConsultas
         List<int> numCartas = new List<int>();
         List<int> puntos = new List<int>();
         Image[,] cartas = new Image[13, 4];
-        List<string> Jugadores=new List<string>();
+        int turnoCliente;
         string nombreAnfitrion;
         public void mostrarNombre(string nombre)
         {
@@ -47,7 +47,6 @@ namespace MenuConsultas
             for (int j = 0; j < dataGrid.RowCount; j++)
             {
                 dataGrid.Rows[j].Cells[0].Value = nombres[j];
-                Jugadores.Add(nombres[j]);
                 dataGrid.Rows[j].Cells[0].Style.BackColor = System.Drawing.Color.White;
             }
             dataGrid.ClearSelection();
@@ -144,30 +143,43 @@ namespace MenuConsultas
 
         public void mostrarCarta(int palo,int numero)
         {
+            int puntosFinal=0;
             panel_tablero.Visible = true;
             if (numCartas.Count == 1)
             {
                 pictureBox_carta1.Image = cartas[numero, palo];
-                int puntosFinal = puntos[0];
+                puntosFinal = puntos[0];
                 textBox_puntos.Text = puntosFinal.ToString();
             }
             else if (numCartas.Count == 2)
             {
                 pictureBox_carta2.Image = cartas[numero, palo];
-                int puntosFinal = puntos[0]+puntos[1];
+                puntosFinal = puntos[0]+puntos[1];
                 textBox_puntos.Text = puntosFinal.ToString();
             }
             else if (numCartas.Count == 3)
             {
                 pictureBox_carta3.Image = cartas[numero, palo];
-                int puntosFinal = puntos[0] + puntos[1]+puntos[2];
+                puntosFinal = puntos[0] + puntos[1]+puntos[2];
                 textBox_puntos.Text = puntosFinal.ToString();
             }
             else if (numCartas.Count == 4)
             {
                 pictureBox_carta4.Image = cartas[numero, palo];
-                int puntosFinal = puntos[0] + puntos[1]+puntos[2]+puntos[3];
+                puntosFinal = puntos[0] + puntos[1]+puntos[2]+puntos[3];
                 textBox_puntos.Text = puntosFinal.ToString();
+            }
+
+            if (puntosFinal == 21)
+            {
+                //enviamos ganador y acabar con el turno
+                MessageBox.Show(nombre + "has ganado");
+                //pasar el turno
+            }
+            else if (puntosFinal > 21)
+            {
+                //enviamos que ha perdido
+                MessageBox.Show(nombre + "has pasado de 21");
             }
         }
         delegate void DelegadoParaMostrarCarta(int palo,int numero);
@@ -288,7 +300,7 @@ namespace MenuConsultas
         }
         public void tomaNombreJugadores(string nombresJugadores)
         {
-           MessageBox.Show("Los jugadores de la partida son: " + nombresJugadores);
+           //MessageBox.Show("Los jugadores de la partida son: " + nombresJugadores);
             DelegadoParaMostrarJugadores delegadoMostrarJugadores = new DelegadoParaMostrarJugadores(mostrarJugadores);
             panel_ListaJugadores.Invoke(delegadoMostrarJugadores, new object[] { nombresJugadores });
         }     
@@ -402,11 +414,17 @@ namespace MenuConsultas
             panel_ListaJugadores.Invoke(delegadoOcultarListaJugadores, new object[] { nombre }); 
            
         }
+         public void tomaTurno(int turno)
+        {
+            this.turnoCliente = turno;
+        }
         private void btn_nuevaCarta_Click(object sender, EventArgs e)
         {
-            string mensaje = "15/" + nombre + "/" + idPartida;
+            
+            string mensaje = "15/" + nombre + "/" + idPartida+"/"+turnoCliente+"/"+2;
             byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
+
         }
         private void btn_plantarse_Click(object sender, EventArgs e)
         {
@@ -414,15 +432,12 @@ namespace MenuConsultas
             byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
         }
-        public void mostrarTurno(string nombreToca)
-        {
-            label_turno.Text = "Es el turno de: "+nombreToca;
-        }
-        delegate void DelegadoParaMostrarTurno(string nombreToca);
-        public void miTurno(int numero)
-        {
 
-            if (numero == 1)
+        public void miTurno(string nombreJugadorAnterior,string nombreTocaJugar,int turno,int numeroJugadores,string nombreJugadores)
+        {
+            label_turno.Text = "Es el turno de: " + nombreTocaJugar;
+
+            if (nombreTocaJugar==nombre)
             {
                 btn_nuevaCarta.Visible = true;
                 btn_plantarse.Visible = true;
@@ -432,94 +447,87 @@ namespace MenuConsultas
                 btn_nuevaCarta.Visible = false;
                 btn_plantarse.Visible = false;
             }
-        }
-        delegate void DelegadoParaMiTurno(int numero);
-        public void tomaActualizacionMiTurno(string nombreJugadorAnterior,string nombreTocaJugar,int turno)
-        {
-            DelegadoParaMostrarTurno delegadoTurno = new DelegadoParaMostrarTurno(mostrarTurno);
-            label_turno.Invoke(delegadoTurno,new object[] {nombreTocaJugar});
-            DelegadoParaMiTurno miturno = new DelegadoParaMiTurno(miTurno);
-            btn_plantarse.Invoke(miturno, new object[] { 1});
-        }
-        public void tomaActualizacionNoMiTurno(string nombreJugadorAnterior, string nombreTocaJugar, int turno)
-        {
-            DelegadoParaMostrarTurno delegadoTurno = new DelegadoParaMostrarTurno(mostrarTurno);
-            label_turno.Invoke(delegadoTurno, new object[] { nombreTocaJugar });
-            
-            DelegadoParaMiTurno miturno = new DelegadoParaMiTurno(miTurno);
-            btn_plantarse.Invoke(miturno, new object[] { 2 });
-        }
-        public void XJugadores()
-        {
+
+            string[] nombreSeparado = nombreJugadores.Split('*');
+
+                    if (numeroJugadores == 2)
+                    {
+
+                        //MessageBox.Show("Hay 2 Jugadores");
+                        carta_jugador2.Image = MenuConsultas.Properties.Resources.back_card___copia;
+                        jugador2.Text = "Jugador 2";
+                        jugador2.Location = new Point(233, 132);
+                        carta_jugador2.Location = new Point(233, 155);
+
+                        jugador2.Visible = true;
+                        carta_jugador2.Visible = true;
+
+
+                    }
+                
+                if (numeroJugadores == 3)
+                {
+                    //MessageBox.Show("Hay 3 Jugadores");
+                    jugador1.Text = nombre;
+                    carta_jugador2.Image = MenuConsultas.Properties.Resources.back_card___copia;
+                    jugador2.Text = "Jugador 2";
+                    carta_jugador3.Image = MenuConsultas.Properties.Resources.back_card___copia;
+                    jugador3.Text = "Jugador 3";
+                    jugador2.Location = new Point(125, 132);
+                    carta_jugador2.Location = new Point(125, 152);
+                    jugador3.Location = new Point(411, 132);
+                    carta_jugador3.Location = new Point(411, 152);
+
+                    jugador2.Visible = true;
+                    carta_jugador2.Visible = true;
+                    jugador3.Visible = true;
+                    carta_jugador3.Visible = true;
+
+                }
+                if (numeroJugadores == 4)
+                {
+                    //MessageBox.Show("Hay 4 Jugadores");
+                    jugador1.Text = nombre;
+                    carta_jugador2.Image = MenuConsultas.Properties.Resources.back_card___copia;
+                    jugador2.Text = "Jugador 2";
+                    carta_jugador3.Image = MenuConsultas.Properties.Resources.back_card___copia;
+                    jugador3.Text = "Jugador 3";
+                    carta_jugador4.Image = MenuConsultas.Properties.Resources.back_card___copia;
+                    jugador4.Text = "Jugador 4";
+                    jugador2.Location = new Point(77, 132);
+                    carta_jugador2.Location = new Point(77, 152);
+                    jugador3.Location = new Point(337, 132);
+                    carta_jugador3.Location = new Point(337, 152);
+                    jugador4.Location = new Point(589, 132);
+                    carta_jugador4.Location = new Point(589, 152);
+
+                    jugador2.Visible = true;
+                    carta_jugador2.Visible = true;
+                    jugador3.Visible = true;
+                    carta_jugador3.Visible = true;
+                    jugador4.Visible = true;
+                    carta_jugador4.Visible = true;
+                }
 
             jugador1.Text = nombre;
-            if (Jugadores.Count == 2)
-            {
-                
-                MessageBox.Show("Hay 2 Jugadores");
-                carta_jugador2.Image = MenuConsultas.Properties.Resources.back_card___copia;
-                jugador2.Text = Jugadores[0];
-                jugador2.Location = new Point(233,132);
-                carta_jugador2.Location = new Point(233, 155);
-
-                jugador2.Visible = true;
-                carta_jugador2.Visible = true;
-                
-
-            }
-            if (Jugadores.Count == 3)
-            {
-                MessageBox.Show("Hay 3 Jugadores");
-                jugador1.Text = nombre;
-                carta_jugador2.Image = MenuConsultas.Properties.Resources.back_card___copia;
-                jugador2.Text = Jugadores[0];
-                carta_jugador3.Image = MenuConsultas.Properties.Resources.back_card___copia;
-                jugador3.Text = Jugadores[1];
-                jugador2.Location = new Point(125, 132);
-                carta_jugador2.Location = new Point(125, 152);
-                jugador3.Location = new Point(411, 132);
-                carta_jugador3.Location = new Point(411, 152);
-
-                jugador2.Visible = true;
-                carta_jugador2.Visible = true;
-                jugador3.Visible = true;
-                carta_jugador3.Visible = true;
-
-            }
-            if (Jugadores.Count == 4)
-            {
-                MessageBox.Show("Hay 4 Jugadores");
-                jugador1.Text = nombre;
-                carta_jugador2.Image = MenuConsultas.Properties.Resources.back_card___copia;
-                jugador2.Text = Jugadores[0];
-                carta_jugador3.Image = MenuConsultas.Properties.Resources.back_card___copia;
-                jugador3.Text = Jugadores[1];
-                carta_jugador4.Image = MenuConsultas.Properties.Resources.back_card___copia;
-                jugador4.Text = Jugadores[2];
-                jugador2.Location = new Point(77, 132);
-                carta_jugador2.Location = new Point(77, 152);
-                jugador3.Location = new Point(337, 132);
-                carta_jugador3.Location = new Point(337, 152);
-                jugador4.Location = new Point(589, 132);
-                carta_jugador4.Location = new Point(589, 152);
-
-                jugador2.Visible = true;
-                carta_jugador2.Visible = true;
-                jugador3.Visible = true;
-                carta_jugador3.Visible = true;
-                jugador4.Visible = true;
-                carta_jugador4.Visible = true;
-            }
+            
+       
         }
+        delegate void DelegadoParaMiTurno(string nombreJugadorAnterior, string nombreTocaJugar, int turno, int numeroJugadores, string nombreJugadores);
+        public void tomaActualizacionMiTurno(string nombreJugadorAnterior,string nombreTocaJugar,int turno,int numeroJugadores,string nombreJugadores)
+        {
+            DelegadoParaMiTurno miturno = new DelegadoParaMiTurno(miTurno);
+            btn_plantarse.Invoke(miturno, new object[] {nombreJugadorAnterior,nombreTocaJugar,turno,numeroJugadores,nombreJugadores });
+        }
+
+
         delegate void DelegadoParaXJugadores();
         private void btn_emepezar_Click(object sender, EventArgs e)
         {
             string mensaje = "15/" + nombre + "/" + idPartida + "/" + 1 + "/" + 0;
             byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
-            DelegadoParaXJugadores delegadoXJugadores = new DelegadoParaXJugadores(XJugadores);
-            panel_tablero.Invoke(delegadoXJugadores, new object[] {}); 
-        }
+         }
 
         private void mostrar_jugadores_Click(object sender, EventArgs e)
         {

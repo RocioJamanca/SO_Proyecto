@@ -31,7 +31,7 @@ namespace MenuConsultas
         List<Partida> formularios= new List<Partida>();
         List<String> idsPartidas = new List<string>();
 
-
+        List<string> turnos=new List<string>();
         public Form1()
         {
             InitializeComponent();
@@ -163,7 +163,7 @@ namespace MenuConsultas
                         }
                         else if (code1 == 1)
                         {
-                            MessageBox.Show("Log in con exito.\n");                      
+                            //MessageBox.Show("Log in con exito.\n");                      
                             //Creamos el mensaje que enviaremos al servidor
                             string mensaje0 = "6/" + nombre;
                             byte[] msg0 = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje0);
@@ -182,7 +182,7 @@ namespace MenuConsultas
                         }
                         else if (code2==1)
                         {
-                            MessageBox.Show("Registro con exito\n");
+                           // MessageBox.Show("Registro con exito\n");
                         }
                         else if (code2 == 2)
                         {
@@ -334,26 +334,32 @@ namespace MenuConsultas
                         numForm = idsPartidas.IndexOf(trozos[2]);
                         string nombreTocaJugar=trozos[3];
                         int turno = Convert.ToInt32(trozos[4]);
-                        int vez = Convert.ToInt32(trozos[5]);
+                        numeroJugadores=Convert.ToInt32(trozos[5]);
+                        nombreJugadores=trozos[6];
+                        int vez = Convert.ToInt32(trozos[7]);
 
-                        MessageBox.Show("La persona que acaba de jugar:" + nombreJugadorAnterior + " le toca jugar a " + nombreTocaJugar + " turno:" + turno);
+                       // MessageBox.Show("La persona que acaba de jugar:" + nombreJugadorAnterior + " le toca jugar a " + nombreTocaJugar + " turno:" + turno);
                         //comprobar 
                         if (vez == 0)
                         {
-                            palo = Convert.ToInt32(trozos[6]);
-                            numero = Convert.ToInt32(trozos[7]);
+                            palo = Convert.ToInt32(trozos[8]);
+                            numero = Convert.ToInt32(trozos[9]);
                             formularios[numForm].tomaCarta(palo, numero);
+                            turnos.Add(nombreJugadorAnterior); //el indice=0
 
                         }
-                   
-                            if (nombreTocaJugar == nombre)
-                            {
-                                formularios[numForm].tomaActualizacionMiTurno(nombreJugadorAnterior, nombreTocaJugar, turno);
-                            }
-                            else
-                            {
-                                formularios[numForm].tomaActualizacionNoMiTurno(nombreJugadorAnterior, nombreTocaJugar, turno);
-                            }
+                        int i=0;
+                        if (i < numeroJugadores)
+                            turnos.Add(nombreTocaJugar);
+                        else
+                        {
+                            turnos.Clear();
+                            turnos.Add(nombreJugadorAnterior);
+                        }
+
+                                formularios[numForm].tomaActualizacionMiTurno(nombreJugadorAnterior, nombreTocaJugar, turno,numeroJugadores,nombreJugadores);
+                                formularios[numForm].tomaTurno(turno);
+
                         
                         //enviar quien esta jugando y el turno
                         break;

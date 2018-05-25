@@ -819,38 +819,47 @@ void *atender_cliente(void *conectados)
 			char pal[50];
 			char numer[50];
 			
-				
-				//El anfitrion escribe la primera carta
-				sprintf(respuesta,"15/%s/%d/%d/%d/%d/",nombre,idPartida,palo,numero,turno);
-				printf("Codigo 15. Envio: %s\n",respuesta);
-				write(sock_conn,respuesta,strlen(respuesta));
-				//Enviar a todos que el jugador1 ha completado su turno
-				
-				sprintf(notificacion,"18/%s/%d/%s/%d/",nombre,idPartida,lp->listaP[idPartida].listaJugador[turno-1].nombreUsuario,turno);
-				
-				for(int i=0;i<lp->listaP[idPartida].numeroPersonas;i++)
-				{
-					if (vez==0)
-					{
-						strcat(notificacion,"0/");
-						sprintf(pal,"%d",generarPalo());
-						sprintf(numer,"%d",generarNumero());
-						strcat(notificacion,pal);
-						strcat(notificacion,"/");
-						strcat(notificacion,numer);
-						strcat(notificacion,"/");
-						
-					}
-					write(lp->listaP[idPartida].listaJugador[i].id,notificacion, strlen(notificacion));
-				}
-				turno=turno+1;
-				if(turno==lp->listaP[idPartida].numeroPersonas)
-				{
-					turno=1;
-				}
-				printf("Codigo 18.Turno 1 Envio: %s\n",notificacion);
+			turno=turno+1;
+			if(turno>lp->listaP[idPartida].numeroPersonas)
+			{
+				turno=1;
+			}
+			//El anfitrion escribe la primera carta
+			sprintf(respuesta,"15/%s/%d/%d/%d/",nombre,idPartida,palo,numero);
+			printf("Codigo 15. Envio: %s\n",respuesta);
+			write(sock_conn,respuesta,strlen(respuesta));
+			//Enviar a todos que el jugador1 ha completado su turno
 			
-						
+			sprintf(notificacion,"18/%s/%d/%s/%d/%d/",nombre,idPartida,lp->listaP[idPartida].listaJugador[turno-1].nombreUsuario,turno,lp->listaP[idPartida].numeroPersonas);
+			for(int i=0;i<lp->listaP[idPartida].numeroPersonas;i++)
+			{
+				strcat(notificacion,lp->listaP[idPartida].listaJugador[i].nombreUsuario);
+				strcat(notificacion,"*");
+			}	
+			strcat(notificacion,"/");
+			for(int i=0;i<lp->listaP[idPartida].numeroPersonas;i++)
+			{
+				
+				if (vez==0)
+				{
+					strcat(notificacion,"0/");
+					sprintf(pal,"%d",generarPalo());
+					sprintf(numer,"%d",generarNumero());
+					strcat(notificacion,pal);
+					strcat(notificacion,"/");
+					strcat(notificacion,numer);
+					strcat(notificacion,"/");
+					
+				}
+				else
+					strcat(notificacion,"1/");
+				write(lp->listaP[idPartida].listaJugador[i].id,notificacion, strlen(notificacion));
+			}
+			
+
+			printf("Codigo 18.Turno 1 Envio: %s\n",notificacion);
+			
+			
 		}
 		else if (codigo==16)
 		{
