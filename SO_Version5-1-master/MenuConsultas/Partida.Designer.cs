@@ -55,6 +55,7 @@
             this.btn_nuevaCarta = new System.Windows.Forms.Button();
             this.btn_plantarse = new System.Windows.Forms.Button();
             this.pictureBox_carta1 = new System.Windows.Forms.PictureBox();
+<<<<<<< HEAD
             this.label7 = new System.Windows.Forms.Label();
             this.textBox_puntos = new System.Windows.Forms.TextBox();
             this.panel_tablero = new System.Windows.Forms.Panel();
@@ -85,12 +86,30 @@
             this.pictureBox_carta4 = new System.Windows.Forms.PictureBox();
             this.pictureBox_carta3 = new System.Windows.Forms.PictureBox();
             this.pictureBox_carta2 = new System.Windows.Forms.PictureBox();
+=======
+            this.pictureBox_carta2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox_carta3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox_carta4 = new System.Windows.Forms.PictureBox();
+            this.panel_tablero = new System.Windows.Forms.Panel();
+            this.label_turno = new System.Windows.Forms.Label();
+            this.carta_jugador2 = new System.Windows.Forms.PictureBox();
+            this.carta_jugador3 = new System.Windows.Forms.PictureBox();
+            this.jugador1 = new System.Windows.Forms.Label();
+            this.jugador4 = new System.Windows.Forms.Label();
+            this.jugador3 = new System.Windows.Forms.Label();
+            this.jugador2 = new System.Windows.Forms.Label();
+            this.carta_jugador4 = new System.Windows.Forms.PictureBox();
+            this.textBox_puntos = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btn_emepezar = new System.Windows.Forms.Button();
+>>>>>>> Branch-Rocio
             this.panel_abandonar.SuspendLayout();
             this.panel_dejarPartida.SuspendLayout();
             this.panel_ListaJugadores.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_carta1)).BeginInit();
             this.panel_tablero.SuspendLayout();
+<<<<<<< HEAD
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_croupier4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_croupier3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_croupier2)).BeginInit();
@@ -102,6 +121,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_carta4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_carta3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_carta2)).BeginInit();
+=======
+            ((System.ComponentModel.ISupportInitialize)(this.carta_jugador2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.carta_jugador3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.carta_jugador4)).BeginInit();
+>>>>>>> Branch-Rocio
             this.SuspendLayout();
             // 
             // numero_partida
@@ -192,8 +216,13 @@
             this.panel_abandonar.Controls.Add(this.label4);
             this.panel_abandonar.Controls.Add(this.btn_no);
             this.panel_abandonar.Controls.Add(this.btn_si);
+<<<<<<< HEAD
             this.panel_abandonar.Location = new System.Drawing.Point(5, 372);
             this.panel_abandonar.Margin = new System.Windows.Forms.Padding(2);
+=======
+            this.panel_abandonar.Controls.Add(this.label4);
+            this.panel_abandonar.Location = new System.Drawing.Point(12, 832);
+>>>>>>> Branch-Rocio
             this.panel_abandonar.Name = "panel_abandonar";
             this.panel_abandonar.Size = new System.Drawing.Size(230, 115);
             this.panel_abandonar.TabIndex = 18;
@@ -245,8 +274,13 @@
             this.btn_abandonar.BackColor = System.Drawing.Color.Gray;
             this.btn_abandonar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_abandonar.ForeColor = System.Drawing.Color.White;
+<<<<<<< HEAD
             this.btn_abandonar.Location = new System.Drawing.Point(337, 618);
             this.btn_abandonar.Margin = new System.Windows.Forms.Padding(2);
+=======
+            this.btn_abandonar.Location = new System.Drawing.Point(951, 774);
+            this.btn_abandonar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+>>>>>>> Branch-Rocio
             this.btn_abandonar.Name = "btn_abandonar";
             this.btn_abandonar.Padding = new System.Windows.Forms.Padding(0, 0, 0, 6);
             this.btn_abandonar.Size = new System.Drawing.Size(125, 42);
@@ -261,12 +295,18 @@
             this.panel_dejarPartida.Controls.Add(this.label_nombreAbandona);
             this.panel_dejarPartida.Controls.Add(this.btn_abandonar_no);
             this.panel_dejarPartida.Controls.Add(this.btn_abandonar_sI);
+<<<<<<< HEAD
             this.panel_dejarPartida.Location = new System.Drawing.Point(9, 491);
             this.panel_dejarPartida.Margin = new System.Windows.Forms.Padding(2);
+=======
+            this.panel_dejarPartida.Controls.Add(this.label5);
+            this.panel_dejarPartida.Location = new System.Drawing.Point(325, 832);
+>>>>>>> Branch-Rocio
             this.panel_dejarPartida.Name = "panel_dejarPartida";
             this.panel_dejarPartida.Size = new System.Drawing.Size(230, 150);
             this.panel_dejarPartida.TabIndex = 20;
             this.panel_dejarPartida.Visible = false;
+            this.panel_dejarPartida.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_dejarPartida_Paint);
             // 
             // label5
             // 
@@ -405,8 +445,13 @@
             this.btn_nuevaCarta.BackColor = System.Drawing.Color.Green;
             this.btn_nuevaCarta.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_nuevaCarta.ForeColor = System.Drawing.Color.White;
+<<<<<<< HEAD
             this.btn_nuevaCarta.Location = new System.Drawing.Point(233, 512);
             this.btn_nuevaCarta.Margin = new System.Windows.Forms.Padding(2);
+=======
+            this.btn_nuevaCarta.Location = new System.Drawing.Point(612, 674);
+            this.btn_nuevaCarta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+>>>>>>> Branch-Rocio
             this.btn_nuevaCarta.Name = "btn_nuevaCarta";
             this.btn_nuevaCarta.Padding = new System.Windows.Forms.Padding(0, 0, 0, 6);
             this.btn_nuevaCarta.Size = new System.Drawing.Size(90, 42);
@@ -420,8 +465,13 @@
             this.btn_plantarse.BackColor = System.Drawing.Color.Green;
             this.btn_plantarse.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_plantarse.ForeColor = System.Drawing.Color.White;
+<<<<<<< HEAD
             this.btn_plantarse.Location = new System.Drawing.Point(339, 512);
             this.btn_plantarse.Margin = new System.Windows.Forms.Padding(2);
+=======
+            this.btn_plantarse.Location = new System.Drawing.Point(738, 674);
+            this.btn_plantarse.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+>>>>>>> Branch-Rocio
             this.btn_plantarse.Name = "btn_plantarse";
             this.btn_plantarse.Padding = new System.Windows.Forms.Padding(0, 0, 0, 6);
             this.btn_plantarse.Size = new System.Drawing.Size(90, 42);
@@ -432,6 +482,7 @@
             // 
             // pictureBox_carta1
             // 
+<<<<<<< HEAD
             this.pictureBox_carta1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox_carta1.Image = global::MenuConsultas.Properties.Resources._01_spades;
             this.pictureBox_carta1.Location = new System.Drawing.Point(88, 346);
@@ -440,9 +491,17 @@
             this.pictureBox_carta1.Size = new System.Drawing.Size(90, 135);
             this.pictureBox_carta1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox_carta1.TabIndex = 26;
+=======
+            this.pictureBox_carta1.Location = new System.Drawing.Point(28, 496);
+            this.pictureBox_carta1.Name = "pictureBox_carta1";
+            this.pictureBox_carta1.Size = new System.Drawing.Size(140, 230);
+            this.pictureBox_carta1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_carta1.TabIndex = 23;
+>>>>>>> Branch-Rocio
             this.pictureBox_carta1.TabStop = false;
             this.pictureBox_carta1.Visible = false;
             // 
+<<<<<<< HEAD
             // label7
             // 
             this.label7.AutoSize = true;
@@ -453,9 +512,29 @@
             this.label7.Size = new System.Drawing.Size(63, 20);
             this.label7.TabIndex = 27;
             this.label7.Text = "Puntos:";
+=======
+            // pictureBox_carta2
+            // 
+            this.pictureBox_carta2.Location = new System.Drawing.Point(174, 496);
+            this.pictureBox_carta2.Name = "pictureBox_carta2";
+            this.pictureBox_carta2.Size = new System.Drawing.Size(140, 230);
+            this.pictureBox_carta2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_carta2.TabIndex = 24;
+            this.pictureBox_carta2.TabStop = false;
+            // 
+            // pictureBox_carta3
+            // 
+            this.pictureBox_carta3.Location = new System.Drawing.Point(320, 496);
+            this.pictureBox_carta3.Name = "pictureBox_carta3";
+            this.pictureBox_carta3.Size = new System.Drawing.Size(140, 230);
+            this.pictureBox_carta3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_carta3.TabIndex = 25;
+            this.pictureBox_carta3.TabStop = false;
+>>>>>>> Branch-Rocio
             // 
             // textBox_puntos
             // 
+<<<<<<< HEAD
             this.textBox_puntos.Enabled = false;
             this.textBox_puntos.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_puntos.Location = new System.Drawing.Point(152, 307);
@@ -490,6 +569,27 @@
             this.panel_tablero.Controls.Add(this.pictureBox_jug2_carta1);
             this.panel_tablero.Controls.Add(this.lblNombreJug2);
             this.panel_tablero.Controls.Add(this.lblNombreJug1);
+=======
+            this.pictureBox_carta4.Location = new System.Drawing.Point(466, 496);
+            this.pictureBox_carta4.Name = "pictureBox_carta4";
+            this.pictureBox_carta4.Size = new System.Drawing.Size(140, 230);
+            this.pictureBox_carta4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_carta4.TabIndex = 26;
+            this.pictureBox_carta4.TabStop = false;
+            // 
+            // panel_tablero
+            // 
+            this.panel_tablero.Controls.Add(this.carta_jugador4);
+            this.panel_tablero.Controls.Add(this.label_turno);
+            this.panel_tablero.Controls.Add(this.carta_jugador2);
+            this.panel_tablero.Controls.Add(this.carta_jugador3);
+            this.panel_tablero.Controls.Add(this.jugador1);
+            this.panel_tablero.Controls.Add(this.jugador4);
+            this.panel_tablero.Controls.Add(this.jugador3);
+            this.panel_tablero.Controls.Add(this.jugador2);
+            this.panel_tablero.Controls.Add(this.textBox_puntos);
+            this.panel_tablero.Controls.Add(this.label7);
+>>>>>>> Branch-Rocio
             this.panel_tablero.Controls.Add(this.pictureBox_carta4);
             this.panel_tablero.Controls.Add(this.pictureBox_carta3);
             this.panel_tablero.Controls.Add(this.pictureBox_carta2);
@@ -501,6 +601,7 @@
             this.panel_tablero.Location = new System.Drawing.Point(337, 24);
             this.panel_tablero.Margin = new System.Windows.Forms.Padding(2);
             this.panel_tablero.Name = "panel_tablero";
+<<<<<<< HEAD
             this.panel_tablero.Size = new System.Drawing.Size(698, 569);
             this.panel_tablero.TabIndex = 27;
             // 
@@ -781,6 +882,87 @@
             this.lblNombreJug1.Text = "Jug1";
             // 
             // pictureBox_carta4
+=======
+            this.panel_tablero.Size = new System.Drawing.Size(875, 739);
+            this.panel_tablero.TabIndex = 27;
+            this.panel_tablero.Visible = false;
+            // 
+            // label_turno
+            // 
+            this.label_turno.AutoSize = true;
+            this.label_turno.Font = new System.Drawing.Font("Mido", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_turno.Location = new System.Drawing.Point(99, 408);
+            this.label_turno.Name = "label_turno";
+            this.label_turno.Size = new System.Drawing.Size(150, 52);
+            this.label_turno.TabIndex = 37;
+            this.label_turno.Text = "label8";
+            // 
+            // carta_jugador2
+            // 
+            this.carta_jugador2.Location = new System.Drawing.Point(92, 152);
+            this.carta_jugador2.Name = "carta_jugador2";
+            this.carta_jugador2.Size = new System.Drawing.Size(140, 230);
+            this.carta_jugador2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.carta_jugador2.TabIndex = 29;
+            this.carta_jugador2.TabStop = false;
+            // 
+            // carta_jugador3
+            // 
+            this.carta_jugador3.Location = new System.Drawing.Point(337, 152);
+            this.carta_jugador3.Name = "carta_jugador3";
+            this.carta_jugador3.Size = new System.Drawing.Size(140, 230);
+            this.carta_jugador3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.carta_jugador3.TabIndex = 30;
+            this.carta_jugador3.TabStop = false;
+            // 
+            // jugador1
+            // 
+            this.jugador1.AutoSize = true;
+            this.jugador1.Location = new System.Drawing.Point(286, 465);
+            this.jugador1.Name = "jugador1";
+            this.jugador1.Size = new System.Drawing.Size(54, 17);
+            this.jugador1.TabIndex = 36;
+            this.jugador1.Text = "label11";
+            // 
+            // jugador4
+            // 
+            this.jugador4.AutoSize = true;
+            this.jugador4.Location = new System.Drawing.Point(629, 132);
+            this.jugador4.Name = "jugador4";
+            this.jugador4.Size = new System.Drawing.Size(54, 17);
+            this.jugador4.TabIndex = 35;
+            this.jugador4.Text = "label10";
+            this.jugador4.Visible = false;
+            // 
+            // jugador3
+            // 
+            this.jugador3.AutoSize = true;
+            this.jugador3.Location = new System.Drawing.Point(375, 132);
+            this.jugador3.Name = "jugador3";
+            this.jugador3.Size = new System.Drawing.Size(46, 17);
+            this.jugador3.TabIndex = 34;
+            this.jugador3.Text = "label9";
+            this.jugador3.Visible = false;
+            // 
+            // jugador2
+            // 
+            this.jugador2.AutoSize = true;
+            this.jugador2.Location = new System.Drawing.Point(122, 132);
+            this.jugador2.Name = "jugador2";
+            this.jugador2.Size = new System.Drawing.Size(46, 17);
+            this.jugador2.TabIndex = 33;
+            this.jugador2.Text = "label8";
+            this.jugador2.Visible = false;
+            // 
+            // carta_jugador4
+            // 
+            this.carta_jugador4.Location = new System.Drawing.Point(589, 152);
+            this.carta_jugador4.Name = "carta_jugador4";
+            this.carta_jugador4.Size = new System.Drawing.Size(140, 230);
+            this.carta_jugador4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.carta_jugador4.TabIndex = 32;
+            this.carta_jugador4.TabStop = false;
+>>>>>>> Branch-Rocio
             // 
             this.pictureBox_carta4.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox_carta4.Image = global::MenuConsultas.Properties.Resources._01_spades;
@@ -793,6 +975,7 @@
             this.pictureBox_carta4.TabStop = false;
             this.pictureBox_carta4.Visible = false;
             // 
+<<<<<<< HEAD
             // pictureBox_carta3
             // 
             this.pictureBox_carta3.BackColor = System.Drawing.Color.Transparent;
@@ -818,17 +1001,60 @@
             this.pictureBox_carta2.TabIndex = 29;
             this.pictureBox_carta2.TabStop = false;
             this.pictureBox_carta2.Visible = false;
+=======
+            this.textBox_puntos.Enabled = false;
+            this.textBox_puntos.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_puntos.Location = new System.Drawing.Point(645, 554);
+            this.textBox_puntos.Name = "textBox_puntos";
+            this.textBox_puntos.Size = new System.Drawing.Size(87, 34);
+            this.textBox_puntos.TabIndex = 28;
+>>>>>>> Branch-Rocio
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Agency FB", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(639, 518);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(106, 33);
+            this.label7.TabIndex = 27;
+            this.label7.Text = "Mis puntos:";
+            // 
+            // btn_emepezar
+            // 
+            this.btn_emepezar.BackColor = System.Drawing.Color.Gray;
+            this.btn_emepezar.Font = new System.Drawing.Font("Agency FB", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_emepezar.ForeColor = System.Drawing.Color.White;
+            this.btn_emepezar.Location = new System.Drawing.Point(806, 774);
+            this.btn_emepezar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_emepezar.Name = "btn_emepezar";
+            this.btn_emepezar.Padding = new System.Windows.Forms.Padding(0, 0, 0, 7);
+            this.btn_emepezar.Size = new System.Drawing.Size(120, 52);
+            this.btn_emepezar.TabIndex = 29;
+            this.btn_emepezar.Text = "Empezar";
+            this.btn_emepezar.UseVisualStyleBackColor = false;
+            this.btn_emepezar.Click += new System.EventHandler(this.btn_emepezar_Click);
             // 
             // Partida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(203)))), ((int)(((byte)(196)))));
+<<<<<<< HEAD
             this.ClientSize = new System.Drawing.Size(1064, 681);
             this.Controls.Add(this.panel_abandonar);
             this.Controls.Add(this.panel_dejarPartida);
             this.Controls.Add(this.btn_abandonar);
             this.Controls.Add(this.label_finPartida);
+=======
+            this.ClientSize = new System.Drawing.Size(1336, 1032);
+            this.Controls.Add(this.panel_abandonar);
+            this.Controls.Add(this.btn_emepezar);
+            this.Controls.Add(this.panel_dejarPartida);
+            this.Controls.Add(this.btn_abandonar);
+            this.Controls.Add(this.label_finPartida);
+            this.Controls.Add(this.panel_ListaJugadores);
+>>>>>>> Branch-Rocio
             this.Controls.Add(this.textBox_chat);
             this.Controls.Add(this.btn_enviar);
             this.Controls.Add(this.listBox_chat);
@@ -853,6 +1079,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_carta1)).EndInit();
             this.panel_tablero.ResumeLayout(false);
             this.panel_tablero.PerformLayout();
+<<<<<<< HEAD
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_croupier4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_croupier3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_croupier2)).EndInit();
@@ -864,6 +1091,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_carta4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_carta3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_carta2)).EndInit();
+=======
+            ((System.ComponentModel.ISupportInitialize)(this.carta_jugador2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.carta_jugador3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.carta_jugador4)).EndInit();
+>>>>>>> Branch-Rocio
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -898,6 +1130,7 @@
         private System.Windows.Forms.Button btn_plantarse;
         private System.Windows.Forms.PictureBox pictureBox_carta1;
         private System.Windows.Forms.Label label7;
+<<<<<<< HEAD
         private System.Windows.Forms.TextBox textBox_puntos;
         private System.Windows.Forms.Panel panel_tablero;
         private System.Windows.Forms.PictureBox pictureBox_carta4;
@@ -927,5 +1160,16 @@
         private System.Windows.Forms.Label lbl134;
         private System.Windows.Forms.TextBox textBox_apuesta_Jug1;
         private System.Windows.Forms.Label lblDinero_Jug1;
+=======
+        private System.Windows.Forms.PictureBox carta_jugador4;
+        private System.Windows.Forms.PictureBox carta_jugador3;
+        private System.Windows.Forms.PictureBox carta_jugador2;
+        private System.Windows.Forms.Button btn_emepezar;
+        private System.Windows.Forms.Label jugador1;
+        private System.Windows.Forms.Label jugador4;
+        private System.Windows.Forms.Label jugador3;
+        private System.Windows.Forms.Label jugador2;
+        private System.Windows.Forms.Label label_turno;
+>>>>>>> Branch-Rocio
     }
 }

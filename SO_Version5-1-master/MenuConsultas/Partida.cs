@@ -31,6 +31,7 @@ namespace MenuConsultas
 
 
         Image[,] cartas = new Image[13, 4];
+<<<<<<< HEAD
         public int turno = 1; //turno 1 jug1, turno2 jug2...
         public int numJugador;
         
@@ -157,6 +158,10 @@ namespace MenuConsultas
         }
         delegate void DelegadoParaModificaDinero(int dinero);
 
+=======
+        int turnoCliente;
+        string nombreAnfitrion;
+>>>>>>> Branch-Rocio
         public void mostrarNombre(string nombre)
         {
             label1.Text = nombre;
@@ -357,11 +362,19 @@ namespace MenuConsultas
         public void mostrarCartaJug1(int palo,int numero)
         {
             int puntosFinal=0;
+<<<<<<< HEAD
+=======
+            panel_tablero.Visible = true;
+>>>>>>> Branch-Rocio
             if (numCartas.Count == 1)
             {
                 pictureBox_carta1.Visible = true;
                 pictureBox_carta1.Image = cartas[numero, palo];
+<<<<<<< HEAD
                 puntosFinal = puntosJug1[0];
+=======
+                puntosFinal = puntos[0];
+>>>>>>> Branch-Rocio
                 textBox_puntos.Text = puntosFinal.ToString();
             }
             else if (numCartas.Count == 2)
@@ -369,7 +382,11 @@ namespace MenuConsultas
                 pictureBox_carta2.Visible = true;
                 pictureBox_carta2.BringToFront(); 
                 pictureBox_carta2.Image = cartas[numero, palo];
+<<<<<<< HEAD
                 puntosFinal = puntosJug1[0]+puntosJug1[1];
+=======
+                puntosFinal = puntos[0]+puntos[1];
+>>>>>>> Branch-Rocio
                 textBox_puntos.Text = puntosFinal.ToString();
             }
             else if (numCartas.Count == 3)
@@ -377,7 +394,11 @@ namespace MenuConsultas
                 pictureBox_carta3.Visible = true;
                 pictureBox_carta3.BringToFront();
                 pictureBox_carta3.Image = cartas[numero, palo];
+<<<<<<< HEAD
                 puntosFinal = puntosJug1[0] + puntosJug1[1]+puntosJug1[2];
+=======
+                puntosFinal = puntos[0] + puntos[1]+puntos[2];
+>>>>>>> Branch-Rocio
                 textBox_puntos.Text = puntosFinal.ToString();
             }
             else if (numCartas.Count == 4)
@@ -385,10 +406,28 @@ namespace MenuConsultas
                 pictureBox_carta4.Visible = true;
                 pictureBox_carta4.BringToFront();
                 pictureBox_carta4.Image = cartas[numero, palo];
+<<<<<<< HEAD
                 puntosFinal = puntosJug1[0] + puntosJug1[1]+puntosJug1[2]+puntosJug1[3];
                 textBox_puntos.Text = puntosFinal.ToString();
             }
             
+=======
+                puntosFinal = puntos[0] + puntos[1]+puntos[2]+puntos[3];
+                textBox_puntos.Text = puntosFinal.ToString();
+            }
+
+            if (puntosFinal == 21)
+            {
+                //enviamos ganador y acabar con el turno
+                MessageBox.Show(nombre + "has ganado");
+                //pasar el turno
+            }
+            else if (puntosFinal > 21)
+            {
+                //enviamos que ha perdido
+                MessageBox.Show(nombre + "has pasado de 21");
+            }
+>>>>>>> Branch-Rocio
         }
         delegate void DelegadoParaMostrarCartaJug1(int palo,int numero);
 
@@ -429,8 +468,27 @@ namespace MenuConsultas
             
 
 
+<<<<<<< HEAD
         }
         delegate void DelegadoParaMostrarCartaJug2(int palo, int numero);
+=======
+
+            //0 diamante; 1 picas; 2 corazones; 3 treboles ;
+            //0 diamante; 1 picas; 2 corazones; 3 treboles ;
+            cartas[0, 0] = MenuConsultas.Properties.Resources._01_diamonds;
+            cartas[1, 0] = MenuConsultas.Properties.Resources._02_diamonds;
+            cartas[2, 0] = MenuConsultas.Properties.Resources._03_diamonds;
+            cartas[3, 0] = MenuConsultas.Properties.Resources._04_diamonds;
+            cartas[4, 0] = MenuConsultas.Properties.Resources._05_diamonds;
+            cartas[5, 0] = MenuConsultas.Properties.Resources._06_diamonds;
+            cartas[6, 0] = MenuConsultas.Properties.Resources._07_diamonds;
+            cartas[7, 0] = MenuConsultas.Properties.Resources._08_diamonds;
+            cartas[8, 0] = MenuConsultas.Properties.Resources._09_diamonds;
+            cartas[9, 0] = MenuConsultas.Properties.Resources._10_diamonds;
+            cartas[10, 0] = MenuConsultas.Properties.Resources.J_diamonds;
+            cartas[11, 0] = MenuConsultas.Properties.Resources.Q_diamonds;
+            cartas[12, 0] = MenuConsultas.Properties.Resources.K_diamonds;
+>>>>>>> Branch-Rocio
 
         //public void ocultarlblGanadoJug1() { this.lblGanadoJug1.Hide(); }
         //delegate void DelegadoOcultarLblGanadoJug1();
@@ -438,8 +496,28 @@ namespace MenuConsultas
         //public void ocultarlblGanadoJug2() { this.lblGanadoJug2.Hide(); }
         //delegate void DelegadoOcultarLblGanadoJug2();
 
+<<<<<<< HEAD
         //public void ocultarlblPasadoJug1(){ this.lblPasadoJug1.Hide(); }
         //delegate void DelegadoOcultarLblPasadoJug1();
+=======
+            cartas[0, 3] = MenuConsultas.Properties.Resources._01_clubs;
+            cartas[1, 3] = MenuConsultas.Properties.Resources._02_clubs;
+            cartas[2, 3] = MenuConsultas.Properties.Resources._03_clubs;
+            cartas[3, 3] = MenuConsultas.Properties.Resources._04_clubs;
+            cartas[4, 3] = MenuConsultas.Properties.Resources._05_clubs;
+            cartas[5, 3] = MenuConsultas.Properties.Resources._06_clubs;
+            cartas[6, 3] = MenuConsultas.Properties.Resources._07_clubs;
+            cartas[7, 3] = MenuConsultas.Properties.Resources._08_clubs;
+            cartas[8, 3] = MenuConsultas.Properties.Resources._09_clubs;
+            cartas[9, 3] = MenuConsultas.Properties.Resources._10_clubs;
+            cartas[10, 3] = MenuConsultas.Properties.Resources.J_clubs;
+            cartas[11, 3] = MenuConsultas.Properties.Resources.Q_clubs;
+            cartas[12, 3] = MenuConsultas.Properties.Resources.K_clubs;
+            
+            string mensaje = "17/" + nombre + "/" + idPartida;
+            byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);
+            server.Send(msg);
+>>>>>>> Branch-Rocio
 
         //public void ocultarlblPasadoJug2() { this.lblPasadoJug2.Hide(); }
         //delegate void DelegadoOcultarLblPasadoJug1();
@@ -469,7 +547,14 @@ namespace MenuConsultas
             DelegadoParaMostrarChat delegadoMostrarChat = new DelegadoParaMostrarChat(mostrarChat);
             label1.Invoke(delegadoMostrarChat, new object[] { frase }); //Invoca al thread que crea el objeto(label1)
         }
+<<<<<<< HEAD
         
+=======
+        public void tomaAnfitrion(string nombreAnfitrion)
+        {
+            this.nombreAnfitrion = nombreAnfitrion;
+        }
+>>>>>>> Branch-Rocio
         public void tomaNombreAbandona(string nombreAbandona)
         {
             listaAbandonar.Add(nombreAbandona);
@@ -481,8 +566,7 @@ namespace MenuConsultas
        
         public void tomaNombreJugadores(string nombresJugadores)
         {
-            //MessageBox.Show(nombre + " los jugadores acaban de recibir el mensaje");
-            //MessageBox.Show("Los jugadores de la partida son: " + nombresJugadores);
+           //MessageBox.Show("Los jugadores de la partida son: " + nombresJugadores);
             DelegadoParaMostrarJugadores delegadoMostrarJugadores = new DelegadoParaMostrarJugadores(mostrarJugadores);
             panel_ListaJugadores.Invoke(delegadoMostrarJugadores, new object[] { nombresJugadores });
         }     
@@ -689,6 +773,7 @@ namespace MenuConsultas
             panel_ListaJugadores.Invoke(delegadoOcultarListaJugadores, new object[] { nombre }); 
            
         }
+<<<<<<< HEAD
 
         //Nueva carta
         private void btn_nuevaCarta_Click(object sender, EventArgs e)
@@ -736,6 +821,19 @@ namespace MenuConsultas
             server.Send(msg);
             DelegadoParaOcultarBtnTurno0 delegadoParaOcultarBtnTurno0 = new DelegadoParaOcultarBtnTurno0(ocultarBtnTurno0);
             btnTurno0.Invoke(delegadoParaOcultarBtnTurno0, new object[] { });
+=======
+         public void tomaTurno(int turno)
+        {
+            this.turnoCliente = turno;
+        }
+        private void btn_nuevaCarta_Click(object sender, EventArgs e)
+        {
+            
+            string mensaje = "15/" + nombre + "/" + idPartida+"/"+turnoCliente+"/"+2;
+            byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);
+            server.Send(msg);
+
+>>>>>>> Branch-Rocio
         }
 
         public void logicaCroupier()
@@ -784,12 +882,120 @@ namespace MenuConsultas
             server.Send(msg);
         }
 
+<<<<<<< HEAD
         private void label11_Click(object sender, EventArgs e)
         {
 
         }
 
         
+=======
+        public void miTurno(string nombreJugadorAnterior,string nombreTocaJugar,int turno,int numeroJugadores,string nombreJugadores)
+        {
+            label_turno.Text = "Es el turno de: " + nombreTocaJugar;
+
+            if (nombreTocaJugar==nombre)
+            {
+                btn_nuevaCarta.Visible = true;
+                btn_plantarse.Visible = true;
+            }
+            else
+            {
+                btn_nuevaCarta.Visible = false;
+                btn_plantarse.Visible = false;
+            }
+
+            string[] nombreSeparado = nombreJugadores.Split('*');
+
+                    if (numeroJugadores == 2)
+                    {
+
+                        //MessageBox.Show("Hay 2 Jugadores");
+                        carta_jugador2.Image = MenuConsultas.Properties.Resources.back_card___copia;
+                        jugador2.Text = "Jugador 2";
+                        jugador2.Location = new Point(233, 132);
+                        carta_jugador2.Location = new Point(233, 155);
+
+                        jugador2.Visible = true;
+                        carta_jugador2.Visible = true;
+
+
+                    }
+                
+                if (numeroJugadores == 3)
+                {
+                    //MessageBox.Show("Hay 3 Jugadores");
+                    jugador1.Text = nombre;
+                    carta_jugador2.Image = MenuConsultas.Properties.Resources.back_card___copia;
+                    jugador2.Text = "Jugador 2";
+                    carta_jugador3.Image = MenuConsultas.Properties.Resources.back_card___copia;
+                    jugador3.Text = "Jugador 3";
+                    jugador2.Location = new Point(125, 132);
+                    carta_jugador2.Location = new Point(125, 152);
+                    jugador3.Location = new Point(411, 132);
+                    carta_jugador3.Location = new Point(411, 152);
+
+                    jugador2.Visible = true;
+                    carta_jugador2.Visible = true;
+                    jugador3.Visible = true;
+                    carta_jugador3.Visible = true;
+
+                }
+                if (numeroJugadores == 4)
+                {
+                    //MessageBox.Show("Hay 4 Jugadores");
+                    jugador1.Text = nombre;
+                    carta_jugador2.Image = MenuConsultas.Properties.Resources.back_card___copia;
+                    jugador2.Text = "Jugador 2";
+                    carta_jugador3.Image = MenuConsultas.Properties.Resources.back_card___copia;
+                    jugador3.Text = "Jugador 3";
+                    carta_jugador4.Image = MenuConsultas.Properties.Resources.back_card___copia;
+                    jugador4.Text = "Jugador 4";
+                    jugador2.Location = new Point(77, 132);
+                    carta_jugador2.Location = new Point(77, 152);
+                    jugador3.Location = new Point(337, 132);
+                    carta_jugador3.Location = new Point(337, 152);
+                    jugador4.Location = new Point(589, 132);
+                    carta_jugador4.Location = new Point(589, 152);
+
+                    jugador2.Visible = true;
+                    carta_jugador2.Visible = true;
+                    jugador3.Visible = true;
+                    carta_jugador3.Visible = true;
+                    jugador4.Visible = true;
+                    carta_jugador4.Visible = true;
+                }
+
+            jugador1.Text = nombre;
+            
+       
+        }
+        delegate void DelegadoParaMiTurno(string nombreJugadorAnterior, string nombreTocaJugar, int turno, int numeroJugadores, string nombreJugadores);
+        public void tomaActualizacionMiTurno(string nombreJugadorAnterior,string nombreTocaJugar,int turno,int numeroJugadores,string nombreJugadores)
+        {
+            DelegadoParaMiTurno miturno = new DelegadoParaMiTurno(miTurno);
+            btn_plantarse.Invoke(miturno, new object[] {nombreJugadorAnterior,nombreTocaJugar,turno,numeroJugadores,nombreJugadores });
+        }
+
+
+        delegate void DelegadoParaXJugadores();
+        private void btn_emepezar_Click(object sender, EventArgs e)
+        {
+            string mensaje = "15/" + nombre + "/" + idPartida + "/" + 1 + "/" + 0;
+            byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);
+            server.Send(msg);
+         }
+
+        private void mostrar_jugadores_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel_dejarPartida_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+>>>>>>> Branch-Rocio
 
 
     }

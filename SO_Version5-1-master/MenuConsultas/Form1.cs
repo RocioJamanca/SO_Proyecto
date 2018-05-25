@@ -36,6 +36,7 @@ namespace MenuConsultas
         List<Partida> formularios= new List<Partida>();
         List<String> idsPartidas = new List<string>();
 
+<<<<<<< HEAD
         public String getNombreAnfitrion()
         {
             return this.nombreAnfitrion;
@@ -45,6 +46,9 @@ namespace MenuConsultas
             return this.nombreJugadores;
         }
 
+=======
+        List<string> turnos=new List<string>();
+>>>>>>> Branch-Rocio
         public Form1()
         {
             InitializeComponent();
@@ -148,7 +152,7 @@ namespace MenuConsultas
             while (!fin)
             {
                 int codigo;
-                byte[] msg = new byte[80];
+                byte[] msg = new byte[180];
                 // recibo mensaje del servidor
                 server.Receive(msg);
                 string mensaje = Encoding.ASCII.GetString(msg);
@@ -178,7 +182,7 @@ namespace MenuConsultas
                         }
                         else if (code1 == 1)
                         {
-                            MessageBox.Show("Log in con exito.\n");                      
+                            //MessageBox.Show("Log in con exito.\n");                      
                             //Creamos el mensaje que enviaremos al servidor
                             string mensaje0 = "6/" + nombre;
                             byte[] msg0 = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje0);
@@ -197,7 +201,7 @@ namespace MenuConsultas
                         }
                         else if (code2==1)
                         {
-                            MessageBox.Show("Registro con exito\n");
+                           // MessageBox.Show("Registro con exito\n");
                         }
                         else if (code2 == 2)
                         {
@@ -289,6 +293,7 @@ namespace MenuConsultas
 
                         break;
 
+<<<<<<< HEAD
                     case 10: //Recibo: 10/idPartida/nombreHost/nombreJugador1*nombreJugador2
                         string idPartida = trozos[1];
                         this.nombreAnfitrion = trozos[2];
@@ -309,6 +314,24 @@ namespace MenuConsultas
                         string frase = trozos[2]; //Mensaje que aparecerá en la listBox
                         formularios[numForm].tomaFrase(frase);
                         break;
+=======
+                    case 10:
+                    string idPartida = trozos[1];
+                    string nombreAnfitrion = trozos[2];
+                    string nombreJugadores = trozos[3]; //Estos habrá que separarlos ya que estan en el formato nombre1*nombre2*nombre3*....
+                    ThreadStart ts = delegate { PonerMarchaFormulario(idPartida); };
+                    Thread T = new Thread(ts);
+                    T.Start();
+                    break;
+                    int numForm = idsPartidas.IndexOf(trozos[1]);
+                    formularios[numForm].tomaAnfitrion(nombreAnfitrion);
+
+                    case 11: //chat
+                    numForm = idsPartidas.IndexOf(trozos[1]);  
+                    string frase = trozos[2]; //Mensaje que aparecerá en la listBox
+                    formularios[numForm].tomaFrase(frase);
+                    break;
+>>>>>>> Branch-Rocio
                      
                         case 12:
                         string nombreAbandona=trozos[1];
@@ -424,6 +447,44 @@ namespace MenuConsultas
                             formularios[numForm].pasarTurno();
 
                         break;
+                    case 17:
+                        numForm = idsPartidas.IndexOf(trozos[1]);
+                        formularios[numForm].tomaNombreJugadores(trozos[2]);
+                        break;
+                    case 18:
+                        string nombreJugadorAnterior = trozos[1];
+                        numForm = idsPartidas.IndexOf(trozos[2]);
+                        string nombreTocaJugar=trozos[3];
+                        int turno = Convert.ToInt32(trozos[4]);
+                        numeroJugadores=Convert.ToInt32(trozos[5]);
+                        nombreJugadores=trozos[6];
+                        int vez = Convert.ToInt32(trozos[7]);
+
+                       // MessageBox.Show("La persona que acaba de jugar:" + nombreJugadorAnterior + " le toca jugar a " + nombreTocaJugar + " turno:" + turno);
+                        //comprobar 
+                        if (vez == 0)
+                        {
+                            palo = Convert.ToInt32(trozos[8]);
+                            numero = Convert.ToInt32(trozos[9]);
+                            formularios[numForm].tomaCarta(palo, numero);
+                            turnos.Add(nombreJugadorAnterior); //el indice=0
+
+                        }
+                        int i=0;
+                        if (i < numeroJugadores)
+                            turnos.Add(nombreTocaJugar);
+                        else
+                        {
+                            turnos.Clear();
+                            turnos.Add(nombreJugadorAnterior);
+                        }
+
+                                formularios[numForm].tomaActualizacionMiTurno(nombreJugadorAnterior, nombreTocaJugar, turno,numeroJugadores,nombreJugadores);
+                                formularios[numForm].tomaTurno(turno);
+
+                        
+                        //enviar quien esta jugando y el turno
+                        break;
                 }
             }
         }
@@ -511,7 +572,7 @@ namespace MenuConsultas
             //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
             //al que deseamos conectarnos
             IPAddress direc = IPAddress.Parse(Ip);
-            IPEndPoint ipep = new IPEndPoint(direc, 50024);
+            IPEndPoint ipep = new IPEndPoint(direc, 50023);
             //Creamos el socket 
             server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             try
