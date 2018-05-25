@@ -323,11 +323,9 @@ namespace MenuConsultas
                     Thread T = new Thread(ts);
                     T.Start();
                     break;
-                    int numForm = idsPartidas.IndexOf(trozos[1]);
-                    formularios[numForm].tomaAnfitrion(nombreAnfitrion);
 
                     case 11: //chat
-                    numForm = idsPartidas.IndexOf(trozos[1]);  
+                    int numForm = idsPartidas.IndexOf(trozos[1]);  
                     string frase = trozos[2]; //Mensaje que aparecerá en la listBox
                     formularios[numForm].tomaFrase(frase);
                     break;
@@ -375,6 +373,7 @@ namespace MenuConsultas
 
                         break;
                     case 16:
+<<<<<<< HEAD
                         //Recibo 16/idPatida/turno
                         numForm = idsPartidas.IndexOf(trozos[1]);
                         formularios[numForm].turno = Convert.ToInt32(trozos[2]);
@@ -445,6 +444,23 @@ namespace MenuConsultas
                             formularios[numForm].logicaCroupier();
                         else
                             formularios[numForm].pasarTurno();
+=======
+                        //persona x ha acabado 
+                        numForm = idsPartidas.IndexOf(trozos[1]);
+                        string personaFinal = trozos[2];
+                        int puntos = Convert.ToInt32(trozos[3]);
+                        string palos = trozos[4];
+                        string numeros = trozos[5];
+                        int torn=Convert.ToInt32(trozos[6]);
+                        if (personaFinal == nombre)
+                        {
+                            MessageBox.Show("Has acabado, espera a las puntuciones de los demás");
+                        }
+                        else
+                        formularios[numForm].tomaCartasFinalizado(personaFinal,puntos,palos,numeros,torn);
+                        
+
+>>>>>>> Branch-Rocio
 
                         break;
                     case 17:
@@ -572,7 +588,7 @@ namespace MenuConsultas
             //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
             //al que deseamos conectarnos
             IPAddress direc = IPAddress.Parse(Ip);
-            IPEndPoint ipep = new IPEndPoint(direc, 50023);
+            IPEndPoint ipep = new IPEndPoint(direc, 50024);
             //Creamos el socket 
             server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             try

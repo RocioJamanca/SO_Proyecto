@@ -894,13 +894,14 @@ void *atender_cliente(void *conectados)
 			
 			
 		}
-		else if (codigo==16)
+		else if (codigo==16)//finalizar
 		{
 			//Recibo: 16/nombre/idPartida/Turno ¡recibo el turno actual!
 			//Envio: 16/idPartida/Turno
 			printf("Codigo 16.\n");
 			p = strtok( NULL, "/");
 			int idPartida=atoi(p); //extraemos idPartida
+<<<<<<< HEAD
 			
 			p=strtok(NULL, "/");
 			turno = atoi(p) + 1;
@@ -911,12 +912,29 @@ void *atender_cliente(void *conectados)
 			sprintf(respuesta,"16/%d/%d/",idPartida, turno);
 			
 			//Le enviamos a todos la respuesta
+=======
+			p = strtok( NULL, "/");
+			int puntos=atoi(p); //extraemos puntos
+			p = strtok( NULL, "/"); //extraemos palo
+			char palo[100];
+			strcpy(palo,p);       
+			p = strtok( NULL, "/"); //extraemos numero
+			char numero[100];
+			strcpy(numero,p);
+			p = strtok( NULL, "/");
+			int turno=atoi(p); //extraemos puntos
+				
+			sprintf(respuesta,"16/%d/%s/%d/%s/%s/%d/",idPartida,nombre,puntos,palo,numero,turno);
+>>>>>>> Branch-Rocio
 			for(int i=0;i<lp->listaP[idPartida].numeroPersonas;i++)
 			{
 				write(lp->listaP[idPartida].listaJugador[i].id,respuesta, strlen(respuesta));
 			}
+<<<<<<< HEAD
 
 			
+=======
+>>>>>>> Branch-Rocio
 			printf("Codigo 16. Envio: %s\n",respuesta);
 
 		}
@@ -1003,9 +1021,16 @@ void *atender_cliente(void *conectados)
 			printf("Codigo 17. Envio: %s\n",respuesta);
 			write(sock_conn,respuesta,strlen(respuesta));
 		}
+<<<<<<< HEAD
 >>>>>>> Branch-Rocio
 =======
 >>>>>>> parent of 6ca276c... Server Abandona+Nueva carta
+=======
+		else if(codigo==18)
+		{
+			
+		}
+>>>>>>> Branch-Rocio
 		
 	}
 	
@@ -1046,10 +1071,14 @@ int main(int argc, char *argv[])
 	serv_adr.sin_addr.s_addr = htonl(INADDR_ANY); /* El fica IP local */
 	// establecemos el puerto de escucha
 <<<<<<< HEAD
+<<<<<<< HEAD
 	serv_adr.sin_port = htons(50023);
 =======
 	serv_adr.sin_port = htons(50025);
 >>>>>>> parent of 6ca276c... Server Abandona+Nueva carta
+=======
+	serv_adr.sin_port = htons(50024);
+>>>>>>> Branch-Rocio
 	if (bind(sock_listen, (struct sockaddr *) &serv_adr, sizeof(serv_adr)) < 0)
 		printf("Error al bind");
 	
