@@ -46,6 +46,21 @@ typedef struct
 
 listaPartidas *lp,partidas;
 
+int generarPalo()
+{
+	int palo;
+	palo=rand()%(3-0)+1;
+	printf("%d/\n",palo);
+	return palo;
+	
+}
+int generarNumero()
+{
+	int numero;
+	numero=rand()%(12-0)+1;
+	printf("%d\n",numero);
+	return numero;
+}
 
 
 //Escribe una funcion que anade a la lista de conectados un nuevo jugador (nombre y socket).
@@ -319,27 +334,27 @@ void *atender_cliente(void *conectados)
 					else
 					{
 						printf("La lista de conectados no est￡ vac￭a\n");
-							   for (int i=0; i<cl->num && encontrado==0;i++)
-							   {
-								   if(strcmp(cl->lista[i].nombreUsuario,nombre)==0)
-								   {
-									   printf("El usuario ya esta dentro de la lista de conectados");
-									   strcat(respuesta,"2/");
-									   printf("Codigo 1. Respuesta: %s\n",respuesta);
-								   }
-								   else
-								   {
-									   printf("El usuario se acaba de conectar\n");
-									   strcat(respuesta,"1/");
-									   printf("Codigo 1. Respuesta: %s\n",respuesta);
-									   pthread_mutex_lock (&mutexsum); //Solo a￯﾿ﾯ￯ﾾ﾿￯ﾾﾱanadimos exclusion mutua si se edita la lista de clientas
-									   nuevoUsuario(cl,sock_conn,nombre);
-									   pthread_mutex_unlock (&mutexsum);
-									   encontrado=1;
-								   }
-							   }
+						for (int i=0; i<cl->num && encontrado==0;i++)
+						{
+							if(strcmp(cl->lista[i].nombreUsuario,nombre)==0)
+							{
+								printf("El usuario ya esta dentro de la lista de conectados");
+								strcat(respuesta,"2/");
+								printf("Codigo 1. Respuesta: %s\n",respuesta);
+							}
+							else
+							{
+								printf("El usuario se acaba de conectar\n");
+								strcat(respuesta,"1/");
+								printf("Codigo 1. Respuesta: %s\n",respuesta);
+								pthread_mutex_lock (&mutexsum); //Solo a￯﾿ﾯ￯ﾾ﾿￯ﾾﾱanadimos exclusion mutua si se edita la lista de clientas
+								nuevoUsuario(cl,sock_conn,nombre);
+								pthread_mutex_unlock (&mutexsum);
+								encontrado=1;
+							}
+						}
 					}
-
+					
 					// notificar a todos los clientes conectados
 				}
 				else //La constrasena no coincide con la que tenemos en la bd.
@@ -403,33 +418,33 @@ void *atender_cliente(void *conectados)
 				strcat(respuesta,"2/");
 			}
 			else{
-			
-			//Consulta
-			strcpy(consulta,"INSERT INTO jugador(idJugador,nombre,password) VALUES (");	
-			strcat(consulta, "'");
-			strcat(consulta,code);
-			strcat(consulta,"',");
-			strcat(consulta, "'");
-			strcat(consulta,nombre);
-			strcat(consulta, "','");
-			strcat(consulta,contra);
-			strcat(consulta, "');");
-			printf("Codigo 2. Formulacion de consulta: %s\n",consulta);
-			
-			err=mysql_query (conn, consulta); 
-			if (err!=0) {
-				printf ("Error al consultar datos de la base %u %s\n",
-						mysql_errno(conn), mysql_error(conn));
-				exit (1);
 				
-				strcat(respuesta,"0/");
-			}
-			
-			else
-			{
-				strcat(respuesta,"1/");
-			}
-			
+				//Consulta
+				strcpy(consulta,"INSERT INTO jugador(idJugador,nombre,password) VALUES (");	
+				strcat(consulta, "'");
+				strcat(consulta,code);
+				strcat(consulta,"',");
+				strcat(consulta, "'");
+				strcat(consulta,nombre);
+				strcat(consulta, "','");
+				strcat(consulta,contra);
+				strcat(consulta, "');");
+				printf("Codigo 2. Formulacion de consulta: %s\n",consulta);
+				
+				err=mysql_query (conn, consulta); 
+				if (err!=0) {
+					printf ("Error al consultar datos de la base %u %s\n",
+							mysql_errno(conn), mysql_error(conn));
+					exit (1);
+					
+					strcat(respuesta,"0/");
+				}
+				
+				else
+				{
+					strcat(respuesta,"1/");
+				}
+				
 			}
 			write (sock_conn,respuesta, strlen(respuesta));
 			
@@ -782,20 +797,60 @@ void *atender_cliente(void *conectados)
 			printf("Codigo 15.\n");
 			p = strtok( NULL, "/");
 			int idPartida=atoi(p); //extraemos idPartida
+			p = strtok( NULL, "/");
+			int turno=atoi(p); //extraemos idPartida
+			p = strtok( NULL, "/");
+			int vez=atoi(p); //extraemos idPartida
+			//Turno 1=anfitrion
+			//Turno 2=jugador2
+			//Turno 3=jugador3
+			//Turno 4=jugador4
 			
-			int cantidad=0;
-			int palo=0;
-			int numero=0;
+			printf("idPartida: %d   turno:%d  vez: %d\n",idPartida,turno,vez);
+			int palo;
+			int numero;
 			
 			palo=rand()%(3-0)+1;
 			printf("%d/%d\n",palo,numero);
 			numero=rand()%(12-0)+1;
-			cantidad++;
 			printf("%d/%d\n",palo,numero);
 			
-			sprintf(respuesta,"15/%s/%d/%d/%d/",nombre,idPartida,palo,numero);
-			write(sock_conn,respuesta,strlen(respuesta));
-			printf("Codigo 15. Envio: %s\n",respuesta);
+			char notificacion[100];
+			char pal[50];
+			char numer[50];
+			
+				
+				//El anfitrion escribe la primera carta
+				sprintf(respuesta,"15/%s/%d/%d/%d/%d/",nombre,idPartida,palo,numero,turno);
+				printf("Codigo 15. Envio: %s\n",respuesta);
+				write(sock_conn,respuesta,strlen(respuesta));
+				//Enviar a todos que el jugador1 ha completado su turno
+				
+				sprintf(notificacion,"18/%s/%d/%s/%d/",nombre,idPartida,lp->listaP[idPartida].listaJugador[turno-1].nombreUsuario,turno);
+				
+				for(int i=0;i<lp->listaP[idPartida].numeroPersonas;i++)
+				{
+					if (vez==0)
+					{
+						strcat(notificacion,"0/");
+						sprintf(pal,"%d",generarPalo());
+						sprintf(numer,"%d",generarNumero());
+						strcat(notificacion,pal);
+						strcat(notificacion,"/");
+						strcat(notificacion,numer);
+						strcat(notificacion,"/");
+						
+					}
+					write(lp->listaP[idPartida].listaJugador[i].id,notificacion, strlen(notificacion));
+				}
+				turno=turno+1;
+				if(turno==lp->listaP[idPartida].numeroPersonas)
+				{
+					turno=1;
+				}
+				printf("Codigo 18.Turno 1 Envio: %s\n",notificacion);
+			
+						
 		}
 		else if (codigo==16)
 		{
@@ -807,7 +862,22 @@ void *atender_cliente(void *conectados)
 			write(sock_conn,respuesta,strlen(respuesta));
 			printf("Codigo 16. Envio: %s\n",respuesta);
 		}
-		
+		else if (codigo==17)//Saber las personas que estan jugando
+		{
+			printf("Codigo 17.\n");
+			p = strtok( NULL, "/");
+			int idPartida=atoi(p); //extraemos idPartida
+			
+			sprintf(respuesta,"17/%d/",idPartida);
+			for(int i=0;i<lp->listaP[idPartida].numeroPersonas;i++)
+			{
+				strcat(respuesta,lp->listaP[idPartida].listaJugador[i].nombreUsuario);
+				strcat(respuesta,"*");
+			}
+			strcat(respuesta,"/");
+			printf("Codigo 17. Envio: %s\n",respuesta);
+			write(sock_conn,respuesta,strlen(respuesta));
+		}
 		
 	}
 	
@@ -847,7 +917,7 @@ int main(int argc, char *argv[])
 	//htonl formatea el numero que recibe al formato necesario
 	serv_adr.sin_addr.s_addr = htonl(INADDR_ANY); /* El fica IP local */
 	// establecemos el puerto de escucha
-	serv_adr.sin_port = htons(50024);
+	serv_adr.sin_port = htons(50023);
 	if (bind(sock_listen, (struct sockaddr *) &serv_adr, sizeof(serv_adr)) < 0)
 		printf("Error al bind");
 	

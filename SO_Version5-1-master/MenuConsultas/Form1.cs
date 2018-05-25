@@ -135,7 +135,7 @@ namespace MenuConsultas
             while (!fin)
             {
                 int codigo;
-                byte[] msg = new byte[80];
+                byte[] msg = new byte[180];
                 // recibo mensaje del servidor
                 server.Receive(msg);
                 string mensaje = Encoding.ASCII.GetString(msg);
@@ -278,16 +278,15 @@ namespace MenuConsultas
                     string idPartida = trozos[1];
                     string nombreAnfitrion = trozos[2];
                     string nombreJugadores = trozos[3]; //Estos habrá que separarlos ya que estan en el formato nombre1*nombre2*nombre3*....
-                    //MessageBox.Show("Se ha iniciado una Partida con id:  "+idPartida+" el anfitrión es:  "+nombreAnfitrion);
-                    //Enviar desde este form al nuevo -> nombre, nombreAnfitrion, id de la partida al nuevo form y las personas que estan jugando.
-                    //pongo en marcha el thread  
                     ThreadStart ts = delegate { PonerMarchaFormulario(idPartida); };
                     Thread T = new Thread(ts);
                     T.Start();
                     break;
+                    int numForm = idsPartidas.IndexOf(trozos[1]);
+                    formularios[numForm].tomaAnfitrion(nombreAnfitrion);
 
                     case 11: //chat
-                    int numForm = idsPartidas.IndexOf(trozos[1]);  
+                    numForm = idsPartidas.IndexOf(trozos[1]);  
                     string frase = trozos[2]; //Mensaje que aparecerá en la listBox
                     formularios[numForm].tomaFrase(frase);
                     break;
@@ -325,6 +324,38 @@ namespace MenuConsultas
                         formularios[numForm].tomaCarta(palo,numero);
                         break;
                     case 16:
+                        break;
+                    case 17:
+                        numForm = idsPartidas.IndexOf(trozos[1]);
+                        formularios[numForm].tomaNombreJugadores(trozos[2]);
+                        break;
+                    case 18:
+                        string nombreJugadorAnterior = trozos[1];
+                        numForm = idsPartidas.IndexOf(trozos[2]);
+                        string nombreTocaJugar=trozos[3];
+                        int turno = Convert.ToInt32(trozos[4]);
+                        int vez = Convert.ToInt32(trozos[5]);
+
+                        MessageBox.Show("La persona que acaba de jugar:" + nombreJugadorAnterior + " le toca jugar a " + nombreTocaJugar + " turno:" + turno);
+                        //comprobar 
+                        if (vez == 0)
+                        {
+                            palo = Convert.ToInt32(trozos[6]);
+                            numero = Convert.ToInt32(trozos[7]);
+                            formularios[numForm].tomaCarta(palo, numero);
+
+                        }
+                   
+                            if (nombreTocaJugar == nombre)
+                            {
+                                formularios[numForm].tomaActualizacionMiTurno(nombreJugadorAnterior, nombreTocaJugar, turno);
+                            }
+                            else
+                            {
+                                formularios[numForm].tomaActualizacionNoMiTurno(nombreJugadorAnterior, nombreTocaJugar, turno);
+                            }
+                        
+                        //enviar quien esta jugando y el turno
                         break;
                 }
             }
@@ -413,7 +444,7 @@ namespace MenuConsultas
             //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
             //al que deseamos conectarnos
             IPAddress direc = IPAddress.Parse(Ip);
-            IPEndPoint ipep = new IPEndPoint(direc, 50024);
+            IPEndPoint ipep = new IPEndPoint(direc, 50023);
             //Creamos el socket 
             server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             try

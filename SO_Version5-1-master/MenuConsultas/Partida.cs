@@ -21,7 +21,8 @@ namespace MenuConsultas
         List<int> numCartas = new List<int>();
         List<int> puntos = new List<int>();
         Image[,] cartas = new Image[13, 4];
-
+        List<string> Jugadores=new List<string>();
+        string nombreAnfitrion;
         public void mostrarNombre(string nombre)
         {
             label1.Text = nombre;
@@ -46,6 +47,7 @@ namespace MenuConsultas
             for (int j = 0; j < dataGrid.RowCount; j++)
             {
                 dataGrid.Rows[j].Cells[0].Value = nombres[j];
+                Jugadores.Add(nombres[j]);
                 dataGrid.Rows[j].Cells[0].Style.BackColor = System.Drawing.Color.White;
             }
             dataGrid.ClearSelection();
@@ -142,6 +144,7 @@ namespace MenuConsultas
 
         public void mostrarCarta(int palo,int numero)
         {
+            panel_tablero.Visible = true;
             if (numCartas.Count == 1)
             {
                 pictureBox_carta1.Image = cartas[numero, palo];
@@ -182,6 +185,7 @@ namespace MenuConsultas
             numero_partida.Text = idPartida.ToString();
             DelegadoParaEscribirNombre delegado = new DelegadoParaEscribirNombre(mostrarNombre);
             label1.Invoke(delegado, new object[] { nombre }); //Invoca al thread que crea el objeto(label1)     
+
 
             //0 diamante; 1 picas; 2 corazones; 3 treboles ;
             //0 diamante; 1 picas; 2 corazones; 3 treboles ;
@@ -240,6 +244,10 @@ namespace MenuConsultas
             cartas[10, 3] = MenuConsultas.Properties.Resources.J_clubs;
             cartas[11, 3] = MenuConsultas.Properties.Resources.Q_clubs;
             cartas[12, 3] = MenuConsultas.Properties.Resources.K_clubs;
+            
+            string mensaje = "17/" + nombre + "/" + idPartida;
+            byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);
+            server.Send(msg);
 
         }
 
@@ -266,6 +274,10 @@ namespace MenuConsultas
             DelegadoParaMostrarChat delegadoMostrarChat = new DelegadoParaMostrarChat(mostrarChat);
             label1.Invoke(delegadoMostrarChat, new object[] { frase }); //Invoca al thread que crea el objeto(label1)
         }
+        public void tomaAnfitrion(string nombreAnfitrion)
+        {
+            this.nombreAnfitrion = nombreAnfitrion;
+        }
         public void tomaNombreAbandona(string nombreAbandona)
         {
             listaAbandonar.Add(nombreAbandona);
@@ -276,8 +288,7 @@ namespace MenuConsultas
         }
         public void tomaNombreJugadores(string nombresJugadores)
         {
-            //MessageBox.Show(nombre + " los jugadores acaban de recibir el mensaje");
-            //MessageBox.Show("Los jugadores de la partida son: " + nombresJugadores);
+           MessageBox.Show("Los jugadores de la partida son: " + nombresJugadores);
             DelegadoParaMostrarJugadores delegadoMostrarJugadores = new DelegadoParaMostrarJugadores(mostrarJugadores);
             panel_ListaJugadores.Invoke(delegadoMostrarJugadores, new object[] { nombresJugadores });
         }     
@@ -402,6 +413,122 @@ namespace MenuConsultas
             string mensaje = "16/" + nombre + "/" + idPartida;
             byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
+        }
+        public void mostrarTurno(string nombreToca)
+        {
+            label_turno.Text = "Es el turno de: "+nombreToca;
+        }
+        delegate void DelegadoParaMostrarTurno(string nombreToca);
+        public void miTurno(int numero)
+        {
+
+            if (numero == 1)
+            {
+                btn_nuevaCarta.Visible = true;
+                btn_plantarse.Visible = true;
+            }
+            else
+            {
+                btn_nuevaCarta.Visible = false;
+                btn_plantarse.Visible = false;
+            }
+        }
+        delegate void DelegadoParaMiTurno(int numero);
+        public void tomaActualizacionMiTurno(string nombreJugadorAnterior,string nombreTocaJugar,int turno)
+        {
+            DelegadoParaMostrarTurno delegadoTurno = new DelegadoParaMostrarTurno(mostrarTurno);
+            label_turno.Invoke(delegadoTurno,new object[] {nombreTocaJugar});
+            DelegadoParaMiTurno miturno = new DelegadoParaMiTurno(miTurno);
+            btn_plantarse.Invoke(miturno, new object[] { 1});
+        }
+        public void tomaActualizacionNoMiTurno(string nombreJugadorAnterior, string nombreTocaJugar, int turno)
+        {
+            DelegadoParaMostrarTurno delegadoTurno = new DelegadoParaMostrarTurno(mostrarTurno);
+            label_turno.Invoke(delegadoTurno, new object[] { nombreTocaJugar });
+            
+            DelegadoParaMiTurno miturno = new DelegadoParaMiTurno(miTurno);
+            btn_plantarse.Invoke(miturno, new object[] { 2 });
+        }
+        public void XJugadores()
+        {
+
+            jugador1.Text = nombre;
+            if (Jugadores.Count == 2)
+            {
+                
+                MessageBox.Show("Hay 2 Jugadores");
+                carta_jugador2.Image = MenuConsultas.Properties.Resources.back_card___copia;
+                jugador2.Text = Jugadores[0];
+                jugador2.Location = new Point(233,132);
+                carta_jugador2.Location = new Point(233, 155);
+
+                jugador2.Visible = true;
+                carta_jugador2.Visible = true;
+                
+
+            }
+            if (Jugadores.Count == 3)
+            {
+                MessageBox.Show("Hay 3 Jugadores");
+                jugador1.Text = nombre;
+                carta_jugador2.Image = MenuConsultas.Properties.Resources.back_card___copia;
+                jugador2.Text = Jugadores[0];
+                carta_jugador3.Image = MenuConsultas.Properties.Resources.back_card___copia;
+                jugador3.Text = Jugadores[1];
+                jugador2.Location = new Point(125, 132);
+                carta_jugador2.Location = new Point(125, 152);
+                jugador3.Location = new Point(411, 132);
+                carta_jugador3.Location = new Point(411, 152);
+
+                jugador2.Visible = true;
+                carta_jugador2.Visible = true;
+                jugador3.Visible = true;
+                carta_jugador3.Visible = true;
+
+            }
+            if (Jugadores.Count == 4)
+            {
+                MessageBox.Show("Hay 4 Jugadores");
+                jugador1.Text = nombre;
+                carta_jugador2.Image = MenuConsultas.Properties.Resources.back_card___copia;
+                jugador2.Text = Jugadores[0];
+                carta_jugador3.Image = MenuConsultas.Properties.Resources.back_card___copia;
+                jugador3.Text = Jugadores[1];
+                carta_jugador4.Image = MenuConsultas.Properties.Resources.back_card___copia;
+                jugador4.Text = Jugadores[2];
+                jugador2.Location = new Point(77, 132);
+                carta_jugador2.Location = new Point(77, 152);
+                jugador3.Location = new Point(337, 132);
+                carta_jugador3.Location = new Point(337, 152);
+                jugador4.Location = new Point(589, 132);
+                carta_jugador4.Location = new Point(589, 152);
+
+                jugador2.Visible = true;
+                carta_jugador2.Visible = true;
+                jugador3.Visible = true;
+                carta_jugador3.Visible = true;
+                jugador4.Visible = true;
+                carta_jugador4.Visible = true;
+            }
+        }
+        delegate void DelegadoParaXJugadores();
+        private void btn_emepezar_Click(object sender, EventArgs e)
+        {
+            string mensaje = "15/" + nombre + "/" + idPartida + "/" + 1 + "/" + 0;
+            byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);
+            server.Send(msg);
+            DelegadoParaXJugadores delegadoXJugadores = new DelegadoParaXJugadores(XJugadores);
+            panel_tablero.Invoke(delegadoXJugadores, new object[] {}); 
+        }
+
+        private void mostrar_jugadores_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel_dejarPartida_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
 
