@@ -367,7 +367,7 @@ void *atender_cliente(void *conectados)
 			if (err!=0) 
 			{
 				printf("ERROR al contar");
-			}
+			}//11
 			else
 			{
 				resultado = mysql_store_result (conn); 
