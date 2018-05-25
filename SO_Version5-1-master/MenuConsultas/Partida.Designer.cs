@@ -59,17 +59,27 @@
             this.pictureBox_carta3 = new System.Windows.Forms.PictureBox();
             this.pictureBox_carta4 = new System.Windows.Forms.PictureBox();
             this.panel_tablero = new System.Windows.Forms.Panel();
+            this.jugador2_carta4 = new System.Windows.Forms.PictureBox();
+            this.jugador2_carta3 = new System.Windows.Forms.PictureBox();
+            this.jugador2_carta2 = new System.Windows.Forms.PictureBox();
+            this.jugador2_carta1 = new System.Windows.Forms.PictureBox();
+            this.textBox_puntosFinal = new System.Windows.Forms.TextBox();
+            this.jugador4_carta1 = new System.Windows.Forms.PictureBox();
             this.label_turno = new System.Windows.Forms.Label();
-            this.carta_jugador2 = new System.Windows.Forms.PictureBox();
-            this.carta_jugador3 = new System.Windows.Forms.PictureBox();
+            this.jugador3_carta1 = new System.Windows.Forms.PictureBox();
             this.jugador1 = new System.Windows.Forms.Label();
             this.jugador4 = new System.Windows.Forms.Label();
             this.jugador3 = new System.Windows.Forms.Label();
             this.jugador2 = new System.Windows.Forms.Label();
-            this.carta_jugador4 = new System.Windows.Forms.PictureBox();
             this.textBox_puntos = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btn_emepezar = new System.Windows.Forms.Button();
+            this.jugador3_carta2 = new System.Windows.Forms.PictureBox();
+            this.jugador3_carta3 = new System.Windows.Forms.PictureBox();
+            this.jugador3_carta4 = new System.Windows.Forms.PictureBox();
+            this.jugador4_carta2 = new System.Windows.Forms.PictureBox();
+            this.jugador4_carta3 = new System.Windows.Forms.PictureBox();
+            this.jugador4_carta4 = new System.Windows.Forms.PictureBox();
             this.panel_abandonar.SuspendLayout();
             this.panel_dejarPartida.SuspendLayout();
             this.panel_ListaJugadores.SuspendLayout();
@@ -79,9 +89,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_carta3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_carta4)).BeginInit();
             this.panel_tablero.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.carta_jugador2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.carta_jugador3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.carta_jugador4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jugador2_carta4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jugador2_carta3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jugador2_carta2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jugador2_carta1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jugador4_carta1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jugador3_carta1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jugador3_carta2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jugador3_carta3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jugador3_carta4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jugador4_carta2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jugador4_carta3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jugador4_carta4)).BeginInit();
             this.SuspendLayout();
             // 
             // numero_partida
@@ -218,7 +237,7 @@
             this.btn_abandonar.BackColor = System.Drawing.Color.Gray;
             this.btn_abandonar.Font = new System.Drawing.Font("Agency FB", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_abandonar.ForeColor = System.Drawing.Color.White;
-            this.btn_abandonar.Location = new System.Drawing.Point(951, 774);
+            this.btn_abandonar.Location = new System.Drawing.Point(956, 848);
             this.btn_abandonar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_abandonar.Name = "btn_abandonar";
             this.btn_abandonar.Padding = new System.Windows.Forms.Padding(0, 0, 0, 7);
@@ -372,7 +391,7 @@
             this.btn_nuevaCarta.BackColor = System.Drawing.Color.Gray;
             this.btn_nuevaCarta.Font = new System.Drawing.Font("Agency FB", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_nuevaCarta.ForeColor = System.Drawing.Color.White;
-            this.btn_nuevaCarta.Location = new System.Drawing.Point(612, 674);
+            this.btn_nuevaCarta.Location = new System.Drawing.Point(686, 674);
             this.btn_nuevaCarta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_nuevaCarta.Name = "btn_nuevaCarta";
             this.btn_nuevaCarta.Padding = new System.Windows.Forms.Padding(0, 0, 0, 7);
@@ -387,7 +406,7 @@
             this.btn_plantarse.BackColor = System.Drawing.Color.Gray;
             this.btn_plantarse.Font = new System.Drawing.Font("Agency FB", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_plantarse.ForeColor = System.Drawing.Color.White;
-            this.btn_plantarse.Location = new System.Drawing.Point(738, 674);
+            this.btn_plantarse.Location = new System.Drawing.Point(825, 674);
             this.btn_plantarse.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_plantarse.Name = "btn_plantarse";
             this.btn_plantarse.Padding = new System.Windows.Forms.Padding(0, 0, 0, 7);
@@ -399,7 +418,7 @@
             // 
             // pictureBox_carta1
             // 
-            this.pictureBox_carta1.Location = new System.Drawing.Point(28, 496);
+            this.pictureBox_carta1.Location = new System.Drawing.Point(22, 540);
             this.pictureBox_carta1.Name = "pictureBox_carta1";
             this.pictureBox_carta1.Size = new System.Drawing.Size(140, 230);
             this.pictureBox_carta1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -408,7 +427,7 @@
             // 
             // pictureBox_carta2
             // 
-            this.pictureBox_carta2.Location = new System.Drawing.Point(174, 496);
+            this.pictureBox_carta2.Location = new System.Drawing.Point(168, 540);
             this.pictureBox_carta2.Name = "pictureBox_carta2";
             this.pictureBox_carta2.Size = new System.Drawing.Size(140, 230);
             this.pictureBox_carta2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -417,7 +436,7 @@
             // 
             // pictureBox_carta3
             // 
-            this.pictureBox_carta3.Location = new System.Drawing.Point(320, 496);
+            this.pictureBox_carta3.Location = new System.Drawing.Point(314, 540);
             this.pictureBox_carta3.Name = "pictureBox_carta3";
             this.pictureBox_carta3.Size = new System.Drawing.Size(140, 230);
             this.pictureBox_carta3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -426,7 +445,7 @@
             // 
             // pictureBox_carta4
             // 
-            this.pictureBox_carta4.Location = new System.Drawing.Point(466, 496);
+            this.pictureBox_carta4.Location = new System.Drawing.Point(460, 540);
             this.pictureBox_carta4.Name = "pictureBox_carta4";
             this.pictureBox_carta4.Size = new System.Drawing.Size(140, 230);
             this.pictureBox_carta4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -435,10 +454,20 @@
             // 
             // panel_tablero
             // 
-            this.panel_tablero.Controls.Add(this.carta_jugador4);
+            this.panel_tablero.Controls.Add(this.jugador4_carta4);
+            this.panel_tablero.Controls.Add(this.jugador4_carta3);
+            this.panel_tablero.Controls.Add(this.jugador4_carta2);
+            this.panel_tablero.Controls.Add(this.jugador3_carta4);
+            this.panel_tablero.Controls.Add(this.jugador3_carta3);
+            this.panel_tablero.Controls.Add(this.jugador3_carta2);
+            this.panel_tablero.Controls.Add(this.jugador2_carta4);
+            this.panel_tablero.Controls.Add(this.jugador2_carta3);
+            this.panel_tablero.Controls.Add(this.jugador2_carta2);
+            this.panel_tablero.Controls.Add(this.jugador2_carta1);
+            this.panel_tablero.Controls.Add(this.textBox_puntosFinal);
+            this.panel_tablero.Controls.Add(this.jugador4_carta1);
             this.panel_tablero.Controls.Add(this.label_turno);
-            this.panel_tablero.Controls.Add(this.carta_jugador2);
-            this.panel_tablero.Controls.Add(this.carta_jugador3);
+            this.panel_tablero.Controls.Add(this.jugador3_carta1);
             this.panel_tablero.Controls.Add(this.jugador1);
             this.panel_tablero.Controls.Add(this.jugador4);
             this.panel_tablero.Controls.Add(this.jugador3);
@@ -451,55 +480,107 @@
             this.panel_tablero.Controls.Add(this.btn_plantarse);
             this.panel_tablero.Controls.Add(this.pictureBox_carta1);
             this.panel_tablero.Controls.Add(this.btn_nuevaCarta);
-            this.panel_tablero.Location = new System.Drawing.Point(449, 30);
+            this.panel_tablero.Location = new System.Drawing.Point(434, 30);
             this.panel_tablero.Name = "panel_tablero";
-            this.panel_tablero.Size = new System.Drawing.Size(875, 739);
+            this.panel_tablero.Size = new System.Drawing.Size(1107, 796);
             this.panel_tablero.TabIndex = 27;
             this.panel_tablero.Visible = false;
+            // 
+            // jugador2_carta4
+            // 
+            this.jugador2_carta4.Location = new System.Drawing.Point(168, 358);
+            this.jugador2_carta4.Name = "jugador2_carta4";
+            this.jugador2_carta4.Size = new System.Drawing.Size(109, 127);
+            this.jugador2_carta4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.jugador2_carta4.TabIndex = 41;
+            this.jugador2_carta4.TabStop = false;
+            this.jugador2_carta4.Visible = false;
+            this.jugador2_carta4.Click += new System.EventHandler(this.jugador2_carta4_Click);
+            // 
+            // jugador2_carta3
+            // 
+            this.jugador2_carta3.Location = new System.Drawing.Point(168, 229);
+            this.jugador2_carta3.Name = "jugador2_carta3";
+            this.jugador2_carta3.Size = new System.Drawing.Size(109, 128);
+            this.jugador2_carta3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.jugador2_carta3.TabIndex = 40;
+            this.jugador2_carta3.TabStop = false;
+            this.jugador2_carta3.Visible = false;
+            // 
+            // jugador2_carta2
+            // 
+            this.jugador2_carta2.Location = new System.Drawing.Point(168, 96);
+            this.jugador2_carta2.Name = "jugador2_carta2";
+            this.jugador2_carta2.Size = new System.Drawing.Size(109, 127);
+            this.jugador2_carta2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.jugador2_carta2.TabIndex = 39;
+            this.jugador2_carta2.TabStop = false;
+            this.jugador2_carta2.Visible = false;
+            // 
+            // jugador2_carta1
+            // 
+            this.jugador2_carta1.Location = new System.Drawing.Point(22, 173);
+            this.jugador2_carta1.Name = "jugador2_carta1";
+            this.jugador2_carta1.Size = new System.Drawing.Size(140, 230);
+            this.jugador2_carta1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.jugador2_carta1.TabIndex = 29;
+            this.jugador2_carta1.TabStop = false;
+            // 
+            // textBox_puntosFinal
+            // 
+            this.textBox_puntosFinal.Enabled = false;
+            this.textBox_puntosFinal.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_puntosFinal.Location = new System.Drawing.Point(168, 507);
+            this.textBox_puntosFinal.Name = "textBox_puntosFinal";
+            this.textBox_puntosFinal.Size = new System.Drawing.Size(432, 30);
+            this.textBox_puntosFinal.TabIndex = 38;
+            this.textBox_puntosFinal.Visible = false;
+            // 
+            // jugador4_carta1
+            // 
+            this.jugador4_carta1.Location = new System.Drawing.Point(633, 152);
+            this.jugador4_carta1.Name = "jugador4_carta1";
+            this.jugador4_carta1.Size = new System.Drawing.Size(140, 230);
+            this.jugador4_carta1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.jugador4_carta1.TabIndex = 32;
+            this.jugador4_carta1.TabStop = false;
             // 
             // label_turno
             // 
             this.label_turno.AutoSize = true;
             this.label_turno.Font = new System.Drawing.Font("Mido", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_turno.Location = new System.Drawing.Point(99, 408);
+            this.label_turno.Location = new System.Drawing.Point(92, 15);
             this.label_turno.Name = "label_turno";
             this.label_turno.Size = new System.Drawing.Size(150, 52);
             this.label_turno.TabIndex = 37;
             this.label_turno.Text = "label8";
             // 
-            // carta_jugador2
+            // jugador3_carta1
             // 
-            this.carta_jugador2.Location = new System.Drawing.Point(92, 152);
-            this.carta_jugador2.Name = "carta_jugador2";
-            this.carta_jugador2.Size = new System.Drawing.Size(140, 230);
-            this.carta_jugador2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.carta_jugador2.TabIndex = 29;
-            this.carta_jugador2.TabStop = false;
-            // 
-            // carta_jugador3
-            // 
-            this.carta_jugador3.Location = new System.Drawing.Point(337, 152);
-            this.carta_jugador3.Name = "carta_jugador3";
-            this.carta_jugador3.Size = new System.Drawing.Size(140, 230);
-            this.carta_jugador3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.carta_jugador3.TabIndex = 30;
-            this.carta_jugador3.TabStop = false;
+            this.jugador3_carta1.Location = new System.Drawing.Point(337, 152);
+            this.jugador3_carta1.Name = "jugador3_carta1";
+            this.jugador3_carta1.Size = new System.Drawing.Size(140, 230);
+            this.jugador3_carta1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.jugador3_carta1.TabIndex = 30;
+            this.jugador3_carta1.TabStop = false;
             // 
             // jugador1
             // 
             this.jugador1.AutoSize = true;
-            this.jugador1.Location = new System.Drawing.Point(286, 465);
+            this.jugador1.Font = new System.Drawing.Font("Arial", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.jugador1.Location = new System.Drawing.Point(26, 498);
             this.jugador1.Name = "jugador1";
-            this.jugador1.Size = new System.Drawing.Size(54, 17);
+            this.jugador1.Size = new System.Drawing.Size(117, 38);
             this.jugador1.TabIndex = 36;
             this.jugador1.Text = "label11";
             // 
             // jugador4
             // 
             this.jugador4.AutoSize = true;
-            this.jugador4.Location = new System.Drawing.Point(629, 132);
+            this.jugador4.Font = new System.Drawing.Font("Arial", 19.8F);
+            this.jugador4.Location = new System.Drawing.Point(626, 114);
             this.jugador4.Name = "jugador4";
-            this.jugador4.Size = new System.Drawing.Size(54, 17);
+            this.jugador4.Size = new System.Drawing.Size(119, 38);
             this.jugador4.TabIndex = 35;
             this.jugador4.Text = "label10";
             this.jugador4.Visible = false;
@@ -507,9 +588,10 @@
             // jugador3
             // 
             this.jugador3.AutoSize = true;
-            this.jugador3.Location = new System.Drawing.Point(375, 132);
+            this.jugador3.Font = new System.Drawing.Font("Arial", 19.8F);
+            this.jugador3.Location = new System.Drawing.Point(356, 114);
             this.jugador3.Name = "jugador3";
-            this.jugador3.Size = new System.Drawing.Size(46, 17);
+            this.jugador3.Size = new System.Drawing.Size(101, 38);
             this.jugador3.TabIndex = 34;
             this.jugador3.Text = "label9";
             this.jugador3.Visible = false;
@@ -517,27 +599,19 @@
             // jugador2
             // 
             this.jugador2.AutoSize = true;
-            this.jugador2.Location = new System.Drawing.Point(122, 132);
+            this.jugador2.Font = new System.Drawing.Font("Arial", 19.8F);
+            this.jugador2.Location = new System.Drawing.Point(26, 114);
             this.jugador2.Name = "jugador2";
-            this.jugador2.Size = new System.Drawing.Size(46, 17);
+            this.jugador2.Size = new System.Drawing.Size(101, 38);
             this.jugador2.TabIndex = 33;
             this.jugador2.Text = "label8";
             this.jugador2.Visible = false;
-            // 
-            // carta_jugador4
-            // 
-            this.carta_jugador4.Location = new System.Drawing.Point(589, 152);
-            this.carta_jugador4.Name = "carta_jugador4";
-            this.carta_jugador4.Size = new System.Drawing.Size(140, 230);
-            this.carta_jugador4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.carta_jugador4.TabIndex = 32;
-            this.carta_jugador4.TabStop = false;
             // 
             // textBox_puntos
             // 
             this.textBox_puntos.Enabled = false;
             this.textBox_puntos.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_puntos.Location = new System.Drawing.Point(645, 554);
+            this.textBox_puntos.Location = new System.Drawing.Point(686, 601);
             this.textBox_puntos.Name = "textBox_puntos";
             this.textBox_puntos.Size = new System.Drawing.Size(87, 34);
             this.textBox_puntos.TabIndex = 28;
@@ -546,7 +620,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Agency FB", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(639, 518);
+            this.label7.Location = new System.Drawing.Point(680, 556);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(106, 33);
             this.label7.TabIndex = 27;
@@ -557,7 +631,7 @@
             this.btn_emepezar.BackColor = System.Drawing.Color.Gray;
             this.btn_emepezar.Font = new System.Drawing.Font("Agency FB", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_emepezar.ForeColor = System.Drawing.Color.White;
-            this.btn_emepezar.Location = new System.Drawing.Point(806, 774);
+            this.btn_emepezar.Location = new System.Drawing.Point(806, 848);
             this.btn_emepezar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_emepezar.Name = "btn_emepezar";
             this.btn_emepezar.Padding = new System.Windows.Forms.Padding(0, 0, 0, 7);
@@ -567,12 +641,72 @@
             this.btn_emepezar.UseVisualStyleBackColor = false;
             this.btn_emepezar.Click += new System.EventHandler(this.btn_emepezar_Click);
             // 
+            // jugador3_carta2
+            // 
+            this.jugador3_carta2.Location = new System.Drawing.Point(483, 75);
+            this.jugador3_carta2.Name = "jugador3_carta2";
+            this.jugador3_carta2.Size = new System.Drawing.Size(109, 127);
+            this.jugador3_carta2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.jugador3_carta2.TabIndex = 42;
+            this.jugador3_carta2.TabStop = false;
+            this.jugador3_carta2.Visible = false;
+            // 
+            // jugador3_carta3
+            // 
+            this.jugador3_carta3.Location = new System.Drawing.Point(483, 208);
+            this.jugador3_carta3.Name = "jugador3_carta3";
+            this.jugador3_carta3.Size = new System.Drawing.Size(109, 127);
+            this.jugador3_carta3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.jugador3_carta3.TabIndex = 43;
+            this.jugador3_carta3.TabStop = false;
+            this.jugador3_carta3.Visible = false;
+            // 
+            // jugador3_carta4
+            // 
+            this.jugador3_carta4.Location = new System.Drawing.Point(483, 341);
+            this.jugador3_carta4.Name = "jugador3_carta4";
+            this.jugador3_carta4.Size = new System.Drawing.Size(109, 127);
+            this.jugador3_carta4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.jugador3_carta4.TabIndex = 44;
+            this.jugador3_carta4.TabStop = false;
+            this.jugador3_carta4.Visible = false;
+            // 
+            // jugador4_carta2
+            // 
+            this.jugador4_carta2.Location = new System.Drawing.Point(779, 75);
+            this.jugador4_carta2.Name = "jugador4_carta2";
+            this.jugador4_carta2.Size = new System.Drawing.Size(109, 127);
+            this.jugador4_carta2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.jugador4_carta2.TabIndex = 45;
+            this.jugador4_carta2.TabStop = false;
+            this.jugador4_carta2.Visible = false;
+            // 
+            // jugador4_carta3
+            // 
+            this.jugador4_carta3.Location = new System.Drawing.Point(779, 208);
+            this.jugador4_carta3.Name = "jugador4_carta3";
+            this.jugador4_carta3.Size = new System.Drawing.Size(109, 127);
+            this.jugador4_carta3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.jugador4_carta3.TabIndex = 46;
+            this.jugador4_carta3.TabStop = false;
+            this.jugador4_carta3.Visible = false;
+            // 
+            // jugador4_carta4
+            // 
+            this.jugador4_carta4.Location = new System.Drawing.Point(779, 341);
+            this.jugador4_carta4.Name = "jugador4_carta4";
+            this.jugador4_carta4.Size = new System.Drawing.Size(109, 127);
+            this.jugador4_carta4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.jugador4_carta4.TabIndex = 47;
+            this.jugador4_carta4.TabStop = false;
+            this.jugador4_carta4.Visible = false;
+            // 
             // Partida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(203)))), ((int)(((byte)(196)))));
-            this.ClientSize = new System.Drawing.Size(1336, 1032);
+            this.ClientSize = new System.Drawing.Size(1553, 1045);
             this.Controls.Add(this.panel_abandonar);
             this.Controls.Add(this.btn_emepezar);
             this.Controls.Add(this.panel_dejarPartida);
@@ -589,6 +723,8 @@
             this.Controls.Add(this.panel_tablero);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Partida";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Partida";
             this.Load += new System.EventHandler(this.Partida_Load);
             this.panel_abandonar.ResumeLayout(false);
@@ -604,9 +740,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_carta4)).EndInit();
             this.panel_tablero.ResumeLayout(false);
             this.panel_tablero.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.carta_jugador2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.carta_jugador3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.carta_jugador4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jugador2_carta4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jugador2_carta3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jugador2_carta2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jugador2_carta1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jugador4_carta1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jugador3_carta1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jugador3_carta2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jugador3_carta3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jugador3_carta4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jugador4_carta2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jugador4_carta3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.jugador4_carta4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -646,14 +791,24 @@
         private System.Windows.Forms.Panel panel_tablero;
         private System.Windows.Forms.TextBox textBox_puntos;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.PictureBox carta_jugador4;
-        private System.Windows.Forms.PictureBox carta_jugador3;
-        private System.Windows.Forms.PictureBox carta_jugador2;
+        private System.Windows.Forms.PictureBox jugador4_carta1;
+        private System.Windows.Forms.PictureBox jugador3_carta1;
+        private System.Windows.Forms.PictureBox jugador2_carta1;
         private System.Windows.Forms.Button btn_emepezar;
         private System.Windows.Forms.Label jugador1;
         private System.Windows.Forms.Label jugador4;
         private System.Windows.Forms.Label jugador3;
         private System.Windows.Forms.Label jugador2;
         private System.Windows.Forms.Label label_turno;
+        private System.Windows.Forms.TextBox textBox_puntosFinal;
+        private System.Windows.Forms.PictureBox jugador2_carta4;
+        private System.Windows.Forms.PictureBox jugador2_carta3;
+        private System.Windows.Forms.PictureBox jugador2_carta2;
+        private System.Windows.Forms.PictureBox jugador4_carta4;
+        private System.Windows.Forms.PictureBox jugador4_carta3;
+        private System.Windows.Forms.PictureBox jugador4_carta2;
+        private System.Windows.Forms.PictureBox jugador3_carta4;
+        private System.Windows.Forms.PictureBox jugador3_carta3;
+        private System.Windows.Forms.PictureBox jugador3_carta2;
     }
 }

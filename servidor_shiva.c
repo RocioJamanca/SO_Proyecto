@@ -861,14 +861,27 @@ void *atender_cliente(void *conectados)
 			
 			
 		}
-		else if (codigo==16)
+		else if (codigo==16)//finalizar
 		{
 			printf("Codigo 16.\n");
 			p = strtok( NULL, "/");
 			int idPartida=atoi(p); //extraemos idPartida
-			
-			sprintf(respuesta,"16/%d/",idPartida);
-			write(sock_conn,respuesta,strlen(respuesta));
+			p = strtok( NULL, "/");
+			int puntos=atoi(p); //extraemos puntos
+			p = strtok( NULL, "/"); //extraemos palo
+			char palo[100];
+			strcpy(palo,p);       
+			p = strtok( NULL, "/"); //extraemos numero
+			char numero[100];
+			strcpy(numero,p);
+			p = strtok( NULL, "/");
+			int turno=atoi(p); //extraemos puntos
+				
+			sprintf(respuesta,"16/%d/%s/%d/%s/%s/%d/",idPartida,nombre,puntos,palo,numero,turno);
+			for(int i=0;i<lp->listaP[idPartida].numeroPersonas;i++)
+			{
+				write(lp->listaP[idPartida].listaJugador[i].id,respuesta, strlen(respuesta));
+			}
 			printf("Codigo 16. Envio: %s\n",respuesta);
 		}
 		else if (codigo==17)//Saber las personas que estan jugando
@@ -886,6 +899,10 @@ void *atender_cliente(void *conectados)
 			strcat(respuesta,"/");
 			printf("Codigo 17. Envio: %s\n",respuesta);
 			write(sock_conn,respuesta,strlen(respuesta));
+		}
+		else if(codigo==18)
+		{
+			
 		}
 		
 	}
@@ -926,7 +943,7 @@ int main(int argc, char *argv[])
 	//htonl formatea el numero que recibe al formato necesario
 	serv_adr.sin_addr.s_addr = htonl(INADDR_ANY); /* El fica IP local */
 	// establecemos el puerto de escucha
-	serv_adr.sin_port = htons(50023);
+	serv_adr.sin_port = htons(50024);
 	if (bind(sock_listen, (struct sockaddr *) &serv_adr, sizeof(serv_adr)) < 0)
 		printf("Error al bind");
 	

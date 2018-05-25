@@ -20,13 +20,17 @@ namespace MenuConsultas
         List<string> listaAbandonar = new List<string>();
         List<int> numCartas = new List<int>();
         List<int> puntos = new List<int>();
+        List<int> cartaPalo = new List<int>();
+        List<int> cartaNumero = new List<int>();
+        List<string> jugadorFinalizar = new List<string>();
         Image[,] cartas = new Image[13, 4];
-        int turnoCliente;
-        string nombreAnfitrion;
+        int turnoCliente;//turno de la persona siguiente
+        int puntosFinal;
+       
         public void mostrarNombre(string nombre)
         {
             label1.Text = nombre;
-            
+           
         }
         delegate void DelegadoParaEscribirNombre(string mensaje);
 
@@ -143,48 +147,186 @@ namespace MenuConsultas
 
         public void mostrarCarta(int palo,int numero)
         {
-            int puntosFinal=0;
+            btn_emepezar.Visible = false;
+            
             panel_tablero.Visible = true;
             if (numCartas.Count == 1)
             {
                 pictureBox_carta1.Image = cartas[numero, palo];
+                cartaPalo.Add(palo);
+                cartaNumero.Add(numero);
                 puntosFinal = puntos[0];
                 textBox_puntos.Text = puntosFinal.ToString();
             }
             else if (numCartas.Count == 2)
             {
                 pictureBox_carta2.Image = cartas[numero, palo];
+                cartaPalo.Add(palo);
+                cartaNumero.Add(numero);
                 puntosFinal = puntos[0]+puntos[1];
                 textBox_puntos.Text = puntosFinal.ToString();
             }
             else if (numCartas.Count == 3)
             {
                 pictureBox_carta3.Image = cartas[numero, palo];
+                cartaPalo.Add(palo);
+                cartaNumero.Add(numero);
                 puntosFinal = puntos[0] + puntos[1]+puntos[2];
                 textBox_puntos.Text = puntosFinal.ToString();
             }
             else if (numCartas.Count == 4)
             {
                 pictureBox_carta4.Image = cartas[numero, palo];
+                cartaPalo.Add(palo);
+                cartaNumero.Add(numero);
                 puntosFinal = puntos[0] + puntos[1]+puntos[2]+puntos[3];
                 textBox_puntos.Text = puntosFinal.ToString();
+                //btn_nuevaCarta.Visible = false;
+               // btn_plantarse.Visible = false;
+                textBox_puntosFinal.Visible = true;
+                textBox_puntosFinal.Text = "Has llegado a 4 cartas: " + puntosFinal;
             }
 
+           
+
+            int num;
+            string numeros="";
+            int pal;
+            string palos = "";
+            
             if (puntosFinal == 21)
             {
-                //enviamos ganador y acabar con el turno
-                MessageBox.Show(nombre + "has ganado");
-                //pasar el turno
+                textBox_puntosFinal.Visible = true;
+                textBox_puntosFinal.Text = "Has llegado a: " + puntosFinal;
+
             }
             else if (puntosFinal > 21)
             {
-                //enviamos que ha perdido
-                MessageBox.Show(nombre + "has pasado de 21");
+                textBox_puntosFinal.Visible = true;
+                textBox_puntosFinal.Text = "Tus puntos superan los 21, puntos totales: " + puntosFinal;
+
+            }
+            if (numCartas.Count == 4 || puntosFinal == 21 || puntosFinal > 21)
+            {
+                for (int i = 0; i < cartaNumero.Count; i++)
+                {
+                    num = cartaNumero[i];
+                    numeros = numeros + "*" + num;
+                    pal = cartaPalo[i];
+                    palos = palos + "*" + pal;
+
+                }
+
+                string mensaje = "16/" + nombre + "/" + idPartida + "/" + puntosFinal + "/" + palos + "/" + numeros + "/" + turnoCliente;
+                byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);
+                server.Send(msg);
+
+                pasarFinalizar(puntosFinal,palos,numeros);
             }
         }
-        delegate void DelegadoParaMostrarCarta(int palo,int numero);
 
-        public Partida(string idPartida, Socket server, string nombre)
+        public void pasarFinaliza(int puntosFinal, string palos, string numeros)
+        {
+
+        }
+
+       delegate void DelegadoParaMostrarCarta(int palo,int numero);
+       public void  tomaCartasFinalizado(string personaFinal,int puntos, string palos,string numeros,int torn)
+       {
+           DelegadoParaCartasFinal delegadoFinal = new DelegadoParaCartasFinal(mostrarCartasFinal);
+           panel_tablero.Invoke(delegadoFinal, new object[] {personaFinal,puntos,palos, numeros,torn});
+       }
+
+       public void mostrarCartasFinal(string personaFinal, int puntos, string palos, string numeros, int torn)
+       {
+           jugadorFinalizar.Add(personaFinal);
+
+           int numCartas=1;
+           string[] paloSeparado = palos.Split('*');
+           string[] numeroSeparado = numeros.Split('*');
+           while (numCartas < palos.Split('*').Count())
+           {
+               if (jugadorFinalizar.Count == 1)
+               {
+                   switch (numCartas)
+                   {
+                       case 1:
+                           jugador2_carta1.Image = cartas[Convert.ToInt32(numeroSeparado[1]), Convert.ToInt32(paloSeparado[1])];
+                           numCartas++;
+                           break;
+                       case 2:
+                           jugador2_carta2.Visible = true;
+                           jugador2_carta2.Image = cartas[Convert.ToInt32(numeroSeparado[2]), Convert.ToInt32(paloSeparado[2])];
+                           numCartas++;
+                           break;
+                       case 3:
+                           jugador2_carta3.Visible = true;
+                           jugador2_carta3.Image = cartas[Convert.ToInt32(numeroSeparado[3]), Convert.ToInt32(paloSeparado[3])];
+                           numCartas++;
+                           break;
+                       case 4:
+                           jugador2_carta4.Visible = true;
+                           jugador2_carta4.Image = cartas[Convert.ToInt32(numeroSeparado[4]), Convert.ToInt32(paloSeparado[4])];
+                           numCartas++;
+                           break;
+                   }
+               }
+               if (jugadorFinalizar.Count == 2)
+               {
+                   switch (numCartas)
+                   {
+                       case 1:
+                           jugador3_carta1.Image = cartas[Convert.ToInt32(numeroSeparado[1]), Convert.ToInt32(paloSeparado[1])];
+                           numCartas++;
+                           break;
+                       case 2:
+                           jugador3_carta2.Visible = true;
+                           jugador3_carta2.Image = cartas[Convert.ToInt32(numeroSeparado[2]), Convert.ToInt32(paloSeparado[2])];
+                           numCartas++;
+                           break;
+                       case 3:
+                           jugador3_carta3.Visible = true;
+                           jugador3_carta3.Image = cartas[Convert.ToInt32(numeroSeparado[3]), Convert.ToInt32(paloSeparado[3])];
+                           numCartas++;
+                           break;
+                       case 4:
+                           jugador3_carta4.Visible = true;
+                           jugador3_carta4.Image = cartas[Convert.ToInt32(numeroSeparado[4]), Convert.ToInt32(paloSeparado[4])];
+                           numCartas++;
+                           break;
+                   }
+               }
+               if (jugadorFinalizar.Count == 3)
+               {
+                   switch (numCartas)
+                   {
+                       case 1:
+                           jugador4_carta1.Image = cartas[Convert.ToInt32(numeroSeparado[1]), Convert.ToInt32(paloSeparado[1])];
+                           numCartas++;
+                           break;
+                       case 2:
+                           jugador4_carta2.Visible = true;
+                           jugador4_carta2.Image = cartas[Convert.ToInt32(numeroSeparado[2]), Convert.ToInt32(paloSeparado[2])];
+                           numCartas++;
+                           break;
+                       case 3:
+                           jugador4_carta3.Visible = true;
+                           jugador4_carta3.Image = cartas[Convert.ToInt32(numeroSeparado[3]), Convert.ToInt32(paloSeparado[3])];
+                           numCartas++;
+                           break;
+                       case 4:
+                           jugador4_carta4.Visible = true;
+                           jugador4_carta4.Image = cartas[Convert.ToInt32(numeroSeparado[4]), Convert.ToInt32(paloSeparado[4])];
+                           numCartas++;
+                           break;
+                   }
+               }
+           }
+           
+       }
+
+       delegate void DelegadoParaCartasFinal(string personaFinal, int puntos, string palos, string numeros, int torn);
+       public Partida(string idPartida, Socket server, string nombre)
         {
             InitializeComponent();
             this.idPartida = idPartida;
@@ -286,10 +428,7 @@ namespace MenuConsultas
             DelegadoParaMostrarChat delegadoMostrarChat = new DelegadoParaMostrarChat(mostrarChat);
             label1.Invoke(delegadoMostrarChat, new object[] { frase }); //Invoca al thread que crea el objeto(label1)
         }
-        public void tomaAnfitrion(string nombreAnfitrion)
-        {
-            this.nombreAnfitrion = nombreAnfitrion;
-        }
+      
         public void tomaNombreAbandona(string nombreAbandona)
         {
             listaAbandonar.Add(nombreAbandona);
@@ -350,6 +489,10 @@ namespace MenuConsultas
         public void tomaCarta(int palo, int numero)
         {
             numCartas.Add(1);
+            if (numero > 9)
+                numero = 9;
+            if (numero == 0)
+                numero = 10;
             puntos.Add(numero+1);
             DelegadoParaMostrarCarta delegadoCarta = new DelegadoParaMostrarCarta(mostrarCarta);
             panel_tablero.Invoke(delegadoCarta, new object[] { palo,numero});
@@ -417,6 +560,7 @@ namespace MenuConsultas
          public void tomaTurno(int turno)
         {
             this.turnoCliente = turno;
+            MessageBox.Show(nombre + " turno: " + turno);
         }
         private void btn_nuevaCarta_Click(object sender, EventArgs e)
         {
@@ -454,13 +598,13 @@ namespace MenuConsultas
                     {
 
                         //MessageBox.Show("Hay 2 Jugadores");
-                        carta_jugador2.Image = MenuConsultas.Properties.Resources.back_card___copia;
+                        jugador2_carta1.Image = MenuConsultas.Properties.Resources.back_card___copia;
                         jugador2.Text = "Jugador 2";
-                        jugador2.Location = new Point(233, 132);
-                        carta_jugador2.Location = new Point(233, 155);
+                      //  jugador2.Location = new Point(233, 132);
+                       // carta_jugador2.Location = new Point(233, 155);
 
                         jugador2.Visible = true;
-                        carta_jugador2.Visible = true;
+                        jugador2_carta1.Visible = true;
 
 
                     }
@@ -469,44 +613,44 @@ namespace MenuConsultas
                 {
                     //MessageBox.Show("Hay 3 Jugadores");
                     jugador1.Text = nombre;
-                    carta_jugador2.Image = MenuConsultas.Properties.Resources.back_card___copia;
+                    jugador2_carta1.Image = MenuConsultas.Properties.Resources.back_card___copia;
                     jugador2.Text = "Jugador 2";
-                    carta_jugador3.Image = MenuConsultas.Properties.Resources.back_card___copia;
+                    jugador3_carta1.Image = MenuConsultas.Properties.Resources.back_card___copia;
                     jugador3.Text = "Jugador 3";
-                    jugador2.Location = new Point(125, 132);
-                    carta_jugador2.Location = new Point(125, 152);
-                    jugador3.Location = new Point(411, 132);
-                    carta_jugador3.Location = new Point(411, 152);
+                    //jugador2.Location = new Point(125, 132);
+                    ////jugador2_carta1.Location = new Point(125, 152);
+                    ////jugador3.Location = new Point(411, 132);
+                    //jugador3_carta1.Location = new Point(411, 152);
 
                     jugador2.Visible = true;
-                    carta_jugador2.Visible = true;
+                    jugador2_carta1.Visible = true;
                     jugador3.Visible = true;
-                    carta_jugador3.Visible = true;
+                    jugador3_carta1.Visible = true;
 
                 }
                 if (numeroJugadores == 4)
                 {
                     //MessageBox.Show("Hay 4 Jugadores");
                     jugador1.Text = nombre;
-                    carta_jugador2.Image = MenuConsultas.Properties.Resources.back_card___copia;
+                    jugador2_carta1.Image = MenuConsultas.Properties.Resources.back_card___copia;
                     jugador2.Text = "Jugador 2";
-                    carta_jugador3.Image = MenuConsultas.Properties.Resources.back_card___copia;
+                    jugador3_carta1.Image = MenuConsultas.Properties.Resources.back_card___copia;
                     jugador3.Text = "Jugador 3";
-                    carta_jugador4.Image = MenuConsultas.Properties.Resources.back_card___copia;
+                    jugador4_carta1.Image = MenuConsultas.Properties.Resources.back_card___copia;
                     jugador4.Text = "Jugador 4";
-                    jugador2.Location = new Point(77, 132);
-                    carta_jugador2.Location = new Point(77, 152);
-                    jugador3.Location = new Point(337, 132);
-                    carta_jugador3.Location = new Point(337, 152);
-                    jugador4.Location = new Point(589, 132);
-                    carta_jugador4.Location = new Point(589, 152);
+                   // jugador2.Location = new Point(77, 132);
+                   // carta_jugador2.Location = new Point(77, 152);
+                   // jugador3.Location = new Point(337, 132);
+                   // carta_jugador3.Location = new Point(337, 152);
+                   // jugador4.Location = new Point(589, 132);
+                 //   carta_jugador4.Location = new Point(589, 152);
 
                     jugador2.Visible = true;
-                    carta_jugador2.Visible = true;
+                    jugador2_carta1.Visible = true;
                     jugador3.Visible = true;
-                    carta_jugador3.Visible = true;
+                    jugador3_carta1.Visible = true;
                     jugador4.Visible = true;
-                    carta_jugador4.Visible = true;
+                    jugador4_carta1.Visible = true;
                 }
 
             jugador1.Text = nombre;
@@ -535,6 +679,11 @@ namespace MenuConsultas
         }
 
         private void panel_dejarPartida_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void jugador2_carta4_Click(object sender, EventArgs e)
         {
 
         }
