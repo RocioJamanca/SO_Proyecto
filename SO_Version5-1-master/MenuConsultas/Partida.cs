@@ -26,11 +26,21 @@ namespace MenuConsultas
         Image[,] cartas = new Image[13, 4];
         int turnoCliente;//turno de la persona siguiente
         int puntosFinal;
-       
+        string paloss;
+        string numeross;
+
+
+        private void timer1_Tick(object sender, System.EventArgs e) // TIMER FECHA
+        {
+            int segundos;
+            segundos = Convert.ToInt32(label9.Text) + 1;
+            label9.Text = Convert.ToString(segundos);
+        }
+
         public void mostrarNombre(string nombre)
         {
             label1.Text = nombre;
-           
+            label8.Text = DateTime.Today.ToShortDateString();
         }
         delegate void DelegadoParaEscribirNombre(string mensaje);
 
@@ -225,9 +235,19 @@ namespace MenuConsultas
             }
         }
 
-        public void pasarFinaliza(int puntosFinal, string palos, string numeros)
+        public void pasarFinalizar(int puntosFinal, string palos, string numeros)
+        {
+            this.puntosFinal = puntosFinal;
+            this.paloss = palos;
+            this.numeross = numeros;
+
+        }
+        private void btn_plantarse_Click(object sender, EventArgs e)
         {
 
+            string mensaje = "16/" + nombre + "/" + idPartida+"/"+puntosFinal + "/" + paloss + "/" + numeross + "/" + turnoCliente; ;
+            byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);
+            server.Send(msg);
         }
 
        delegate void DelegadoParaMostrarCarta(int palo,int numero);
@@ -336,6 +356,10 @@ namespace MenuConsultas
 
         private void Partida_Load(object sender, EventArgs e)
         {
+
+            timer1.Interval = 1000; // Set time interval to 1 second
+            timer1.Enabled = true; // Start launching tick events every 1 second
+
             numero_partida.Text = idPartida.ToString();
             DelegadoParaEscribirNombre delegado = new DelegadoParaEscribirNombre(mostrarNombre);
             label1.Invoke(delegado, new object[] { nombre }); //Invoca al thread que crea el objeto(label1)     
@@ -570,12 +594,6 @@ namespace MenuConsultas
             server.Send(msg);
 
         }
-        private void btn_plantarse_Click(object sender, EventArgs e)
-        {
-            string mensaje = "16/" + nombre + "/" + idPartida;
-            byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);
-            server.Send(msg);
-        }
 
         public void miTurno(string nombreJugadorAnterior,string nombreTocaJugar,int turno,int numeroJugadores,string nombreJugadores)
         {
@@ -684,6 +702,11 @@ namespace MenuConsultas
         }
 
         private void jugador2_carta4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel_tablero_Paint(object sender, PaintEventArgs e)
         {
 
         }

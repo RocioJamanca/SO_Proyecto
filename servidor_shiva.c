@@ -856,7 +856,7 @@ void *atender_cliente(void *conectados)
 				write(lp->listaP[idPartida].listaJugador[i].id,notificacion, strlen(notificacion));
 			}
 			
-
+			
 			printf("Codigo 18.Turno 1 Envio: %s\n",notificacion);
 			
 			
@@ -876,7 +876,8 @@ void *atender_cliente(void *conectados)
 			strcpy(numero,p);
 			p = strtok( NULL, "/");
 			int turno=atoi(p); //extraemos puntos
-				
+			
+			//Guardar ganador y perdedores
 			sprintf(respuesta,"16/%d/%s/%d/%s/%s/%d/",idPartida,nombre,puntos,palo,numero,turno);
 			for(int i=0;i<lp->listaP[idPartida].numeroPersonas;i++)
 			{
