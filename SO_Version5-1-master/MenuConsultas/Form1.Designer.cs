@@ -59,11 +59,12 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(154)))), ((int)(((byte)(148)))));
-            this.label1.Font = new System.Drawing.Font("Agency FB", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(139, 11);
+            this.label1.Location = new System.Drawing.Point(104, 9);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(576, 73);
+            this.label1.Size = new System.Drawing.Size(644, 55);
             this.label1.TabIndex = 0;
             this.label1.Text = "Consultas a la base de datos";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -71,13 +72,13 @@
             // btnFecha
             // 
             this.btnFecha.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(154)))), ((int)(((byte)(148)))));
-            this.btnFecha.Font = new System.Drawing.Font("Agency FB", 11.4F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.4F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFecha.ForeColor = System.Drawing.Color.White;
-            this.btnFecha.Location = new System.Drawing.Point(331, 278);
-            this.btnFecha.Margin = new System.Windows.Forms.Padding(11, 10, 11, 10);
+            this.btnFecha.Location = new System.Drawing.Point(248, 226);
+            this.btnFecha.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.btnFecha.Name = "btnFecha";
-            this.btnFecha.Padding = new System.Windows.Forms.Padding(4);
-            this.btnFecha.Size = new System.Drawing.Size(184, 78);
+            this.btnFecha.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.btnFecha.Size = new System.Drawing.Size(138, 63);
             this.btnFecha.TabIndex = 1;
             this.btnFecha.Text = "Obtener fecha de la partida que jugó un jugador";
             this.btnFecha.UseVisualStyleBackColor = false;
@@ -86,13 +87,13 @@
             // btnContraseña
             // 
             this.btnContraseña.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(154)))), ((int)(((byte)(148)))));
-            this.btnContraseña.Font = new System.Drawing.Font("Agency FB", 11.6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnContraseña.ForeColor = System.Drawing.Color.White;
-            this.btnContraseña.Location = new System.Drawing.Point(331, 367);
-            this.btnContraseña.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnContraseña.Location = new System.Drawing.Point(248, 298);
+            this.btnContraseña.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnContraseña.Name = "btnContraseña";
-            this.btnContraseña.Padding = new System.Windows.Forms.Padding(4);
-            this.btnContraseña.Size = new System.Drawing.Size(184, 71);
+            this.btnContraseña.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.btnContraseña.Size = new System.Drawing.Size(138, 58);
             this.btnContraseña.TabIndex = 2;
             this.btnContraseña.Text = "Obtener la contraseña del jugador";
             this.btnContraseña.UseVisualStyleBackColor = false;
@@ -101,13 +102,13 @@
             // btnGanador
             // 
             this.btnGanador.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(154)))), ((int)(((byte)(148)))));
-            this.btnGanador.Font = new System.Drawing.Font("Agency FB", 11.6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGanador.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGanador.ForeColor = System.Drawing.Color.White;
-            this.btnGanador.Location = new System.Drawing.Point(331, 450);
-            this.btnGanador.Margin = new System.Windows.Forms.Padding(11, 10, 11, 10);
+            this.btnGanador.Location = new System.Drawing.Point(248, 366);
+            this.btnGanador.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.btnGanador.Name = "btnGanador";
-            this.btnGanador.Padding = new System.Windows.Forms.Padding(4);
-            this.btnGanador.Size = new System.Drawing.Size(184, 73);
+            this.btnGanador.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.btnGanador.Size = new System.Drawing.Size(138, 59);
             this.btnGanador.TabIndex = 3;
             this.btnGanador.Text = "Obtener número de partidas ganadas";
             this.btnGanador.UseVisualStyleBackColor = false;
@@ -116,33 +117,34 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(154)))), ((int)(((byte)(148)))));
-            this.pictureBox1.Location = new System.Drawing.Point(-3, -1);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(875, 105);
+            this.pictureBox1.Size = new System.Drawing.Size(818, 85);
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
             // pbQueCambiaAlConectar
             // 
             this.pbQueCambiaAlConectar.BackColor = System.Drawing.Color.DarkGray;
-            this.pbQueCambiaAlConectar.Location = new System.Drawing.Point(104, 37);
-            this.pbQueCambiaAlConectar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pbQueCambiaAlConectar.Location = new System.Drawing.Point(78, 30);
+            this.pbQueCambiaAlConectar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pbQueCambiaAlConectar.Name = "pbQueCambiaAlConectar";
-            this.pbQueCambiaAlConectar.Size = new System.Drawing.Size(32, 33);
+            this.pbQueCambiaAlConectar.Size = new System.Drawing.Size(24, 27);
             this.pbQueCambiaAlConectar.TabIndex = 5;
             this.pbQueCambiaAlConectar.TabStop = false;
             // 
             // btnConectar
             // 
             this.btnConectar.BackColor = System.Drawing.Color.Gray;
-            this.btnConectar.Font = new System.Drawing.Font("Agency FB", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConectar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConectar.ForeColor = System.Drawing.Color.White;
-            this.btnConectar.Location = new System.Drawing.Point(16, 544);
-            this.btnConectar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnConectar.Location = new System.Drawing.Point(22, 442);
+            this.btnConectar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnConectar.Name = "btnConectar";
-            this.btnConectar.Padding = new System.Windows.Forms.Padding(0, 0, 0, 7);
-            this.btnConectar.Size = new System.Drawing.Size(120, 52);
+            this.btnConectar.Padding = new System.Windows.Forms.Padding(0, 0, 0, 6);
+            this.btnConectar.Size = new System.Drawing.Size(117, 42);
             this.btnConectar.TabIndex = 6;
             this.btnConectar.Text = "Conectar";
             this.btnConectar.UseVisualStyleBackColor = false;
@@ -151,13 +153,13 @@
             // btnRegistrar
             // 
             this.btnRegistrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(154)))), ((int)(((byte)(148)))));
-            this.btnRegistrar.Font = new System.Drawing.Font("Agency FB", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistrar.ForeColor = System.Drawing.Color.White;
-            this.btnRegistrar.Location = new System.Drawing.Point(331, 130);
-            this.btnRegistrar.Margin = new System.Windows.Forms.Padding(11, 10, 11, 10);
+            this.btnRegistrar.Location = new System.Drawing.Point(248, 106);
+            this.btnRegistrar.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.btnRegistrar.Name = "btnRegistrar";
-            this.btnRegistrar.Padding = new System.Windows.Forms.Padding(4);
-            this.btnRegistrar.Size = new System.Drawing.Size(184, 63);
+            this.btnRegistrar.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.btnRegistrar.Size = new System.Drawing.Size(138, 51);
             this.btnRegistrar.TabIndex = 7;
             this.btnRegistrar.Text = "Registrarse";
             this.btnRegistrar.UseVisualStyleBackColor = false;
@@ -166,13 +168,13 @@
             // btnLogear
             // 
             this.btnLogear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(154)))), ((int)(((byte)(148)))));
-            this.btnLogear.Font = new System.Drawing.Font("Agency FB", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogear.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogear.ForeColor = System.Drawing.Color.White;
-            this.btnLogear.Location = new System.Drawing.Point(331, 203);
-            this.btnLogear.Margin = new System.Windows.Forms.Padding(11, 10, 11, 10);
+            this.btnLogear.Location = new System.Drawing.Point(248, 165);
+            this.btnLogear.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.btnLogear.Name = "btnLogear";
-            this.btnLogear.Padding = new System.Windows.Forms.Padding(4);
-            this.btnLogear.Size = new System.Drawing.Size(184, 63);
+            this.btnLogear.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.btnLogear.Size = new System.Drawing.Size(138, 51);
             this.btnLogear.TabIndex = 8;
             this.btnLogear.Text = "Entrar";
             this.btnLogear.UseVisualStyleBackColor = false;
@@ -182,10 +184,10 @@
             // 
             this.panel_conectados.Controls.Add(this.matriz);
             this.panel_conectados.Controls.Add(this.label2);
-            this.panel_conectados.Location = new System.Drawing.Point(543, 122);
-            this.panel_conectados.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel_conectados.Location = new System.Drawing.Point(407, 99);
+            this.panel_conectados.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel_conectados.Name = "panel_conectados";
-            this.panel_conectados.Size = new System.Drawing.Size(275, 391);
+            this.panel_conectados.Size = new System.Drawing.Size(206, 318);
             this.panel_conectados.TabIndex = 10;
             // 
             // matriz
@@ -201,13 +203,13 @@
             this.Column1});
             this.matriz.Cursor = System.Windows.Forms.Cursors.Hand;
             this.matriz.GridColor = System.Drawing.Color.White;
-            this.matriz.Location = new System.Drawing.Point(23, 34);
-            this.matriz.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.matriz.Location = new System.Drawing.Point(17, 28);
+            this.matriz.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.matriz.Name = "matriz";
             this.matriz.ReadOnly = true;
             this.matriz.RowHeadersVisible = false;
             this.matriz.RowTemplate.Height = 24;
-            this.matriz.Size = new System.Drawing.Size(205, 303);
+            this.matriz.Size = new System.Drawing.Size(154, 246);
             this.matriz.TabIndex = 11;
             this.matriz.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.matriz_CellDoubleClick);
             // 
@@ -222,24 +224,25 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Agency FB", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(17, 2);
+            this.label2.Location = new System.Drawing.Point(13, 2);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(167, 31);
+            this.label2.Size = new System.Drawing.Size(202, 24);
             this.label2.TabIndex = 0;
             this.label2.Text = "Lista de conectados:";
             // 
             // btn_desconectar
             // 
             this.btn_desconectar.BackColor = System.Drawing.Color.Gray;
-            this.btn_desconectar.Font = new System.Drawing.Font("Agency FB", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_desconectar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_desconectar.ForeColor = System.Drawing.Color.White;
-            this.btn_desconectar.Location = new System.Drawing.Point(736, 518);
-            this.btn_desconectar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_desconectar.Location = new System.Drawing.Point(482, 442);
+            this.btn_desconectar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_desconectar.Name = "btn_desconectar";
-            this.btn_desconectar.Padding = new System.Windows.Forms.Padding(0, 0, 0, 7);
-            this.btn_desconectar.Size = new System.Drawing.Size(120, 52);
+            this.btn_desconectar.Padding = new System.Windows.Forms.Padding(0, 0, 0, 6);
+            this.btn_desconectar.Size = new System.Drawing.Size(131, 42);
             this.btn_desconectar.TabIndex = 11;
             this.btn_desconectar.Text = "Desconectar";
             this.btn_desconectar.UseVisualStyleBackColor = false;
@@ -252,10 +255,10 @@
             this.panelJugadores.Controls.Add(this.btn_empezar_partida);
             this.panelJugadores.Controls.Add(this.label3);
             this.panelJugadores.ForeColor = System.Drawing.Color.Black;
-            this.panelJugadores.Location = new System.Drawing.Point(29, 122);
-            this.panelJugadores.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panelJugadores.Location = new System.Drawing.Point(22, 99);
+            this.panelJugadores.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelJugadores.Name = "panelJugadores";
-            this.panelJugadores.Size = new System.Drawing.Size(275, 391);
+            this.panelJugadores.Size = new System.Drawing.Size(206, 318);
             this.panelJugadores.TabIndex = 12;
             // 
             // jugadores
@@ -271,13 +274,13 @@
             this.dataGridViewButtonColumn1});
             this.jugadores.Cursor = System.Windows.Forms.Cursors.Hand;
             this.jugadores.GridColor = System.Drawing.Color.White;
-            this.jugadores.Location = new System.Drawing.Point(23, 35);
-            this.jugadores.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.jugadores.Location = new System.Drawing.Point(17, 28);
+            this.jugadores.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.jugadores.Name = "jugadores";
             this.jugadores.ReadOnly = true;
             this.jugadores.RowHeadersVisible = false;
             this.jugadores.RowTemplate.Height = 24;
-            this.jugadores.Size = new System.Drawing.Size(205, 155);
+            this.jugadores.Size = new System.Drawing.Size(154, 126);
             this.jugadores.TabIndex = 13;
             // 
             // dataGridViewButtonColumn1
@@ -291,13 +294,13 @@
             // btn_empezar_partida
             // 
             this.btn_empezar_partida.BackColor = System.Drawing.Color.Gray;
-            this.btn_empezar_partida.Font = new System.Drawing.Font("Agency FB", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_empezar_partida.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_empezar_partida.ForeColor = System.Drawing.Color.White;
-            this.btn_empezar_partida.Location = new System.Drawing.Point(23, 328);
-            this.btn_empezar_partida.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_empezar_partida.Location = new System.Drawing.Point(17, 266);
+            this.btn_empezar_partida.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_empezar_partida.Name = "btn_empezar_partida";
-            this.btn_empezar_partida.Padding = new System.Windows.Forms.Padding(0, 0, 0, 7);
-            this.btn_empezar_partida.Size = new System.Drawing.Size(197, 52);
+            this.btn_empezar_partida.Padding = new System.Windows.Forms.Padding(0, 0, 0, 6);
+            this.btn_empezar_partida.Size = new System.Drawing.Size(148, 42);
             this.btn_empezar_partida.TabIndex = 12;
             this.btn_empezar_partida.Text = "Empezar partida";
             this.btn_empezar_partida.UseVisualStyleBackColor = false;
@@ -306,21 +309,22 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Agency FB", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(17, 2);
+            this.label3.Location = new System.Drawing.Point(13, 2);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(156, 31);
+            this.label3.Size = new System.Drawing.Size(187, 24);
             this.label3.TabIndex = 0;
             this.label3.Text = "Lista de jugadores:";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(203)))), ((int)(((byte)(196)))));
-            this.ClientSize = new System.Drawing.Size(867, 551);
+            this.ClientSize = new System.Drawing.Size(818, 550);
             this.Controls.Add(this.panelJugadores);
             this.Controls.Add(this.btn_desconectar);
             this.Controls.Add(this.panel_conectados);
@@ -335,7 +339,7 @@
             this.Controls.Add(this.pictureBox1);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(203)))), ((int)(((byte)(196)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);

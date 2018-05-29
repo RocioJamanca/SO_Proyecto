@@ -121,3 +121,5 @@ C:\Users\Rocio\Desktop\PrototipoJuego\SO_Version5-1-master\SO_Proyecto\SO_Versio
 C:\Users\Rocio\Desktop\PrototipoJuego\SO_Version5-1-master\SO_Proyecto\SO_Version5-1-master\MenuConsultas\obj\x86\Debug\MenuConsultas.Partida.resources
 C:\Users\Rocio\Desktop\PrototipoJuego\SO_Version5-1-master\SO_Proyecto\SO_Version5-1-master\MenuConsultas\obj\x86\Debug\MenuConsultas.Properties.Resources.resources
 C:\Users\Rocio\Desktop\PrototipoJuego\SO_Version5-1-master\SO_Proyecto\SO_Version5-1-master\MenuConsultas\obj\x86\Debug\MenuConsultas.csproj.GenerateResource.Cache
+C:\Users\stiiv\Documents\GitHub\SO_Proyecto\SO_Version5-1-master\MenuConsultas\obj\x86\Debug\MenuConsultas.exe
+C:\Users\stiiv\Documents\GitHub\SO_Proyecto\SO_Version5-1-master\MenuConsultas\obj\x86\Debug\MenuConsultas.pdb
