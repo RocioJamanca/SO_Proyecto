@@ -26,9 +26,11 @@ namespace MenuConsultas
         Image[,] cartas = new Image[13, 4];
         int turnoCliente;//turno de la persona siguiente
         int puntosFinal;
-        string paloss;
-        string numeross;
+        string paloss = "";
+        string numeross = "";
 
+        //Variable para saber si quiero recibir mas cartas. 0->Si, 1->No
+        int quieroMasCartas = 0;
 
         private void timer1_Tick(object sender, System.EventArgs e) // TIMER FECHA
         {
@@ -197,8 +199,6 @@ namespace MenuConsultas
                 textBox_puntosFinal.Text = "Has llegado a 4 cartas: " + puntosFinal;
             }
 
-           
-
             int num;
             string numeros="";
             int pal;
@@ -206,12 +206,14 @@ namespace MenuConsultas
             
             if (puntosFinal == 21)
             {
+                this.quieroMasCartas = 1;
                 textBox_puntosFinal.Visible = true;
                 textBox_puntosFinal.Text = "Has llegado a: " + puntosFinal;
 
             }
             else if (puntosFinal > 21)
             {
+                this.quieroMasCartas = 1;
                 textBox_puntosFinal.Visible = true;
                 textBox_puntosFinal.Text = "Tus puntos superan los 21, puntos totales: " + puntosFinal;
 
@@ -227,7 +229,8 @@ namespace MenuConsultas
 
                 }
 
-                string mensaje = "16/" + nombre + "/" + idPartida + "/" + puntosFinal + "/" + palos + "/" + numeros + "/" + turnoCliente;
+                string mensaje = "16/" + nombre + "/" + idPartida + "/" + puntosFinal + "/" + palos + "/" + numeros + "/" + turnoCliente + "/" + 1;
+                MessageBox.Show(mensaje);
                 byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);
                 server.Send(msg);
 
@@ -242,10 +245,23 @@ namespace MenuConsultas
             this.numeross = numeros;
 
         }
+
         private void btn_plantarse_Click(object sender, EventArgs e)
         {
-
-            string mensaje = "16/" + nombre + "/" + idPartida+"/"+puntosFinal + "/" + paloss + "/" + numeross + "/" + turnoCliente; ;
+            //Aqui habia un problema cuando me queria plantar con dos cartas, mandaba al servidor paloss = null y numeross = null
+            int num;
+            string numeros = "";
+            int pal;
+            string palos = "";
+            for (int i = 0; i < cartaNumero.Count; i++)
+            {
+                num = cartaNumero[i];
+                numeros = numeros + "*" + num;
+                pal = cartaPalo[i];
+                palos = palos + "*" + pal;
+            }
+            this.quieroMasCartas = 1; //No quiero mas cartas
+            string mensaje = "16/" + nombre + "/" + idPartida + "/" + puntosFinal + "/" + paloss + "/" + numeross + "/" + turnoCliente + "/" + this.quieroMasCartas; 
             byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
         }
@@ -512,6 +528,8 @@ namespace MenuConsultas
         }
         public void tomaCarta(int palo, int numero)
         {
+            paloss = paloss + "*" + palo;
+            numeross = numeross + "*" + palo;
             numCartas.Add(1);
             if (numero > 9)
                 numero = 9;
@@ -588,8 +606,11 @@ namespace MenuConsultas
         }
         private void btn_nuevaCarta_Click(object sender, EventArgs e)
         {
-            
-            string mensaje = "15/" + nombre + "/" + idPartida+"/"+turnoCliente+"/"+2;
+            /*Cuando pido una carta paso el turno directamente.
+             * Si me paso de 21 punto -> no quiero pedir mas cartas.
+             * Si me planto -> no quiero pedir mas cartas.
+            */
+            string mensaje = "15/" + nombre + "/" + idPartida + "/" + turnoCliente + "/" + 2 + "/"+ this.quieroMasCartas + "/" + puntosFinal;
             byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
 
@@ -612,64 +633,61 @@ namespace MenuConsultas
 
             string[] nombreSeparado = nombreJugadores.Split('*');
 
-                    if (numeroJugadores == 2)
-                    {
+            if (numeroJugadores == 2)
+            {
+                //MessageBox.Show("Hay 2 Jugadores");
+                jugador2_carta1.Image = MenuConsultas.Properties.Resources.back_card___copia;
+                jugador2.Text = "Jugador 2";
+                //  jugador2.Location = new Point(233, 132);
+                // carta_jugador2.Location = new Point(233, 155);
 
-                        //MessageBox.Show("Hay 2 Jugadores");
-                        jugador2_carta1.Image = MenuConsultas.Properties.Resources.back_card___copia;
-                        jugador2.Text = "Jugador 2";
-                      //  jugador2.Location = new Point(233, 132);
-                       // carta_jugador2.Location = new Point(233, 155);
-
-                        jugador2.Visible = true;
-                        jugador2_carta1.Visible = true;
-
-
-                    }
+                jugador2.Visible = true;
+                jugador2_carta1.Visible = true;
+            }
                 
-                if (numeroJugadores == 3)
-                {
-                    //MessageBox.Show("Hay 3 Jugadores");
-                    jugador1.Text = nombre;
-                    jugador2_carta1.Image = MenuConsultas.Properties.Resources.back_card___copia;
-                    jugador2.Text = "Jugador 2";
-                    jugador3_carta1.Image = MenuConsultas.Properties.Resources.back_card___copia;
-                    jugador3.Text = "Jugador 3";
-                    //jugador2.Location = new Point(125, 132);
-                    ////jugador2_carta1.Location = new Point(125, 152);
-                    ////jugador3.Location = new Point(411, 132);
-                    //jugador3_carta1.Location = new Point(411, 152);
+            if (numeroJugadores == 3)
+            {
+                //MessageBox.Show("Hay 3 Jugadores");
+                jugador1.Text = nombre;
+                jugador2_carta1.Image = MenuConsultas.Properties.Resources.back_card___copia;
+                jugador2.Text = "Jugador 2";
+                jugador3_carta1.Image = MenuConsultas.Properties.Resources.back_card___copia;
+                jugador3.Text = "Jugador 3";
+                //jugador2.Location = new Point(125, 132);
+                ////jugador2_carta1.Location = new Point(125, 152);
+                ////jugador3.Location = new Point(411, 132);
+                //jugador3_carta1.Location = new Point(411, 152);
 
-                    jugador2.Visible = true;
-                    jugador2_carta1.Visible = true;
-                    jugador3.Visible = true;
-                    jugador3_carta1.Visible = true;
+                jugador2.Visible = true;
+                jugador2_carta1.Visible = true;
+                jugador3.Visible = true;
+                jugador3_carta1.Visible = true;
 
-                }
-                if (numeroJugadores == 4)
-                {
-                    //MessageBox.Show("Hay 4 Jugadores");
-                    jugador1.Text = nombre;
-                    jugador2_carta1.Image = MenuConsultas.Properties.Resources.back_card___copia;
-                    jugador2.Text = "Jugador 2";
-                    jugador3_carta1.Image = MenuConsultas.Properties.Resources.back_card___copia;
-                    jugador3.Text = "Jugador 3";
-                    jugador4_carta1.Image = MenuConsultas.Properties.Resources.back_card___copia;
-                    jugador4.Text = "Jugador 4";
-                   // jugador2.Location = new Point(77, 132);
-                   // carta_jugador2.Location = new Point(77, 152);
-                   // jugador3.Location = new Point(337, 132);
-                   // carta_jugador3.Location = new Point(337, 152);
-                   // jugador4.Location = new Point(589, 132);
-                 //   carta_jugador4.Location = new Point(589, 152);
+            }
+            if (numeroJugadores == 4)
+            {
+                //MessageBox.Show("Hay 4 Jugadores");
+                jugador1.Text = nombre;
+                jugador2_carta1.Image = MenuConsultas.Properties.Resources.back_card___copia;
+                jugador2.Text = "Jugador 2";
+                jugador3_carta1.Image = MenuConsultas.Properties.Resources.back_card___copia;
+                jugador3.Text = "Jugador 3";
+                jugador4_carta1.Image = MenuConsultas.Properties.Resources.back_card___copia;
+                jugador4.Text = "Jugador 4";
+                // jugador2.Location = new Point(77, 132);
+                // carta_jugador2.Location = new Point(77, 152);
+                // jugador3.Location = new Point(337, 132);
+                // carta_jugador3.Location = new Point(337, 152);
+                // jugador4.Location = new Point(589, 132);
+                //   carta_jugador4.Location = new Point(589, 152);
 
-                    jugador2.Visible = true;
-                    jugador2_carta1.Visible = true;
-                    jugador3.Visible = true;
-                    jugador3_carta1.Visible = true;
-                    jugador4.Visible = true;
-                    jugador4_carta1.Visible = true;
-                }
+                jugador2.Visible = true;
+                jugador2_carta1.Visible = true;
+                jugador3.Visible = true;
+                jugador3_carta1.Visible = true;
+                jugador4.Visible = true;
+                jugador4_carta1.Visible = true;
+            }
 
             jugador1.Text = nombre;
             
@@ -686,7 +704,7 @@ namespace MenuConsultas
         delegate void DelegadoParaXJugadores();
         private void btn_emepezar_Click(object sender, EventArgs e)
         {
-            string mensaje = "15/" + nombre + "/" + idPartida + "/" + 1 + "/" + 0;
+            string mensaje = "15/" + nombre + "/" + idPartida + "/" + 1 + "/" + 0 + "/" + this.quieroMasCartas + "/" + puntosFinal;
             byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
          }

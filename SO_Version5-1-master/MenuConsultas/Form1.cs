@@ -336,14 +336,13 @@ namespace MenuConsultas
                         else
                         formularios[numForm].tomaCartasFinalizado(personaFinal,puntos,palos,numeros,torn);
                         
-
-
                         break;
                     case 17:
                         numForm = idsPartidas.IndexOf(trozos[1]);
                         formularios[numForm].tomaNombreJugadores(trozos[2]);
                         break;
                     case 18:
+                        //18/NombreJugadorAnterior/idPartida/NombreTocaJugar/turno/numJugadores/NombreJugadores/vez/palo/numero/0/3/8/
                         string nombreJugadorAnterior = trozos[1];
                         numForm = idsPartidas.IndexOf(trozos[2]);
                         string nombreTocaJugar=trozos[3];
@@ -362,7 +361,7 @@ namespace MenuConsultas
                             turnos.Add(nombreJugadorAnterior); //el indice=0
 
                         }
-                        int i=0;
+                        int i=0; //No entiendo
                         if (i < numeroJugadores)
                             turnos.Add(nombreTocaJugar);
                         else
@@ -371,12 +370,18 @@ namespace MenuConsultas
                             turnos.Add(nombreJugadorAnterior);
                         }
 
-                                formularios[numForm].tomaActualizacionMiTurno(nombreJugadorAnterior, nombreTocaJugar, turno,numeroJugadores,nombreJugadores);
-                                formularios[numForm].tomaTurno(turno);
-
-                        
+                        //Esta funcion se encarga de modificar los labels y los botones en el cliente.
+                        formularios[numForm].tomaActualizacionMiTurno(nombreJugadorAnterior, nombreTocaJugar, turno,numeroJugadores,nombreJugadores);
+                        formularios[numForm].tomaTurno(turno);
                         //enviar quien esta jugando y el turno
                         break;
+                    
+                    case 19:
+                        //Recibo 19/nombreGanador
+                        MessageBox.Show("Ha ganado el jugador " + trozos[1]);
+                        MessageBox.Show("La partida ha finalizado");
+                        break;
+
                 }
             }
         }

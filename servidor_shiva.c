@@ -17,7 +17,9 @@ pthread_mutex_t mutexsum;
 typedef struct 
 {
 	int id;   //El ide de la conexion
-	char nombreUsuario [50];
+	int puntos;
+	int quieroMasCartas; //0->Si, 1->No
+	char nombreUsuario[50];
 }cliente;
 
 typedef struct
@@ -64,7 +66,7 @@ int generarNumero()
 
 
 //Escribe una funcion que anade a la lista de conectados un nuevo jugador (nombre y socket).
-int nuevoUsuario(listaClientes *l,int idSocket,char nombre [max])
+int nuevoUsuario(listaClientes *l,int idSocket,char nombre[max])
 {
 	if (l->num == max) //En cso de tener la lista llena
 	{
@@ -135,7 +137,7 @@ int eliminarUsuario(listaClientes *l, char nombre[100])
 
 //Escribe una funcion que devuelve el socket de un jugador determinado, a partir de su nombre.
 
-int obtenerSocket(listaClientes *l, char nombre [max])
+int obtenerSocket(listaClientes *l, char nombre[max])
 {
 	int id;
 	for(int i=0;i<l->num;i++)
@@ -152,7 +154,7 @@ int obtenerSocket(listaClientes *l, char nombre [max])
 //Escribe una funcion que crea una cadena de caracteres que contiene el numero
 //de jugadores que hay en la lista seguido del nombre de todos esos jugadores, 
 //separados todos esos datos por una coma.
-void crearCadena(listaClientes *l,char cadena [200])
+void crearCadena(listaClientes *l, char cadena[200])
 {
 	//strcpy(cadena,"");
 	for (int i=0;i<l->num;i++)
@@ -211,7 +213,40 @@ int nuevaPartida(listaPartidas *lp, int idPartida,int numeroPersonas,char nombre
 }
 
 
+//Retorna 0 si han acabado, 1 si aun falta alguno
+int comprobarSiHanAcabadoTodos(listaPartidas *lp, int idPartida)
+{
+	int acabado = 0; //Si han acabado
+	for(int i = 0; i < lp->listaP[idPartida].numeroPersonas; i++)
+	{
+		if(lp->listaP[idPartida].listaJugador[i].quieroMasCartas == 0)
+			acabado = 1; //No han acabado
+	}
+	return acabado;
+}
 
+void comprobarQuienHaGanado(listaPartidas *lp, int idPartida, char ganador[50])
+{
+	int puntosMax = 0;
+	int posGanador = 0;
+	int puntosJug_i = 0;
+	for(int i = 0; i < lp->listaP[idPartida].numeroPersonas; i++)
+	{
+		puntosJug_i = lp->listaP[idPartida].listaJugador[i].puntos;
+		if(puntosJug_i > puntosMax)
+		{
+			if(puntosJug_i <= 21)
+			{
+				puntosMax = puntosJug_i;
+				posGanador = i;
+				printf("Ganador esta en la posicion %d y tiene %d puntos\n", i, puntosMax);
+			}
+			
+		}
+	}
+
+	strcpy(ganador, lp->listaP[idPartida].listaJugador[posGanador].nombreUsuario);
+}
 
 
 void *atender_cliente(void *conectados) 
@@ -683,34 +718,41 @@ void *atender_cliente(void *conectados)
 			}
 		}
 		else if (codigo==10) //Empezar p￯﾿ﾠrtida
-		{	printf("Codigo 10.\n");
+		{	
+
+			printf("Codigo 10.\n");
 		//Recibo: 10/nombre/numeroJugadores/jugador1*jugador2*.......7
 		//Envio: 10/idPartida/nombreHost/nombreJugador1*nombreJugador2
-		p = strtok( NULL, "/"); //Extraemos el numero de jugadores
-		int numJugadores=atoi(p);
-		char jugadores[max];
-		p = strtok( NULL, "/"); //Extraemos el numero de jugadores
-		strcpy(jugadores,p);
-		printf("Codigo 10. Recibo-> nombre: %s / numeroJugadores: %d / jugadores: %s\n",nombre,numJugadores,jugadores);
-		int idPartida;
-		pthread_mutex_lock (&mutexsum); //Solo a￯﾿ﾯ￯ﾾ﾿￯ﾾﾱanadimos exclusion mutua si se edita la lista de clientas
-		idPartida = nuevaPartida(lp,lp->numPartidas,numJugadores,jugadores);
-		pthread_mutex_unlock (&mutexsum);
-		
-		
-		printf("Codigo 10. lp->numPartidas: %d , idPartida: %d\n",lp->numPartidas,idPartida);
-		sprintf(respuesta,"10/%d/%s/",idPartida,nombre);
-		for(int i=0;i<numJugadores;i++)
-		{
+			p = strtok( NULL, "/"); //Extraemos el numero de jugadores
+			int numJugadores=atoi(p);
+			char jugadores[max];
+			p = strtok( NULL, "/"); //Extraemos el numero de jugadores
+			strcpy(jugadores,p);
+			printf("Codigo 10. Recibo-> nombre: %s / numeroJugadores: %d / jugadores: %s\n",nombre,numJugadores,jugadores);
+			int idPartida;
+			pthread_mutex_lock (&mutexsum); //Solo a￯﾿ﾯ￯ﾾ﾿￯ﾾﾱanadimos exclusion mutua si se edita la lista de clientas
+			idPartida = nuevaPartida(lp,lp->numPartidas,numJugadores,jugadores);
+			pthread_mutex_unlock (&mutexsum);
 			
-			printf("Codigo 10. lp->listaP[idPartida].listaJugador[i].id : %d\n",lp->listaP[idPartida].listaJugador[i].id);
-			strcat(respuesta,lp->listaP[idPartida].listaJugador[i].nombreUsuario);
-			strcat(respuesta,"*");
-			write(lp->listaP[idPartida].listaJugador[i].id,respuesta, strlen(respuesta));
-			
-		}
-		printf("Codigo 10.Envio: %s\n",respuesta);
-		}
+			//Inicializamos el quieroMasCartas a 0
+			for(int i=0;i<numJugadores;i++)
+			{
+				lp->listaP[idPartida].listaJugador[i].quieroMasCartas =0;
+			}
+			printf("Codigo 10. lp->numPartidas: %d , idPartida: %d\n",lp->numPartidas,idPartida);
+			sprintf(respuesta,"10/%d/%s/",idPartida,nombre);
+
+			for(int i=0;i<numJugadores;i++)
+			{
+				
+				printf("Codigo 10. lp->listaP[idPartida].listaJugador[i].id : %d\n",lp->listaP[idPartida].listaJugador[i].id);
+				strcat(respuesta,lp->listaP[idPartida].listaJugador[i].nombreUsuario);
+				strcat(respuesta,"*");
+				write(lp->listaP[idPartida].listaJugador[i].id,respuesta, strlen(respuesta));
+				
+			}
+			printf("Codigo 10.Envio: %s\n",respuesta);
+			}
 		
 		
 		
@@ -794,13 +836,18 @@ void *atender_cliente(void *conectados)
 		}
 		else if (codigo==15)
 		{
+			//15/nombre/idPartida/turnoCliente/vez/quieroMasCartas/puntosFinal
 			printf("Codigo 15.\n");
 			p = strtok( NULL, "/");
 			int idPartida=atoi(p); //extraemos idPartida
 			p = strtok( NULL, "/");
-			int turno=atoi(p); //extraemos idPartida
+			int turno=atoi(p); //extraemos turno
 			p = strtok( NULL, "/");
-			int vez=atoi(p); //extraemos idPartida
+			int vez=atoi(p); //extraemos vez
+			p = strtok( NULL, "/"); //extraemos si quiere mas cartas
+			lp->listaP[idPartida].listaJugador[turno-1].quieroMasCartas = atoi(p);
+			p = strtok( NULL, "/");
+			lp->listaP[idPartida].listaJugador[turno-1].puntos = atoi(p);
 			//Turno 1=anfitrion
 			//Turno 2=jugador2
 			//Turno 3=jugador3
@@ -820,49 +867,77 @@ void *atender_cliente(void *conectados)
 			char numer[50];
 			
 			turno=turno+1;
-			if(turno>lp->listaP[idPartida].numeroPersonas)
+			//Retorna 0 si han acabado, 1 si aun falta alguno
+			if(comprobarSiHanAcabadoTodos(lp, idPartida) == 1)
 			{
-				turno=1;
-			}
-			//El anfitrion escribe la primera carta
-			sprintf(respuesta,"15/%s/%d/%d/%d/",nombre,idPartida,palo,numero);
-			printf("Codigo 15. Envio: %s\n",respuesta);
-			write(sock_conn,respuesta,strlen(respuesta));
-			//Enviar a todos que el jugador1 ha completado su turno
-			
-			sprintf(notificacion,"18/%s/%d/%s/%d/%d/",nombre,idPartida,lp->listaP[idPartida].listaJugador[turno-1].nombreUsuario,turno,lp->listaP[idPartida].numeroPersonas);
-			for(int i=0;i<lp->listaP[idPartida].numeroPersonas;i++)
-			{
-				strcat(notificacion,lp->listaP[idPartida].listaJugador[i].nombreUsuario);
-				strcat(notificacion,"*");
-			}	
-			strcat(notificacion,"/");
-			for(int i=0;i<lp->listaP[idPartida].numeroPersonas;i++)
-			{
-				
-				if (vez==0)
+				if(turno <= lp->listaP[idPartida].numeroPersonas)
 				{
-					strcat(notificacion,"0/");
-					sprintf(pal,"%d",generarPalo());
-					sprintf(numer,"%d",generarNumero());
-					strcat(notificacion,pal);
-					strcat(notificacion,"/");
-					strcat(notificacion,numer);
-					strcat(notificacion,"/");
-					
+				//Comprobamos si al que le toca el turno no quiere mas cartas.
+				if(lp->listaP[idPartida].listaJugador[turno-1].quieroMasCartas == 1)
+					turno = turno + 1;
 				}
-				else
-					strcat(notificacion,"1/");
-				write(lp->listaP[idPartida].listaJugador[i].id,notificacion, strlen(notificacion));
+				if(turno > lp->listaP[idPartida].numeroPersonas)
+				{
+					turno=1;
+					//probar con un while cuando hayan mas de dos personas
+					if(lp->listaP[idPartida].listaJugador[turno-1].quieroMasCartas == 1)
+						turno = turno + 1;
+				}
+				//El anfitrion escribe la primera carta
+				sprintf(respuesta,"15/%s/%d/%d/%d/",nombre,idPartida,palo,numero);
+				printf("Codigo 15. Envio: %s\n",respuesta);
+				write(sock_conn,respuesta,strlen(respuesta));
+				//Enviar a todos que el jugador1 ha completado su turno
+				
+				sprintf(notificacion,"18/%s/%d/%s/%d/%d/",nombre,idPartida,lp->listaP[idPartida].listaJugador[turno-1].nombreUsuario,turno,lp->listaP[idPartida].numeroPersonas);
+				
+				//Nombres jugadores
+				for(int i=0;i<lp->listaP[idPartida].numeroPersonas;i++)
+				{
+					strcat(notificacion,lp->listaP[idPartida].listaJugador[i].nombreUsuario);
+					strcat(notificacion,"*");
+				}	
+				strcat(notificacion,"/");
+				for(int i=0;i<lp->listaP[idPartida].numeroPersonas;i++)
+				{
+					
+					if (vez==0)
+					{
+						strcat(notificacion,"0/");
+						sprintf(pal,"%d",generarPalo());
+						sprintf(numer,"%d",generarNumero());
+						strcat(notificacion,pal);
+						strcat(notificacion,"/");
+						strcat(notificacion,numer);
+						strcat(notificacion,"/");
+						
+					}
+					else
+						strcat(notificacion,"1/");
+					write(lp->listaP[idPartida].listaJugador[i].id,notificacion, strlen(notificacion));
+				}
+				printf("Codigo 18.Turno 1 Envio: %s\n",notificacion);
+			}
+			else//Ya han acabado todos, nadie quiere mas cartas
+			{ 
+				char ganador[50];
+				char mensaje[200];
+				comprobarQuienHaGanado(lp, idPartida, ganador);
+				sprintf(mensaje, "19/%s", ganador);
+				for(int i=0;i<lp->listaP[idPartida].numeroPersonas;i++)
+				{
+					printf("Codigo 19. Envio: %s\n",mensaje);
+					write(lp->listaP[idPartida].listaJugador[i].id, mensaje , strlen(mensaje));
+				}
 			}
 			
 			
-			printf("Codigo 18.Turno 1 Envio: %s\n",notificacion);
 			
 			
 		}
 		else if (codigo==16)//finalizar
 		{
+			//Recibo "16/nombre/idPartida/puntosFinal/paloss/numeross/turnoCliente/quieroMasCartas
 			printf("Codigo 16.\n");
 			p = strtok( NULL, "/");
 			int idPartida=atoi(p); //extraemos idPartida
@@ -875,15 +950,70 @@ void *atender_cliente(void *conectados)
 			char numero[100];
 			strcpy(numero,p);
 			p = strtok( NULL, "/");
-			int turno=atoi(p); //extraemos puntos
+			int turno=atoi(p); //extraemos turno
+			char notificacion[100];
+			p = strtok(NULL, "/"); //extraemos si quiere mas cartas.
+			lp->listaP[idPartida].listaJugador[turno-1].quieroMasCartas = atoi(p);
 			
+			lp->listaP[idPartida].listaJugador[turno-1].puntos = puntos;
+
 			//Guardar ganador y perdedores
 			sprintf(respuesta,"16/%d/%s/%d/%s/%s/%d/",idPartida,nombre,puntos,palo,numero,turno);
+			
 			for(int i=0;i<lp->listaP[idPartida].numeroPersonas;i++)
 			{
 				write(lp->listaP[idPartida].listaJugador[i].id,respuesta, strlen(respuesta));
 			}
 			printf("Codigo 16. Envio: %s\n",respuesta);
+
+			//Tiene que actulizar el turno
+			turno=turno+1;
+			if(comprobarSiHanAcabadoTodos(lp, idPartida) == 1)
+			{
+				if(turno <= lp->listaP[idPartida].numeroPersonas)
+				{
+				//Comprobamos si al que le toca el turno no quiere mas cartas.
+				if(lp->listaP[idPartida].listaJugador[turno-1].quieroMasCartas == 1)
+					turno = turno + 1;
+				}
+				if(turno > lp->listaP[idPartida].numeroPersonas)
+				{
+					turno=1;
+					if(lp->listaP[idPartida].listaJugador[turno-1].quieroMasCartas == 1)
+						turno = turno + 1;
+				}
+				
+				//Enviar a todos que el jugador1 ha completado su turno
+				sprintf(notificacion,"18/%s/%d/%s/%d/%d/",nombre,idPartida,lp->listaP[idPartida].listaJugador[turno-1].nombreUsuario,turno,lp->listaP[idPartida].numeroPersonas);
+				
+				//Nombres jugadores
+				for(int i=0;i<lp->listaP[idPartida].numeroPersonas;i++)
+				{
+					strcat(notificacion,lp->listaP[idPartida].listaJugador[i].nombreUsuario);
+					strcat(notificacion,"*");
+				}	
+				strcat(notificacion,"/");
+				for(int i=0;i<lp->listaP[idPartida].numeroPersonas;i++)
+				{
+					strcat(notificacion,"1/");
+					write(lp->listaP[idPartida].listaJugador[i].id,notificacion, strlen(notificacion));
+				}
+				printf("Codigo 18, enviado desde el 16 del server: %s\n",notificacion);
+			}
+			else
+			{
+				char ganador[50];
+				char mensaje[200];
+				comprobarQuienHaGanado(lp, idPartida, ganador);
+				sprintf(mensaje, "19/%s", ganador);
+				for(int i=0;i<lp->listaP[idPartida].numeroPersonas;i++)
+				{
+					printf("Codigo 19. Envio: %s\n",mensaje);
+					write(lp->listaP[idPartida].listaJugador[i].id,mensaje, strlen(mensaje));
+				}
+			}
+			
+
 		}
 		else if (codigo==17)//Saber las personas que estan jugando
 		{
