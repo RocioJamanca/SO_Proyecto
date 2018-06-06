@@ -257,50 +257,50 @@ namespace MenuConsultas
                     break;
 
                     case 9:
-                    //Recibo: 9/1/nombreINVITADO      ACEPTO
-                    //Recibo: 9/0/nombreINVITADO	  NO ACEPTO			
-                    int aceptar = Convert.ToInt32(trozos[1]);
-                    string nombreINVITADO = trozos[2].Split('\0')[0];
-                    if (aceptar == 0) //Denegado
-                    {
-                        MessageBox.Show("El jugador: " + nombreINVITADO + " ha declinado tu invitación" );
-                    }
-                    else  //Aceptado
-                    {
-                        //MessageBox.Show("El jugador: " + nombreINVITADO + " ha aceptado tu invitación");
-                        DelegadoParaListaJugadores delegadoJugadores = new DelegadoParaListaJugadores(mostrarListaJugadores);
-                        jugadores.Invoke(delegadoJugadores, new object[] { nombreINVITADO });
-                    }
+                        //Recibo: 9/1/nombreINVITADO      ACEPTO
+                        //Recibo: 9/0/nombreINVITADO	  NO ACEPTO			
+                        int aceptar = Convert.ToInt32(trozos[1]);
+                        string nombreINVITADO = trozos[2].Split('\0')[0];
+                        if (aceptar == 0) //Denegado
+                        {
+                            MessageBox.Show("El jugador: " + nombreINVITADO + " ha declinado tu invitación" );
+                        }
+                        else  //Aceptado
+                        {
+                            //MessageBox.Show("El jugador: " + nombreINVITADO + " ha aceptado tu invitación");
+                            DelegadoParaListaJugadores delegadoJugadores = new DelegadoParaListaJugadores(mostrarListaJugadores);
+                            jugadores.Invoke(delegadoJugadores, new object[] { nombreINVITADO });
+                        }
 
-                    break;
+                        break;
 
                     case 10:
-                    string idPartida = trozos[1];
-                    string nombreAnfitrion = trozos[2];
-                    string nombreJugadores = trozos[3]; //Estos habrá que separarlos ya que estan en el formato nombre1*nombre2*nombre3*....
-                    ThreadStart ts = delegate { PonerMarchaFormulario(idPartida); };
-                    Thread T = new Thread(ts);
-                    T.Start();
+                        string idPartida = trozos[1];
+                        string nombreAnfitrion = trozos[2];
+                        string nombreJugadores = trozos[3]; //Estos habrá que separarlos ya que estan en el formato nombre1*nombre2*nombre3*....
+                        ThreadStart ts = delegate { PonerMarchaFormulario(idPartida); };
+                        Thread T = new Thread(ts);
+                        T.Start();
                     break;
 
                     case 11: //chat
-                    int numForm = idsPartidas.IndexOf(trozos[1]);  
-                    string frase = trozos[2]; //Mensaje que aparecerá en la listBox
-                    formularios[numForm].tomaFrase(frase);
-                    break;
+                        int numForm = idsPartidas.IndexOf(trozos[1]);  
+                        string frase = trozos[2]; //Mensaje que aparecerá en la listBox
+                        formularios[numForm].tomaFrase(frase);
+                        break;
                      
                     case 12:
-                    string nombreAbandona=trozos[1];
-                    numForm = idsPartidas.IndexOf(trozos[2]);
-                    string nombresJugadores = trozos[3];
-                    if (nombreAbandona == nombre)
-                    { 
-                        formularios[numForm].tomaNombreJugadores(nombresJugadores);
-                    }
-                    else
-                    {
-                        formularios[numForm].tomaNombreAbandona(nombreAbandona);
-                    }
+                        string nombreAbandona=trozos[1];
+                        numForm = idsPartidas.IndexOf(trozos[2]);
+                        string nombresJugadores = trozos[3];
+                        if (nombreAbandona == nombre)
+                        { 
+                            formularios[numForm].tomaNombreJugadores(nombresJugadores);
+                        }
+                        else
+                        {
+                            formularios[numForm].tomaNombreAbandona(nombreAbandona);
+                        }
                         break;
                     
                     case 13:
