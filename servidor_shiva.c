@@ -829,7 +829,54 @@ void *atender_cliente(void *conectados)
 			printf("Codigo 14.\n");
 			p = strtok( NULL, "/");
 			int idPartida=atoi(p); //extraemos idPartida
+			 //recibo:  14/nombre/ idPartida/FECHA/duracionEnSEGUNDOS
+			printf("Codigo 14.\n");
+			p = strtok( NULL, "/");
+			int idPartida=atoi(p); //extraemos idPartida
+			p = strtok( NULL, "/");
+			char fecha[50];
+			strcpy(fecha,p);//extraemos fecha
+			p = strtok( NULL, "/");
+			char duracion[100];
+			strcpy(duracion,p);//extraemos duracion
+			printf("Codigo 14. Los datos introducidos son: idPartida=%d, fecha=%s, duracion=%s",idPartida,fecha,duracion);
+			char idPartidaChar[100];
+			sprintf(idPartidaChar,"%d",idPartida);
 			//Guardardatos de la partida en mysql
+			strcpy(consulta,"INSERT INTO partida(idPartida,fecha,duracion) VALUES (");	
+			strcat(consulta, "'");
+			strcat(consulta,idPartidaChar);
+			strcat(consulta,"',");
+			strcat(consulta, "'");
+			strcat(consulta,fecha);
+			strcat(consulta, "','");
+			strcat(consulta,duracion);
+			strcat(consulta, "');");
+			printf("Codigo 14. Formulacion de consulta de partida: %s\n",consulta);
+			
+			err=mysql_query (conn, consulta); 
+			if (err!=0) {
+				printf ("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
+				exit (1);
+			}
+			
+			
+			//Ahora lo hacemos para la tabla relacion
+			//Buscamos primero los jugadores de la partida
+			
+			for (int i=0; i<lp->listaP[idPartida].numeroPersonas;i++)
+			{
+				
+				sprintf(consulta,"INSERT INTO relacion VALUES ('%d','%d')",idPartida,lp->listaP[idPartida].listaJugador[i].id);
+				printf("Codigo 14. Formulacion de consulta de relacion: %s\n",consulta);
+				err=mysql_query (conn, consulta); 
+				if (err!=0) {
+					printf ("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
+					exit (1);
+				}
+			}
+					
+			
 			sprintf(respuesta,"14/%d/",idPartida);
 			write(sock_conn,respuesta,strlen(respuesta));
 			printf("Codigo 14. Envio: %s\n",respuesta);

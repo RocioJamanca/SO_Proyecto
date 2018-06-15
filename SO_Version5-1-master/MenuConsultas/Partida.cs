@@ -498,7 +498,7 @@ namespace MenuConsultas
                 if (listaAbandonar.Count == numeroJugadores)
                 {
                     //MessageBox.Show(" Todos los jugadores han aceptado abandonar");
-                    string mensaje = "14/" + nombre + "/" + idPartida;
+                    string mensaje = "14/" + nombre + "/" + idPartida + "/" + label8.Text + "/" + label9.Text;
                     byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);
                     server.Send(msg);
                     DelegadoParaFinPartida delegadoFin = new DelegadoParaFinPartida(mostrarFinPartida);
