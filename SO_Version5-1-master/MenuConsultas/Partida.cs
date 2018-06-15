@@ -287,6 +287,7 @@ namespace MenuConsultas
                    switch (numCartas)
                    {
                        case 1:
+                           jugador2_carta1.Visible = true;
                            jugador2_carta1.Image = cartas[Convert.ToInt32(numeroSeparado[1]), Convert.ToInt32(paloSeparado[1])];
                            numCartas++;
                            break;
@@ -312,6 +313,7 @@ namespace MenuConsultas
                    switch (numCartas)
                    {
                        case 1:
+                           jugador3_carta1.Visible = true;
                            jugador3_carta1.Image = cartas[Convert.ToInt32(numeroSeparado[1]), Convert.ToInt32(paloSeparado[1])];
                            numCartas++;
                            break;
@@ -337,6 +339,7 @@ namespace MenuConsultas
                    switch (numCartas)
                    {
                        case 1:
+                           jugador4_carta1.Visible = true;
                            jugador4_carta1.Image = cartas[Convert.ToInt32(numeroSeparado[1]), Convert.ToInt32(paloSeparado[1])];
                            numCartas++;
                            break;
@@ -528,14 +531,16 @@ namespace MenuConsultas
         }
         public void tomaCarta(int palo, int numero)
         {
+            int puntos_aux;
             paloss = paloss + "*" + palo;
-            numeross = numeross + "*" + palo;
+            numeross = numeross + "*" + numero;
             numCartas.Add(1);
+            puntos_aux = numero;
             if (numero > 9)
-                numero = 9;
+                puntos_aux = 9;
             if (numero == 0)
-                numero = 10;
-            puntos.Add(numero+1);
+                puntos_aux = 10;
+            puntos.Add(puntos_aux+1);
             DelegadoParaMostrarCarta delegadoCarta = new DelegadoParaMostrarCarta(mostrarCarta);
             panel_tablero.Invoke(delegadoCarta, new object[] { palo,numero});
             if(numCartas.Count==4)
@@ -636,43 +641,43 @@ namespace MenuConsultas
             if (numeroJugadores == 2)
             {
                 //MessageBox.Show("Hay 2 Jugadores");
-                jugador2_carta1.Image = MenuConsultas.Properties.Resources.back_card___copia;
+                //jugador2_carta1.Image = MenuConsultas.Properties.Resources.back_card___copia;
                 jugador2.Text = "Jugador 2";
                 //  jugador2.Location = new Point(233, 132);
                 // carta_jugador2.Location = new Point(233, 155);
 
                 jugador2.Visible = true;
-                jugador2_carta1.Visible = true;
+                //jugador2_carta1.Visible = true;
             }
                 
             if (numeroJugadores == 3)
             {
                 //MessageBox.Show("Hay 3 Jugadores");
                 jugador1.Text = nombre;
-                jugador2_carta1.Image = MenuConsultas.Properties.Resources.back_card___copia;
+                //jugador2_carta1.Image = MenuConsultas.Properties.Resources.back_card___copia;
                 jugador2.Text = "Jugador 2";
-                jugador3_carta1.Image = MenuConsultas.Properties.Resources.back_card___copia;
-                jugador3.Text = "Jugador 3";
+                //jugador3_carta1.Image = MenuConsultas.Properties.Resources.back_card___copia;
+                //jugador3.Text = "Jugador 3";
                 //jugador2.Location = new Point(125, 132);
                 ////jugador2_carta1.Location = new Point(125, 152);
                 ////jugador3.Location = new Point(411, 132);
                 //jugador3_carta1.Location = new Point(411, 152);
 
                 jugador2.Visible = true;
-                jugador2_carta1.Visible = true;
+                //jugador2_carta1.Visible = true;
                 jugador3.Visible = true;
-                jugador3_carta1.Visible = true;
+                //jugador3_carta1.Visible = true;
 
             }
             if (numeroJugadores == 4)
             {
                 //MessageBox.Show("Hay 4 Jugadores");
                 jugador1.Text = nombre;
-                jugador2_carta1.Image = MenuConsultas.Properties.Resources.back_card___copia;
+                //jugador2_carta1.Image = MenuConsultas.Properties.Resources.back_card___copia;
                 jugador2.Text = "Jugador 2";
-                jugador3_carta1.Image = MenuConsultas.Properties.Resources.back_card___copia;
+                //jugador3_carta1.Image = MenuConsultas.Properties.Resources.back_card___copia;
                 jugador3.Text = "Jugador 3";
-                jugador4_carta1.Image = MenuConsultas.Properties.Resources.back_card___copia;
+                //jugador4_carta1.Image = MenuConsultas.Properties.Resources.back_card___copia;
                 jugador4.Text = "Jugador 4";
                 // jugador2.Location = new Point(77, 132);
                 // carta_jugador2.Location = new Point(77, 152);
@@ -682,11 +687,11 @@ namespace MenuConsultas
                 //   carta_jugador4.Location = new Point(589, 152);
 
                 jugador2.Visible = true;
-                jugador2_carta1.Visible = true;
+                //jugador2_carta1.Visible = true;
                 jugador3.Visible = true;
-                jugador3_carta1.Visible = true;
+                //jugador3_carta1.Visible = true;
                 jugador4.Visible = true;
-                jugador4_carta1.Visible = true;
+                //jugador4_carta1.Visible = true;
             }
 
             jugador1.Text = nombre;

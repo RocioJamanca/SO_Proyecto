@@ -857,9 +857,9 @@ void *atender_cliente(void *conectados)
 			int palo;
 			int numero;
 			
-			palo=rand()%(3-0)+1;
+			palo=rand()%4;
 			printf("%d/%d\n",palo,numero);
-			numero=rand()%(12-0)+1;
+			numero=rand()%13;
 			printf("%d/%d\n",palo,numero);
 			
 			char notificacion[100];
@@ -873,14 +873,14 @@ void *atender_cliente(void *conectados)
 				if(turno <= lp->listaP[idPartida].numeroPersonas)
 				{
 				//Comprobamos si al que le toca el turno no quiere mas cartas.
-				if(lp->listaP[idPartida].listaJugador[turno-1].quieroMasCartas == 1)
-					turno = turno + 1;
+					if(lp->listaP[idPartida].listaJugador[turno-1].quieroMasCartas == 1)
+						turno = turno + 1;
 				}
 				if(turno > lp->listaP[idPartida].numeroPersonas)
 				{
 					turno=1;
 					//probar con un while cuando hayan mas de dos personas
-					if(lp->listaP[idPartida].listaJugador[turno-1].quieroMasCartas == 1)
+					while(lp->listaP[idPartida].listaJugador[turno-1].quieroMasCartas == 1)
 						turno = turno + 1;
 				}
 				//El anfitrion escribe la primera carta
@@ -979,7 +979,7 @@ void *atender_cliente(void *conectados)
 				if(turno > lp->listaP[idPartida].numeroPersonas)
 				{
 					turno=1;
-					if(lp->listaP[idPartida].listaJugador[turno-1].quieroMasCartas == 1)
+					while(lp->listaP[idPartida].listaJugador[turno-1].quieroMasCartas == 1)
 						turno = turno + 1;
 				}
 				
