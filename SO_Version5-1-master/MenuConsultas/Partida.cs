@@ -106,33 +106,6 @@ namespace MenuConsultas
         }
         delegate void DelegadoParaColorear(string nombreA, int acepta);
 
-        public void mostrarPanelAbandonar(string nombre)
-        {
-            panel_abandonar.Visible=true;
-            btn_abandonar.Visible = false;
-        }
-        delegate void DelegadoParaAbandonar(string nombre);
-
-        public void mostrarPanelDejarPartida(string nombreAbandonador)
-        {
-            panel_dejarPartida.Visible = true;
-            label_nombreAbandona.Text = nombreAbandonador;
-            panel_abandonar.Visible = false;
-        }
-        delegate void DelegadoParaDejarPartida(string nombreAbandonador);
-
-        public void ocultarPanelAbandonar(string nombre)
-        {
-            panel_abandonar.Visible = false;
-        }
-        delegate void DelegadoParaOcultar(string nombre);
-
-        public void ocultarPanelDejar(string nombre)
-        {
-            panel_dejarPartida.Visible = false;
-        }
-        delegate void DelegadoParaOcultarDejar(string nombre);
-
         public void ocultarPanelJugadores(string nombre)
         {
             panel_ListaJugadores.Visible = false;
@@ -231,7 +204,7 @@ namespace MenuConsultas
                 }
 
                 string mensaje = "16/" + nombre + "/" + idPartida + "/" + puntosFinal + "/" + palos + "/" + numeros + "/" + turnoCliente + "/" + 1 + "/" + DateTime.Now.ToString("dd-MM-yyyy") + "/" + label9.Text;
-                MessageBox.Show(mensaje);
+               // MessageBox.Show(mensaje);
                 byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);
                 server.Send(msg);
 
@@ -477,8 +450,22 @@ namespace MenuConsultas
         public void tomaNombreAbandona(string nombreAbandona)
         {
             listaAbandonar.Add(nombreAbandona);
-            DelegadoParaDejarPartida delegadoDejar= new DelegadoParaDejarPartida(mostrarPanelDejarPartida);
-            panel_dejarPartida.Invoke(delegadoDejar, new object[] { nombreAbandona }); //Invoca al thread que crea el objeto(label1)
+            string menssage = "El jugador "+nombreAbandona+" desea abanadonar la partida, ¿tu también?";
+            const string caption = "Abandonando Partida";
+            var result = MessageBox.Show(menssage, caption, MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                string mensaje = "13/" + nombre + "/" + idPartida + "/1";
+                byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);
+                server.Send(msg);
+            }
+            else
+            {
+                string mensaje = "13/" + nombre + "/" + idPartida + "/0";
+                byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);
+                server.Send(msg);
+            }
+           
             DelegadoParaColorear delegadoColorear = new DelegadoParaColorear(colorearCelda);
             panel_ListaJugadores.Invoke(delegadoColorear, new object[] { nombreAbandona, 1 });
         }
@@ -550,7 +537,20 @@ namespace MenuConsultas
                 //envio los puntos
             }
         }
-
+        public void tomaGanadorPartida(string ganador)
+        {
+            DelegadoParaFinPartida delegadoFin = new DelegadoParaFinPartida(mostrarFinPartida);
+            label_finPartida.Invoke(delegadoFin, new object[] { });
+        }
+        public void MostrarGanador(string ganador)
+        {
+            label_ganador.Text = "El jugador " + ganador + " ha ganado esta partida.";
+            btn_nuevaCarta.Visible = false;
+            btn_emepezar.Visible = false;
+            btn_plantarse.Visible = false;
+            this.panel_tablero.BackColor = Color.Silver;
+        }
+        delegate void DelegadoParaMostrarGanador(string ganador);
         private void textBox_Chat_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -565,51 +565,30 @@ namespace MenuConsultas
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            DelegadoParaAbandonar delegadoAbandonar = new DelegadoParaAbandonar(mostrarPanelAbandonar);
-            panel_abandonar.Invoke(delegadoAbandonar, new object[] { nombre }); 
-        }
-        private void btn_no_Click(object sender, EventArgs e)
-        {
-            DelegadoParaOcultar delegadoOcultar = new DelegadoParaOcultar(ocultarPanelAbandonar);
-            panel_abandonar.Invoke(delegadoOcultar, new object[] { nombre }); 
-        }
-        private void btn_si_Click(object sender, EventArgs e)
-        {
-            listaAbandonar.Add(nombre);
-            string mensaje = "12/" + nombre + "/" + idPartida;
-            byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);
-            server.Send(msg);
-
-            DelegadoParaOcultar delegadoOcultar = new DelegadoParaOcultar(ocultarPanelAbandonar);
-            panel_abandonar.Invoke(delegadoOcultar, new object[] { nombre }); 
-        }
-        private void btn_abandonar_sI_Click(object sender, EventArgs e)
-        {
-            string mensaje = "13/" + nombre + "/" + idPartida+"/1";
-            byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);
-            server.Send(msg);
-            DelegadoParaOcultarDejar delegadoOcultar = new DelegadoParaOcultarDejar(ocultarPanelDejar);
-            panel_abandonar.Invoke(delegadoOcultar, new object[] { nombre }); 
             
+           const string menssage = "¿Estas seguro de que quieres abandonar la partida?";
+           const string caption = "Abandonando Partida";
+            var result= MessageBox.Show(menssage,caption, MessageBoxButtons.YesNo);
+           if (result == DialogResult.Yes)
+           {
+               listaAbandonar.Add(nombre);
+               string mensaje = "12/" + nombre + "/" + idPartida;
+               byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);
+               server.Send(msg);
+              
+           }
         }
-        private void btn_abandonar_no_Click(object sender, EventArgs e)
-        {
-            string mensaje = "13/" + nombre + "/" + idPartida + "/0";
-            byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);
-            server.Send(msg);
-            DelegadoParaOcultarDejar delegadoOcultar = new DelegadoParaOcultarDejar(ocultarPanelDejar);
-            panel_abandonar.Invoke(delegadoOcultar, new object[] { nombre }); 
-        }
+
+
         private void ocultarJugadores_Click(object sender, EventArgs e)
         {
             DelegadoParaOcultarJugadores delegadoOcultarListaJugadores = new DelegadoParaOcultarJugadores(ocultarPanelJugadores);
             panel_ListaJugadores.Invoke(delegadoOcultarListaJugadores, new object[] { nombre }); 
-           
         }
          public void tomaTurno(int turno)
         {
             this.turnoCliente = turno;
-            MessageBox.Show(nombre + " turno: " + turno);
+            //MessageBox.Show(nombre + " turno: " + turno);
         }
         private void btn_nuevaCarta_Click(object sender, EventArgs e)
         {

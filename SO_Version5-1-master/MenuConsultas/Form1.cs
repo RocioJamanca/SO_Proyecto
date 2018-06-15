@@ -110,6 +110,7 @@ namespace MenuConsultas
             this.btnRegistrar.Hide();
             this.btnLogear.Hide();
             this.panelJugadores.Hide();
+            btn_desconectar.Enabled = false;  
             //declaración de la matriz
             matriz.ColumnHeadersVisible = false;
             matriz.RowHeadersVisible = false;
@@ -199,12 +200,14 @@ namespace MenuConsultas
                         }
                         else
                         {
+                            string fecha="";
                             string[] separar = trozos[2].Split('*');
-                            int a = trozos[2].Split('*').Length - 1;
-                            //Juntamos toda la array de separar en una sola string.
-                            //Environment.NewLine es para separar las strings en una linea nueva
-                            string fechas = string.Join(Environment.NewLine, separar);
-                            MessageBox.Show("Fechas jugadas\n" + fechas);
+                            for (int k = 0; k < trozos[2].Split('*').Length; k++)
+                            {
+                                 fecha = fecha +"," + separar[k];
+                            }
+                            MessageBox.Show("Fechas:"+fecha);
+                            
                         }
                         break;
 
@@ -378,8 +381,11 @@ namespace MenuConsultas
                     
                     case 19:
                         //Recibo 19/nombreGanador
+                        numForm = idsPartidas.IndexOf(trozos[1]);
+                        string nombreGanador = trozos[2];
                         MessageBox.Show("Ha ganado el jugador " + trozos[1]);
                         MessageBox.Show("La partida ha finalizado");
+                        formularios[numForm].tomaGanadorPartida(nombreGanador);
                         break;
 
                 }
@@ -495,6 +501,8 @@ namespace MenuConsultas
         private void btnConectar_Click(object sender, EventArgs e)
         {
             ConectarServidor();
+            btnConectar.Enabled = false;
+            btn_desconectar.Enabled = true;
         }
         //Funcion para desconectarnos del servidor con el boton
         private void btn_desconectar_Click(object sender, EventArgs e)
@@ -503,6 +511,8 @@ namespace MenuConsultas
             string mensaje = "7/" + nombre;
             byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
+            btnConectar.Enabled = true;
+            btn_desconectar.Enabled = false;
         }
         //Funcion para desconectarnos del servidor con la X.
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)

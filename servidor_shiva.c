@@ -728,7 +728,7 @@ void *atender_cliente(void *conectados)
 			printf("Codigo 10. Recibo-> nombre: %s / numeroJugadores: %d / jugadores: %s\n",nombre,numJugadores,jugadores);
 			//Comprobar que no hay mas partidas con el mismo id
 			int cont;
-			err=mysql_query (conn, "SELECT MAX(idJugador) FROM jugador"); 
+			err=mysql_query (conn, "SELECT MAX(idPartida) FROM partida"); 
 			if (err!=0) {
 				printf("ERROR al contar");
 			}
@@ -737,7 +737,6 @@ void *atender_cliente(void *conectados)
 				row=mysql_fetch_row(resultado);
 				cont=atoi(row[0]);
 			}
-			cont++;
 			printf("Codigo 10. ID ultima partida %d\n",cont);
 			int idPartida = cont +1;
 			lp->numPartidas=idPartida;
@@ -838,6 +837,7 @@ void *atender_cliente(void *conectados)
 		else if(codigo==14)  //Final de partida
 		{
 			//recibo:  14/nombre/ idPartida/FECHA/duracionEnSEGUNDOS
+			
 			printf("Codigo 14.\n");
 			p = strtok( NULL, "/");
 			int idPartida=atoi(p); //extraemos idPartida
@@ -850,6 +850,24 @@ void *atender_cliente(void *conectados)
 			printf("Codigo 14. Los datos introducidos son: idPartida=%d, fecha=%s, duracion=%s",idPartida,fecha,duracion);
 			char idPartidaChar[100];
 			sprintf(idPartidaChar,"%d",idPartida);
+			//Consultar si es l primera vez
+			sprintf(consulta,"SELECT idPartida FROM partida where idPartida='%d'",idPartida);
+			
+			err=mysql_query (conn, consulta);
+			if (err!=0) 
+			{
+				printf ("Error en la base de datos %u %s\n", mysql_errno(conn), mysql_error(conn));
+				exit (1);
+			}
+			//recogemos el resultado de la consulta  
+			resultado = mysql_store_result(conn);
+			row = mysql_fetch_row (resultado);
+			
+			if (row == NULL) //No hay datos en la consulta
+			{
+				printf("No existen datos en la consulta\n");
+	
+			
 			//Guardardatos de la partida en mysql
 			strcpy(consulta,"INSERT INTO partida(idPartida,fecha,duracionmin) VALUES (");	
 			strcat(consulta, "'");
@@ -872,18 +890,22 @@ void *atender_cliente(void *conectados)
 			//Ahora lo hacemos para la tabla relacion
 			//Buscamos primero los jugadores de la partida
 			
-			for (int i=0; i<lp->listaP[idPartida].numeroPersonas;i++)
-			{
-				
-				sprintf(consulta,"INSERT INTO relacion VALUES ('%d','%d')",idPartida,lp->listaP[idPartida].listaJugador[i].id);
-				printf("Codigo 14. Formulacion de consulta de relacion: %s\n",consulta);
-				err=mysql_query (conn, consulta); 
-				if (err!=0) {
-					printf ("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
-					exit (1);
+				for (int i=0; i<lp->listaP[idPartida].numeroPersonas;i++)
+				{
+					
+					sprintf(consulta,"INSERT INTO relacion VALUES ('%d','%d')",idPartida,lp->listaP[idPartida].listaJugador[i].id);
+					printf("Codigo 14. Formulacion de consulta de relacion: %s\n",consulta);
+					err=mysql_query (conn, consulta); 
+					if (err!=0) {
+						printf ("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
+						exit (1);
+					}
 				}
 			}
-			
+			else
+			{
+					printf("Ya se ha guardado la partida");
+			}
 			
 			sprintf(respuesta,"14/%d/",idPartida);
 			write(sock_conn,respuesta,strlen(respuesta));
@@ -927,12 +949,12 @@ void *atender_cliente(void *conectados)
 			{
 				if(turno <= lp->listaP[idPartida].numeroPersonas)
 				{
-
-						//Comprobamos si al que le toca el turno no quiere mas cartas.
-
-						//Comprobamos si al que le toca el turno no quiere mas cartas.
-
-						if(lp->listaP[idPartida].listaJugador[turno-1].quieroMasCartas == 1)
+					
+					//Comprobamos si al que le toca el turno no quiere mas cartas.
+					
+					//Comprobamos si al que le toca el turno no quiere mas cartas.
+					
+					if(lp->listaP[idPartida].listaJugador[turno-1].quieroMasCartas == 1)
 						turno = turno + 1;
 				}
 				if(turno > lp->listaP[idPartida].numeroPersonas)
@@ -1073,13 +1095,13 @@ void *atender_cliente(void *conectados)
 				char ganador[50];
 				char mensaje[200];
 				comprobarQuienHaGanado(lp, idPartida, ganador);
-				sprintf(mensaje, "19/%s", ganador);
+				sprintf(mensaje, "19/%d/%s",idPartida, ganador);
 				for(int i=0;i<lp->listaP[idPartida].numeroPersonas;i++)
 				{
 					printf("Codigo 16. Envio: %s\n",mensaje);
 					write(lp->listaP[idPartida].listaJugador[i].id,mensaje, strlen(mensaje));
 				}
-			
+				
 				
 				printf("Codigo 16. Los datos introducidos son: idPartida=%d, fecha=%s, duracion=%s, ganador=%s",idPartida,fecha,duracion,ganador);
 				char idPartidaChar[100];
@@ -1104,7 +1126,7 @@ void *atender_cliente(void *conectados)
 					exit (1);
 				}
 				else
-					{
+				{
 					
 				}
 				

@@ -21,6 +21,11 @@ namespace MenuConsultas.dialogs
             this.DialogResult = DialogResult.OK;
         }
 
+        private void dialog_Registrar_Load(object sender, EventArgs e)
+        {
+
+        }
+
        
     }
 }
