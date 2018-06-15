@@ -925,9 +925,12 @@ void *atender_cliente(void *conectados)
 			{
 				if(turno <= lp->listaP[idPartida].numeroPersonas)
 				{
-					//Comprobamos si al que le toca el turno no quiere mas cartas.
-					//Comprobamos si al que le toca el turno no quiere mas cartas.
-					if(lp->listaP[idPartida].listaJugador[turno-1].quieroMasCartas == 1)
+
+						//Comprobamos si al que le toca el turno no quiere mas cartas.
+
+						//Comprobamos si al que le toca el turno no quiere mas cartas.
+
+						if(lp->listaP[idPartida].listaJugador[turno-1].quieroMasCartas == 1)
 						turno = turno + 1;
 				}
 				if(turno > lp->listaP[idPartida].numeroPersonas)
@@ -992,7 +995,6 @@ void *atender_cliente(void *conectados)
 		else if (codigo==16)//finalizar
 		{
 			//Recibo "16/nombre/idPartida/puntosFinal/paloss/numeross/turnoCliente/quieroMasCartas/fecha/duracion
-			
 			printf("Codigo 16.\n");
 			p = strtok( NULL, "/");
 			int idPartida=atoi(p); //extraemos idPartida
@@ -1014,6 +1016,7 @@ void *atender_cliente(void *conectados)
 			p = strtok( NULL, "/");
 			char duracion[100];
 			strcpy(duracion,p);//extraemos duracion
+			printf("Codigo 16. Los datos introducidos son: idPartida=%d, fecha=%s, duracion=%s, ganador=%s",idPartida,fecha,duracion,ganador);
 			
 			lp->listaP[idPartida].listaJugador[turno-1].quieroMasCartas = masCartas;
 			
@@ -1073,12 +1076,13 @@ void *atender_cliente(void *conectados)
 					printf("Codigo 16. Envio: %s\n",mensaje);
 					write(lp->listaP[idPartida].listaJugador[i].id,mensaje, strlen(mensaje));
 				}
+			
 				
-				printf("Codigo 16. Los datos introducidos son: idPartida=%d, fecha=%s, duracion=%s, ganador=%s",idPartida,fecha,duracion,ganador);
+				
 				char idPartidaChar[100];
 				sprintf(idPartidaChar,"%d",idPartida);
 				//Guardardatos de la partida en mysql
-				strcpy(consulta,"INSERT INTO partida(idPartida,fecha,duracion) VALUES (");	
+				strcpy(consulta,"INSERT INTO partida(idPartida,fecha,duracion,ganador) VALUES (");	
 				strcat(consulta, "'");
 				strcat(consulta,idPartidaChar);
 				strcat(consulta,"',");
@@ -1093,8 +1097,12 @@ void *atender_cliente(void *conectados)
 				
 				err=mysql_query (conn, consulta); 
 				if (err!=0) {
-					printf ("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
+					printf ("Error al consultar datos de la base partida %u %s\n",mysql_errno(conn), mysql_error(conn));
 					exit (1);
+				}
+				else
+					{
+					
 				}
 				
 				
@@ -1108,8 +1116,11 @@ void *atender_cliente(void *conectados)
 					printf("Codigo 14. Formulacion de consulta de relacion: %s\n",consulta);
 					err=mysql_query (conn, consulta); 
 					if (err!=0) {
-						printf ("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
+						printf ("Error al consultar datos de la base relacion %u %s\n",mysql_errno(conn), mysql_error(conn));
 						exit (1);
+					}
+					else{
+						
 					}
 				}
 			}
