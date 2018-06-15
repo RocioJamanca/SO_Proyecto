@@ -229,7 +229,7 @@ namespace MenuConsultas
 
                 }
 
-                string mensaje = "16/" + nombre + "/" + idPartida + "/" + puntosFinal + "/" + palos + "/" + numeros + "/" + turnoCliente + "/" + 1;
+                string mensaje = "16/" + nombre + "/" + idPartida + "/" + puntosFinal + "/" + palos + "/" + numeros + "/" + turnoCliente + "/" + 1 + "/" + label8.Text + "/" + label9.Text; ;
                 MessageBox.Show(mensaje);
                 byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);
                 server.Send(msg);
@@ -261,7 +261,7 @@ namespace MenuConsultas
                 palos = palos + "*" + pal;
             }
             this.quieroMasCartas = 1; //No quiero mas cartas
-            string mensaje = "16/" + nombre + "/" + idPartida + "/" + puntosFinal + "/" + paloss + "/" + numeross + "/" + turnoCliente + "/" + this.quieroMasCartas; 
+            string mensaje = "16/" + nombre + "/" + idPartida + "/" + puntosFinal + "/" + paloss + "/" + numeross + "/" + turnoCliente + "/" + this.quieroMasCartas + "/" + label8.Text + "/" + label9.Text; 
             byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
         }

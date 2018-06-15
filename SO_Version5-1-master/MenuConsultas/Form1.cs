@@ -563,7 +563,7 @@ namespace MenuConsultas
 
         private void btn_empezar_partida_Click(object sender, EventArgs e)
         {
-            
+             
             string nombreJugadores = "";
             for (int i = 0; i < listaJugadores.Count; i++)
             {
