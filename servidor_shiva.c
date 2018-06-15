@@ -244,7 +244,7 @@ void comprobarQuienHaGanado(listaPartidas *lp, int idPartida, char ganador[50])
 			
 		}
 	}
-
+	
 	strcpy(ganador, lp->listaP[idPartida].listaJugador[posGanador].nombreUsuario);
 }
 
@@ -408,9 +408,6 @@ void *atender_cliente(void *conectados)
 			//  envio: 2/1  Todo correcto
 			p = strtok( NULL, "/"); //Extraemos la contrasena
 			strcpy (contra, p);
-			
-			
-			
 			int cont;
 			err=mysql_query (conn, "SELECT MAX(idJugador) FROM jugador"); 
 			if (err!=0) 
@@ -424,7 +421,7 @@ void *atender_cliente(void *conectados)
 				cont=atoi(row[0]);
 			}
 			printf("Codigo 2. ID ultimo jugador %d\n",cont);
-			printf("Codigo 2. Contrase￯﾿ﾯ￯ﾾ﾿￯ﾾﾱa nuevo jugador %s\n",contra);
+			printf("Codigo 2. Contrasen nuevo jugador %s\n",contra);
 			int id = cont +1;
 			char code[20];
 			sprintf(code,"%d",id);
@@ -719,17 +716,29 @@ void *atender_cliente(void *conectados)
 		}
 		else if (codigo==10) //Empezar p￯﾿ﾠrtida
 		{	
-
+			
 			printf("Codigo 10.\n");
-		//Recibo: 10/nombre/numeroJugadores/jugador1*jugador2*.......7
-		//Envio: 10/idPartida/nombreHost/nombreJugador1*nombreJugador2
+			//Recibo: 10/nombre/numeroJugadores/jugador1*jugador2*.......7
+			//Envio: 10/idPartida/nombreHost/nombreJugador1*nombreJugador2
 			p = strtok( NULL, "/"); //Extraemos el numero de jugadores
 			int numJugadores=atoi(p);
 			char jugadores[max];
 			p = strtok( NULL, "/"); //Extraemos el numero de jugadores
 			strcpy(jugadores,p);
 			printf("Codigo 10. Recibo-> nombre: %s / numeroJugadores: %d / jugadores: %s\n",nombre,numJugadores,jugadores);
-			int idPartida;
+			//Comprobar que no hay mas partidas con el mismo id
+			int cont;
+			err=mysql_query (conn, "SELECT MAX(idJugador) FROM jugador"); 
+			if (err!=0) {
+				printf("ERROR al contar");
+			}
+			else{
+				resultado = mysql_store_result (conn); 
+				row=mysql_fetch_row(resultado);
+				cont=atoi(row[0]);
+			}
+			printf("Codigo 10. ID ultima jpartida %d\n",cont);
+			int idPartida = cont +1;
 			pthread_mutex_lock (&mutexsum); //Solo a￯﾿ﾯ￯ﾾ﾿￯ﾾﾱanadimos exclusion mutua si se edita la lista de clientas
 			idPartida = nuevaPartida(lp,lp->numPartidas,numJugadores,jugadores);
 			pthread_mutex_unlock (&mutexsum);
@@ -741,7 +750,7 @@ void *atender_cliente(void *conectados)
 			}
 			printf("Codigo 10. lp->numPartidas: %d , idPartida: %d\n",lp->numPartidas,idPartida);
 			sprintf(respuesta,"10/%d/%s/",idPartida,nombre);
-
+			
 			for(int i=0;i<numJugadores;i++)
 			{
 				
@@ -752,7 +761,7 @@ void *atender_cliente(void *conectados)
 				
 			}
 			printf("Codigo 10.Envio: %s\n",respuesta);
-			}
+		}
 		
 		
 		
@@ -826,10 +835,54 @@ void *atender_cliente(void *conectados)
 		}
 		else if(codigo==14)  //Final de partida
 		{
+			//recibo:  14/nombre/ idPartida/FECHA/duracionEnSEGUNDOS
 			printf("Codigo 14.\n");
 			p = strtok( NULL, "/");
 			int idPartida=atoi(p); //extraemos idPartida
+			p = strtok( NULL, "/");
+			char fecha[50];
+			strcpy(fecha,p);//extraemos fecha
+			p = strtok( NULL, "/");
+			char duracion[100];
+			strcpy(duracion,p);//extraemos duracion
+			printf("Codigo 14. Los datos introducidos son: idPartida=%d, fecha=%s, duracion=%s",idPartida,fecha,duracion);
+			char idPartidaChar[100];
+			sprintf(idPartidaChar,"%d",idPartida);
 			//Guardardatos de la partida en mysql
+			strcpy(consulta,"INSERT INTO partida(idPartida,fecha,duracion) VALUES (");	
+			strcat(consulta, "'");
+			strcat(consulta,idPartidaChar);
+			strcat(consulta,"',");
+			strcat(consulta, "'");
+			strcat(consulta,fecha);
+			strcat(consulta, "','");
+			strcat(consulta,duracion);
+			strcat(consulta, "');");
+			printf("Codigo 14. Formulacion de consulta de partida: %s\n",consulta);
+			
+			err=mysql_query (conn, consulta); 
+			if (err!=0) {
+				printf ("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
+				exit (1);
+			}
+			
+			
+			//Ahora lo hacemos para la tabla relacion
+			//Buscamos primero los jugadores de la partida
+			
+			for (int i=0; i<lp->listaP[idPartida].numeroPersonas;i++)
+			{
+				
+				sprintf(consulta,"INSERT INTO relacion VALUES ('%d','%d')",idPartida,lp->listaP[idPartida].listaJugador[i].id);
+				printf("Codigo 14. Formulacion de consulta de relacion: %s\n",consulta);
+				err=mysql_query (conn, consulta); 
+				if (err!=0) {
+					printf ("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
+					exit (1);
+				}
+			}
+			
+			
 			sprintf(respuesta,"14/%d/",idPartida);
 			write(sock_conn,respuesta,strlen(respuesta));
 			printf("Codigo 14. Envio: %s\n",respuesta);
@@ -872,7 +925,11 @@ void *atender_cliente(void *conectados)
 			{
 				if(turno <= lp->listaP[idPartida].numeroPersonas)
 				{
+<<<<<<< HEAD
 				//Comprobamos si al que le toca el turno no quiere mas cartas.
+=======
+					//Comprobamos si al que le toca el turno no quiere mas cartas.
+>>>>>>> 5af35e56bd611f3220ec1549e0fc7062033b556b
 					if(lp->listaP[idPartida].listaJugador[turno-1].quieroMasCartas == 1)
 						turno = turno + 1;
 				}
@@ -937,7 +994,7 @@ void *atender_cliente(void *conectados)
 		}
 		else if (codigo==16)//finalizar
 		{
-			//Recibo "16/nombre/idPartida/puntosFinal/paloss/numeross/turnoCliente/quieroMasCartas
+			//Recibo "16/nombre/idPartida/puntosFinal/paloss/numeross/turnoCliente/quieroMasCartas/fecha/duracion
 			printf("Codigo 16.\n");
 			p = strtok( NULL, "/");
 			int idPartida=atoi(p); //extraemos idPartida
@@ -953,10 +1010,17 @@ void *atender_cliente(void *conectados)
 			int turno=atoi(p); //extraemos turno
 			char notificacion[100];
 			p = strtok(NULL, "/"); //extraemos si quiere mas cartas.
-			lp->listaP[idPartida].listaJugador[turno-1].quieroMasCartas = atoi(p);
+			int masCartas=atoi(p);
+			char fecha[50];
+			strcpy(fecha,p);//extraemos fecha
+			p = strtok( NULL, "/");
+			char duracion[100];
+			strcpy(duracion,p);//extraemos duracion
+			
+			lp->listaP[idPartida].listaJugador[turno-1].quieroMasCartas = masCartas;
 			
 			lp->listaP[idPartida].listaJugador[turno-1].puntos = puntos;
-
+			
 			//Guardar ganador y perdedores
 			sprintf(respuesta,"16/%d/%s/%d/%s/%s/%d/",idPartida,nombre,puntos,palo,numero,turno);
 			
@@ -965,16 +1029,16 @@ void *atender_cliente(void *conectados)
 				write(lp->listaP[idPartida].listaJugador[i].id,respuesta, strlen(respuesta));
 			}
 			printf("Codigo 16. Envio: %s\n",respuesta);
-
+			
 			//Tiene que actulizar el turno
 			turno=turno+1;
-			if(comprobarSiHanAcabadoTodos(lp, idPartida) == 1)
+			if(comprobarSiHanAcabadoTodos(lp, idPartida) == 1) //SI aun no han acabado 
 			{
 				if(turno <= lp->listaP[idPartida].numeroPersonas)
 				{
-				//Comprobamos si al que le toca el turno no quiere mas cartas.
-				if(lp->listaP[idPartida].listaJugador[turno-1].quieroMasCartas == 1)
-					turno = turno + 1;
+					//Comprobamos si al que le toca el turno no quiere mas cartas.
+					if(lp->listaP[idPartida].listaJugador[turno-1].quieroMasCartas == 1)
+						turno = turno + 1;
 				}
 				if(turno > lp->listaP[idPartida].numeroPersonas)
 				{
@@ -1000,7 +1064,7 @@ void *atender_cliente(void *conectados)
 				}
 				printf("Codigo 18, enviado desde el 16 del server: %s\n",notificacion);
 			}
-			else
+			else //han acabado
 			{
 				char ganador[50];
 				char mensaje[200];
@@ -1008,12 +1072,51 @@ void *atender_cliente(void *conectados)
 				sprintf(mensaje, "19/%s", ganador);
 				for(int i=0;i<lp->listaP[idPartida].numeroPersonas;i++)
 				{
-					printf("Codigo 19. Envio: %s\n",mensaje);
+					printf("Codigo 16. Envio: %s\n",mensaje);
 					write(lp->listaP[idPartida].listaJugador[i].id,mensaje, strlen(mensaje));
+				}
+				
+				printf("Codigo 16. Los datos introducidos son: idPartida=%d, fecha=%s, duracion=%s, ganador=%s",idPartida,fecha,duracion,ganador);
+				char idPartidaChar[100];
+				sprintf(idPartidaChar,"%d",idPartida);
+				//Guardardatos de la partida en mysql
+				strcpy(consulta,"INSERT INTO partida(idPartida,fecha,duracion) VALUES (");	
+				strcat(consulta, "'");
+				strcat(consulta,idPartidaChar);
+				strcat(consulta,"',");
+				strcat(consulta, "'");
+				strcat(consulta,fecha);
+				strcat(consulta, "','");
+				strcat(consulta,duracion);
+				strcat(consulta, "','");
+				strcat(consulta,ganador);
+				strcat(consulta, "');");
+				printf("Codigo 16. Formulacion de consulta de partida: %s\n",consulta);
+				
+				err=mysql_query (conn, consulta); 
+				if (err!=0) {
+					printf ("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
+					exit (1);
+				}
+				
+				
+				//Ahora lo hacemos para la tabla relacion
+				//Buscamos primero los jugadores de la partida
+				
+				for (int i=0; i<lp->listaP[idPartida].numeroPersonas;i++)
+				{
+					
+					sprintf(consulta,"INSERT INTO relacion VALUES ('%d','%d')",idPartida,lp->listaP[idPartida].listaJugador[i].id);
+					printf("Codigo 14. Formulacion de consulta de relacion: %s\n",consulta);
+					err=mysql_query (conn, consulta); 
+					if (err!=0) {
+						printf ("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
+						exit (1);
+					}
 				}
 			}
 			
-
+			
 		}
 		else if (codigo==17)//Saber las personas que estan jugando
 		{
