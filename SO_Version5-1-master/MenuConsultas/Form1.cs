@@ -122,7 +122,7 @@ namespace MenuConsultas
         {
             /* Comprobamos los mensajes que nos envia el servidor
              * 
-             * 0: Hubo un error o queremos salir
+             * 0: El cliente ya se ha conectado
              * 1: Indica si nos hemos logeado con éxito
              * 2: Registro con exito
              * 3: Fecha partida
@@ -130,6 +130,18 @@ namespace MenuConsultas
              * 5: Partida ganador
              * 6: Lista conectados
              * 7: Cerrar conexion
+             * 8: Abrir invitación
+             * 9: Aceptar o declinar invitación
+             * 10: Empezar partida (Nuevo Form)
+             * 11: Chat
+             * 12: X quiere abandonar la partida
+             * 13: Abandonar o no pcase
+             * 14: Se abandona partida
+             * 15: Nueva carta
+             * 16: Persona X ha acabado 
+             * 17: Lista de jugadores jugando
+             * 18: Turno jugador siguiente
+             * 19: Ganador
              */
             bool fin = false;
             //cuando queramos desconectar, solo hará falta poner atender.Abort()
@@ -248,18 +260,18 @@ namespace MenuConsultas
                     //solo le informamos al servidor que nos desconectamos,
                     //el servidor no enviará nada.
 
-                   case 7:
+                   case 7: //Desconexión
                         DelegadoParaCerrar delegadoCerrar =new DelegadoParaCerrar(cerrar);
                         this.Invoke(delegadoCerrar, new object[] { fin });
                         fin = true;
                     break;
 
-                   case 8:
+                   case 8://Abrir invitación
                     string nombreINVITADOR = trozos[1];
                     AbrirInvitación(nombreINVITADOR);
                     break;
 
-                    case 9:
+                    case 9://Aceptar o declinar invitación
                     //Recibo: 9/1/nombreINVITADO      ACEPTO
                     //Recibo: 9/0/nombreINVITADO	  NO ACEPTO			
                     int aceptar = Convert.ToInt32(trozos[1]);
@@ -277,7 +289,7 @@ namespace MenuConsultas
 
                     break;
 
-                    case 10:
+                    case 10: //Empezar partida (Nuevo Form)
                     string idPartida = trozos[1];
                     string nombreAnfitrion = trozos[2];
                     string nombreJugadores = trozos[3]; //Estos habrá que separarlos ya que estan en el formato nombre1*nombre2*nombre3*....
@@ -286,13 +298,13 @@ namespace MenuConsultas
                     T.Start();
                     break;
 
-                    case 11: //chat
+                    case 11: //Chat
                     int numForm = idsPartidas.IndexOf(trozos[1]);  
                     string frase = trozos[2]; //Mensaje que aparecerá en la listBox
                     formularios[numForm].tomaFrase(frase);
                     break;
-                     
-                    case 12:
+   
+                    case 12:// X quiere abandonar la partida
                     string nombreAbandona=trozos[1];
                     numForm = idsPartidas.IndexOf(trozos[2]);
                     string nombresJugadores = trozos[3];
@@ -305,8 +317,8 @@ namespace MenuConsultas
                         formularios[numForm].tomaNombreAbandona(nombreAbandona);
                     }
                         break;
-                    
-                    case 13:
+
+                    case 13://Abandonar o no partida
                         string nombreResponde = trozos[1];
                         numForm = idsPartidas.IndexOf(trozos[2]);
                         int deacuerdo = Convert.ToInt32(trozos[3]);
@@ -314,18 +326,20 @@ namespace MenuConsultas
                         int numeroJugadores = Convert.ToInt32(trozos[5]);
                         formularios[numForm].tomaDatosAbandonar(nombreResponde,deacuerdo,nombresJugadores,numeroJugadores);
                         break;
-                    case 14:
+
+                    case 14://Se abandona partida
                         numForm = idsPartidas.IndexOf(trozos[1]);
                         formularios[numForm].cerrarForm();
                         break;
-                    case 15:
+
+                    case 15://Nueva carta
                         numForm = idsPartidas.IndexOf(trozos[2]);
                         int palo=Convert.ToInt32(trozos[3]);
                         int numero = Convert.ToInt32(trozos[4]);
                         formularios[numForm].tomaCarta(palo,numero);
                         break;
-                    case 16:
-                        //persona x ha acabado 
+
+                    case 16://Persona X ha acabado 
                         numForm = idsPartidas.IndexOf(trozos[1]);
                         string personaFinal = trozos[2];
                         int puntos = Convert.ToInt32(trozos[3]);
@@ -338,13 +352,14 @@ namespace MenuConsultas
                         }
                         else
                         formularios[numForm].tomaCartasFinalizado(personaFinal,puntos,palos,numeros,torn);
-                        
                         break;
-                    case 17:
+
+                    case 17://Lista de jugadores jugando
                         numForm = idsPartidas.IndexOf(trozos[1]);
                         formularios[numForm].tomaNombreJugadores(trozos[2]);
                         break;
-                    case 18:
+
+                    case 18://Turno jugador siguiente
                         //18/NombreJugadorAnterior/idPartida/NombreTocaJugar/turno/numJugadores/NombreJugadores/vez/palo/numero/0/3/8/
                         string nombreJugadorAnterior = trozos[1];
                         numForm = idsPartidas.IndexOf(trozos[2]);
@@ -353,7 +368,6 @@ namespace MenuConsultas
                         numeroJugadores=Convert.ToInt32(trozos[5]);
                         nombreJugadores=trozos[6];
                         int vez = Convert.ToInt32(trozos[7]);
-
                        // MessageBox.Show("La persona que acaba de jugar:" + nombreJugadorAnterior + " le toca jugar a " + nombreTocaJugar + " turno:" + turno);
                         //comprobar 
                         if (vez == 0)
@@ -362,7 +376,6 @@ namespace MenuConsultas
                             numero = Convert.ToInt32(trozos[9]);
                             formularios[numForm].tomaCarta(palo, numero);
                             turnos.Add(nombreJugadorAnterior); //el indice=0
-
                         }
                         int i=0; //No entiendo
                         if (i < numeroJugadores)
@@ -372,30 +385,26 @@ namespace MenuConsultas
                             turnos.Clear();
                             turnos.Add(nombreJugadorAnterior);
                         }
-
                         //Esta funcion se encarga de modificar los labels y los botones en el cliente.
                         formularios[numForm].tomaActualizacionMiTurno(nombreJugadorAnterior, nombreTocaJugar, turno,numeroJugadores,nombreJugadores);
                         formularios[numForm].tomaTurno(turno);
                         //enviar quien esta jugando y el turno
                         break;
                     
-                    case 19:
+                    case 19://Ganador
                         //Recibo 19/nombreGanador
                         numForm = idsPartidas.IndexOf(trozos[1]);
                         string nombreGanador = trozos[2];
-                        MessageBox.Show("Ha ganado el jugador " + trozos[1]);
-                        MessageBox.Show("La partida ha finalizado");
                         formularios[numForm].tomaGanadorPartida(nombreGanador);
                         break;
-
                 }
             }
         }
 
-        //Para ocultar selección ctrl+M, ctrl+H
         //Funciones de Inicio de sesión y consultas. 
+
         //Boton Registrar
-        private void button4_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e) 
         {
             //Creamos un dialog_Registrar
             dialog_Registrar dialog_registrar = new dialog_Registrar();
@@ -497,6 +506,7 @@ namespace MenuConsultas
                 return;
             }
         }
+
         //Boton que usamos para conectarnos al servidor.
         private void btnConectar_Click(object sender, EventArgs e)
         {
@@ -504,6 +514,7 @@ namespace MenuConsultas
             btnConectar.Enabled = false;
             btn_desconectar.Enabled = true;
         }
+
         //Funcion para desconectarnos del servidor con el boton
         private void btn_desconectar_Click(object sender, EventArgs e)
         {
@@ -514,6 +525,7 @@ namespace MenuConsultas
             btnConectar.Enabled = true;
             btn_desconectar.Enabled = false;
         }
+       
         //Funcion para desconectarnos del servidor con la X.
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -545,6 +557,7 @@ namespace MenuConsultas
         }
 
         //Metodo que abre la ventana de invitación.
+        
         //Envia al servidor si aceptamos o declinamos.
         private void AbrirInvitación(string nombreInvitador)
         {
@@ -573,7 +586,6 @@ namespace MenuConsultas
 
         private void btn_empezar_partida_Click(object sender, EventArgs e)
         {
-             
             string nombreJugadores = "";
             for (int i = 0; i < listaJugadores.Count; i++)
             {
@@ -595,13 +607,11 @@ namespace MenuConsultas
 
         private void PonerMarchaFormulario(string idPartida)
         {
-            //int n = formularios.Count();
             Partida formPartida = new Partida(idPartida,server,nombre); //idPartida(será el numForm y server es el socket)
             formularios.Add(formPartida);
             idsPartidas.Add(idPartida);
             formPartida.ShowDialog();
             //pongo en marcha el thread que atenderá los mensajes del servidor  
         }
-
     }
 }

@@ -180,13 +180,13 @@
             // btn_abandonar
             // 
             this.btn_abandonar.BackColor = System.Drawing.Color.Gray;
-            this.btn_abandonar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_abandonar.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_abandonar.ForeColor = System.Drawing.Color.White;
-            this.btn_abandonar.Location = new System.Drawing.Point(975, 759);
+            this.btn_abandonar.Location = new System.Drawing.Point(963, 774);
             this.btn_abandonar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_abandonar.Name = "btn_abandonar";
             this.btn_abandonar.Padding = new System.Windows.Forms.Padding(0, 0, 0, 7);
-            this.btn_abandonar.Size = new System.Drawing.Size(157, 52);
+            this.btn_abandonar.Size = new System.Drawing.Size(184, 52);
             this.btn_abandonar.TabIndex = 19;
             this.btn_abandonar.Text = "Abandonar";
             this.btn_abandonar.UseVisualStyleBackColor = false;
@@ -263,7 +263,7 @@
             this.label_finPartida.BackColor = System.Drawing.Color.Transparent;
             this.label_finPartida.Font = new System.Drawing.Font("Modern No. 20", 36F, System.Drawing.FontStyle.Bold);
             this.label_finPartida.ForeColor = System.Drawing.Color.White;
-            this.label_finPartida.Location = new System.Drawing.Point(268, 310);
+            this.label_finPartida.Location = new System.Drawing.Point(276, 311);
             this.label_finPartida.Name = "label_finPartida";
             this.label_finPartida.Size = new System.Drawing.Size(451, 62);
             this.label_finPartida.TabIndex = 22;
@@ -276,11 +276,11 @@
             this.btn_nuevaCarta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_nuevaCarta.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_nuevaCarta.ForeColor = System.Drawing.Color.White;
-            this.btn_nuevaCarta.Location = new System.Drawing.Point(812, 574);
+            this.btn_nuevaCarta.Location = new System.Drawing.Point(758, 620);
             this.btn_nuevaCarta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_nuevaCarta.Name = "btn_nuevaCarta";
             this.btn_nuevaCarta.Padding = new System.Windows.Forms.Padding(0, 0, 0, 7);
-            this.btn_nuevaCarta.Size = new System.Drawing.Size(120, 77);
+            this.btn_nuevaCarta.Size = new System.Drawing.Size(148, 77);
             this.btn_nuevaCarta.TabIndex = 20;
             this.btn_nuevaCarta.Text = "Nueva Carta";
             this.btn_nuevaCarta.UseVisualStyleBackColor = false;
@@ -292,11 +292,11 @@
             this.btn_plantarse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_plantarse.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_plantarse.ForeColor = System.Drawing.Color.White;
-            this.btn_plantarse.Location = new System.Drawing.Point(944, 574);
+            this.btn_plantarse.Location = new System.Drawing.Point(918, 620);
             this.btn_plantarse.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_plantarse.Name = "btn_plantarse";
             this.btn_plantarse.Padding = new System.Windows.Forms.Padding(0, 0, 0, 7);
-            this.btn_plantarse.Size = new System.Drawing.Size(120, 77);
+            this.btn_plantarse.Size = new System.Drawing.Size(141, 77);
             this.btn_plantarse.TabIndex = 21;
             this.btn_plantarse.Text = "Plantarse";
             this.btn_plantarse.UseVisualStyleBackColor = false;
@@ -305,7 +305,7 @@
             // pictureBox_carta1
             // 
             this.pictureBox_carta1.Image = global::MenuConsultas.Properties.Resources.back_card___copia;
-            this.pictureBox_carta1.Location = new System.Drawing.Point(136, 465);
+            this.pictureBox_carta1.Location = new System.Drawing.Point(110, 511);
             this.pictureBox_carta1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox_carta1.Name = "pictureBox_carta1";
             this.pictureBox_carta1.Size = new System.Drawing.Size(140, 230);
@@ -316,7 +316,7 @@
             // pictureBox_carta2
             // 
             this.pictureBox_carta2.Image = global::MenuConsultas.Properties.Resources.back_card___copia;
-            this.pictureBox_carta2.Location = new System.Drawing.Point(292, 465);
+            this.pictureBox_carta2.Location = new System.Drawing.Point(266, 511);
             this.pictureBox_carta2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox_carta2.Name = "pictureBox_carta2";
             this.pictureBox_carta2.Size = new System.Drawing.Size(140, 230);
@@ -327,7 +327,7 @@
             // pictureBox_carta3
             // 
             this.pictureBox_carta3.Image = global::MenuConsultas.Properties.Resources.back_card___copia;
-            this.pictureBox_carta3.Location = new System.Drawing.Point(455, 465);
+            this.pictureBox_carta3.Location = new System.Drawing.Point(429, 511);
             this.pictureBox_carta3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox_carta3.Name = "pictureBox_carta3";
             this.pictureBox_carta3.Size = new System.Drawing.Size(140, 230);
@@ -338,7 +338,7 @@
             // pictureBox_carta4
             // 
             this.pictureBox_carta4.Image = global::MenuConsultas.Properties.Resources.back_card___copia;
-            this.pictureBox_carta4.Location = new System.Drawing.Point(620, 465);
+            this.pictureBox_carta4.Location = new System.Drawing.Point(594, 511);
             this.pictureBox_carta4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox_carta4.Name = "pictureBox_carta4";
             this.pictureBox_carta4.Size = new System.Drawing.Size(140, 230);
@@ -381,10 +381,10 @@
             this.panel_tablero.Controls.Add(this.btn_plantarse);
             this.panel_tablero.Controls.Add(this.pictureBox_carta1);
             this.panel_tablero.Controls.Add(this.btn_nuevaCarta);
-            this.panel_tablero.Location = new System.Drawing.Point(435, 30);
+            this.panel_tablero.Location = new System.Drawing.Point(413, 15);
             this.panel_tablero.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel_tablero.Name = "panel_tablero";
-            this.panel_tablero.Size = new System.Drawing.Size(1107, 711);
+            this.panel_tablero.Size = new System.Drawing.Size(1143, 755);
             this.panel_tablero.TabIndex = 27;
             this.panel_tablero.Visible = false;
             this.panel_tablero.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_tablero_Paint);
@@ -395,7 +395,7 @@
             this.label_ganador.BackColor = System.Drawing.Color.Transparent;
             this.label_ganador.Font = new System.Drawing.Font("Modern No. 20", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_ganador.ForeColor = System.Drawing.Color.White;
-            this.label_ganador.Location = new System.Drawing.Point(338, 221);
+            this.label_ganador.Location = new System.Drawing.Point(346, 222);
             this.label_ganador.Name = "label_ganador";
             this.label_ganador.Size = new System.Drawing.Size(321, 62);
             this.label_ganador.TabIndex = 48;
@@ -415,7 +415,7 @@
             // 
             // jugador4_carta4
             // 
-            this.jugador4_carta4.Location = new System.Drawing.Point(845, 300);
+            this.jugador4_carta4.Location = new System.Drawing.Point(827, 347);
             this.jugador4_carta4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.jugador4_carta4.Name = "jugador4_carta4";
             this.jugador4_carta4.Size = new System.Drawing.Size(109, 127);
@@ -429,7 +429,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Anklada™", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.label8.Location = new System.Drawing.Point(971, 18);
+            this.label8.Location = new System.Drawing.Point(971, 23);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(93, 39);
             this.label8.TabIndex = 30;
@@ -437,7 +437,7 @@
             // 
             // jugador4_carta3
             // 
-            this.jugador4_carta3.Location = new System.Drawing.Point(845, 169);
+            this.jugador4_carta3.Location = new System.Drawing.Point(853, 170);
             this.jugador4_carta3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.jugador4_carta3.Name = "jugador4_carta3";
             this.jugador4_carta3.Size = new System.Drawing.Size(109, 127);
@@ -448,7 +448,7 @@
             // 
             // jugador4_carta2
             // 
-            this.jugador4_carta2.Location = new System.Drawing.Point(845, 47);
+            this.jugador4_carta2.Location = new System.Drawing.Point(853, 48);
             this.jugador4_carta2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.jugador4_carta2.Name = "jugador4_carta2";
             this.jugador4_carta2.Size = new System.Drawing.Size(109, 127);
@@ -459,7 +459,7 @@
             // 
             // jugador3_carta4
             // 
-            this.jugador3_carta4.Location = new System.Drawing.Point(550, 300);
+            this.jugador3_carta4.Location = new System.Drawing.Point(532, 347);
             this.jugador3_carta4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.jugador3_carta4.Name = "jugador3_carta4";
             this.jugador3_carta4.Size = new System.Drawing.Size(109, 127);
@@ -470,7 +470,7 @@
             // 
             // jugador3_carta3
             // 
-            this.jugador3_carta3.Location = new System.Drawing.Point(550, 169);
+            this.jugador3_carta3.Location = new System.Drawing.Point(558, 170);
             this.jugador3_carta3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.jugador3_carta3.Name = "jugador3_carta3";
             this.jugador3_carta3.Size = new System.Drawing.Size(109, 127);
@@ -481,7 +481,7 @@
             // 
             // jugador3_carta2
             // 
-            this.jugador3_carta2.Location = new System.Drawing.Point(550, 38);
+            this.jugador3_carta2.Location = new System.Drawing.Point(558, 39);
             this.jugador3_carta2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.jugador3_carta2.Name = "jugador3_carta2";
             this.jugador3_carta2.Size = new System.Drawing.Size(109, 127);
@@ -492,7 +492,7 @@
             // 
             // jugador2_carta4
             // 
-            this.jugador2_carta4.Location = new System.Drawing.Point(235, 300);
+            this.jugador2_carta4.Location = new System.Drawing.Point(217, 347);
             this.jugador2_carta4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.jugador2_carta4.Name = "jugador2_carta4";
             this.jugador2_carta4.Size = new System.Drawing.Size(109, 127);
@@ -504,7 +504,7 @@
             // 
             // jugador2_carta3
             // 
-            this.jugador2_carta3.Location = new System.Drawing.Point(235, 168);
+            this.jugador2_carta3.Location = new System.Drawing.Point(243, 169);
             this.jugador2_carta3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.jugador2_carta3.Name = "jugador2_carta3";
             this.jugador2_carta3.Size = new System.Drawing.Size(109, 128);
@@ -515,7 +515,7 @@
             // 
             // jugador2_carta2
             // 
-            this.jugador2_carta2.Location = new System.Drawing.Point(235, 38);
+            this.jugador2_carta2.Location = new System.Drawing.Point(243, 39);
             this.jugador2_carta2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.jugador2_carta2.Name = "jugador2_carta2";
             this.jugador2_carta2.Size = new System.Drawing.Size(109, 127);
@@ -526,7 +526,7 @@
             // 
             // jugador2_carta1
             // 
-            this.jugador2_carta1.Location = new System.Drawing.Point(89, 115);
+            this.jugador2_carta1.Location = new System.Drawing.Point(97, 116);
             this.jugador2_carta1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.jugador2_carta1.Name = "jugador2_carta1";
             this.jugador2_carta1.Size = new System.Drawing.Size(140, 230);
@@ -539,7 +539,7 @@
             this.textBox_puntosFinal.Enabled = false;
             this.textBox_puntosFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_puntosFinal.ForeColor = System.Drawing.Color.Black;
-            this.textBox_puntosFinal.Location = new System.Drawing.Point(192, 431);
+            this.textBox_puntosFinal.Location = new System.Drawing.Point(166, 477);
             this.textBox_puntosFinal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox_puntosFinal.Name = "textBox_puntosFinal";
             this.textBox_puntosFinal.Size = new System.Drawing.Size(568, 22);
@@ -548,7 +548,7 @@
             // 
             // jugador4_carta1
             // 
-            this.jugador4_carta1.Location = new System.Drawing.Point(699, 115);
+            this.jugador4_carta1.Location = new System.Drawing.Point(707, 116);
             this.jugador4_carta1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.jugador4_carta1.Name = "jugador4_carta1";
             this.jugador4_carta1.Size = new System.Drawing.Size(140, 230);
@@ -562,15 +562,15 @@
             this.label_turno.BackColor = System.Drawing.Color.Transparent;
             this.label_turno.Font = new System.Drawing.Font("Times New Roman", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_turno.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.label_turno.Location = new System.Drawing.Point(3, 12);
+            this.label_turno.Location = new System.Drawing.Point(3, 0);
             this.label_turno.Name = "label_turno";
-            this.label_turno.Size = new System.Drawing.Size(135, 51);
+            this.label_turno.Size = new System.Drawing.Size(135, 49);
             this.label_turno.TabIndex = 37;
             this.label_turno.Text = "Turno";
             // 
             // jugador3_carta1
             // 
-            this.jugador3_carta1.Location = new System.Drawing.Point(404, 115);
+            this.jugador3_carta1.Location = new System.Drawing.Point(412, 116);
             this.jugador3_carta1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.jugador3_carta1.Name = "jugador3_carta1";
             this.jugador3_carta1.Size = new System.Drawing.Size(140, 230);
@@ -583,7 +583,7 @@
             this.jugador1.AutoSize = true;
             this.jugador1.Font = new System.Drawing.Font("Times New Roman", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.jugador1.ForeColor = System.Drawing.Color.White;
-            this.jugador1.Location = new System.Drawing.Point(70, 418);
+            this.jugador1.Location = new System.Drawing.Point(44, 464);
             this.jugador1.Name = "jugador1";
             this.jugador1.Size = new System.Drawing.Size(116, 45);
             this.jugador1.TabIndex = 36;
@@ -594,7 +594,7 @@
             this.jugador4.AutoSize = true;
             this.jugador4.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.jugador4.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.jugador4.Location = new System.Drawing.Point(704, 81);
+            this.jugador4.Location = new System.Drawing.Point(712, 82);
             this.jugador4.Name = "jugador4";
             this.jugador4.Size = new System.Drawing.Size(135, 32);
             this.jugador4.TabIndex = 35;
@@ -606,7 +606,7 @@
             this.jugador3.AutoSize = true;
             this.jugador3.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.jugador3.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.jugador3.Location = new System.Drawing.Point(398, 81);
+            this.jugador3.Location = new System.Drawing.Point(406, 82);
             this.jugador3.Name = "jugador3";
             this.jugador3.Size = new System.Drawing.Size(135, 32);
             this.jugador3.TabIndex = 34;
@@ -618,7 +618,7 @@
             this.jugador2.AutoSize = true;
             this.jugador2.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.jugador2.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.jugador2.Location = new System.Drawing.Point(94, 81);
+            this.jugador2.Location = new System.Drawing.Point(102, 82);
             this.jugador2.Name = "jugador2";
             this.jugador2.Size = new System.Drawing.Size(135, 32);
             this.jugador2.TabIndex = 33;
@@ -629,7 +629,7 @@
             // 
             this.textBox_puntos.Enabled = false;
             this.textBox_puntos.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_puntos.Location = new System.Drawing.Point(960, 488);
+            this.textBox_puntos.Location = new System.Drawing.Point(934, 534);
             this.textBox_puntos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox_puntos.Name = "textBox_puntos";
             this.textBox_puntos.Size = new System.Drawing.Size(81, 39);
@@ -640,7 +640,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold);
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.label7.Location = new System.Drawing.Point(796, 488);
+            this.label7.Location = new System.Drawing.Point(770, 534);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(158, 32);
             this.label7.TabIndex = 27;
@@ -649,13 +649,13 @@
             // btn_emepezar
             // 
             this.btn_emepezar.BackColor = System.Drawing.Color.Gray;
-            this.btn_emepezar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_emepezar.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_emepezar.ForeColor = System.Drawing.Color.White;
-            this.btn_emepezar.Location = new System.Drawing.Point(763, 759);
+            this.btn_emepezar.Location = new System.Drawing.Point(745, 774);
             this.btn_emepezar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_emepezar.Name = "btn_emepezar";
             this.btn_emepezar.Padding = new System.Windows.Forms.Padding(0, 0, 0, 7);
-            this.btn_emepezar.Size = new System.Drawing.Size(159, 52);
+            this.btn_emepezar.Size = new System.Drawing.Size(176, 52);
             this.btn_emepezar.TabIndex = 29;
             this.btn_emepezar.Text = "Empezar";
             this.btn_emepezar.UseVisualStyleBackColor = false;

@@ -1004,7 +1004,7 @@ void *atender_cliente(void *conectados)
 				char ganador[50];
 				char mensaje[200];
 				comprobarQuienHaGanado(lp, idPartida, ganador);
-				sprintf(mensaje, "19/%s", ganador);
+				sprintf(mensaje, "19/%d/%s", idPartida,ganador);
 				for(int i=0;i<lp->listaP[idPartida].numeroPersonas;i++)
 				{
 					printf("Codigo 19. Envio: %s\n",mensaje);
@@ -1106,6 +1106,21 @@ void *atender_cliente(void *conectados)
 				printf("Codigo 16. Los datos introducidos son: idPartida=%d, fecha=%s, duracion=%s, ganador=%s",idPartida,fecha,duracion,ganador);
 				char idPartidaChar[100];
 				sprintf(idPartidaChar,"%d",idPartida);
+				sprintf(consulta,"SELECT idPartida FROM partida where idPartida='%d'",idPartida);
+				
+				err=mysql_query (conn, consulta);
+				if (err!=0) 
+				{
+					printf ("Error en la base de datos %u %s\n", mysql_errno(conn), mysql_error(conn));
+					exit (1);
+				}
+				//recogemos el resultado de la consulta  
+				resultado = mysql_store_result(conn);
+				row = mysql_fetch_row (resultado);
+				
+				if (row == NULL) //No hay datos en la consulta
+				{
+				
 				//Guardardatos de la partida en mysql
 				strcpy(consulta,"INSERT INTO partida(idPartida,fecha,duracionmin,ganador) VALUES (");	
 				strcat(consulta, "'");
@@ -1148,8 +1163,14 @@ void *atender_cliente(void *conectados)
 						
 					}
 				}
-			}
+				}
 			
+			
+				else
+					{
+						printf("Ya se ha guardado la partida");
+					}
+			}
 			
 		}
 		else if (codigo==17)//Saber las personas que estan jugando
