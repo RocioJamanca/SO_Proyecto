@@ -1006,13 +1006,14 @@ void *atender_cliente(void *conectados)
 			int turno=atoi(p); //extraemos turno
 			char notificacion[100];
 			p = strtok(NULL, "/"); //extraemos si quiere mas cartas.
+			int masCartas=atoi(p);
 			char fecha[50];
 			strcpy(fecha,p);//extraemos fecha
 			p = strtok( NULL, "/");
 			char duracion[100];
 			strcpy(duracion,p);//extraemos duracion
 			
-			lp->listaP[idPartida].listaJugador[turno-1].quieroMasCartas = atoi(p);
+			lp->listaP[idPartida].listaJugador[turno-1].quieroMasCartas = masCartas;
 			
 			lp->listaP[idPartida].listaJugador[turno-1].puntos = puntos;
 			
