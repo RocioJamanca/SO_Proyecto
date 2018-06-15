@@ -1016,7 +1016,6 @@ void *atender_cliente(void *conectados)
 			p = strtok( NULL, "/");
 			char duracion[100];
 			strcpy(duracion,p);//extraemos duracion
-			printf("Codigo 16. Los datos introducidos son: idPartida=%d, fecha=%s, duracion=%s, ganador=%s",idPartida,fecha,duracion,ganador);
 			
 			lp->listaP[idPartida].listaJugador[turno-1].quieroMasCartas = masCartas;
 			
@@ -1077,7 +1076,8 @@ void *atender_cliente(void *conectados)
 					write(lp->listaP[idPartida].listaJugador[i].id,mensaje, strlen(mensaje));
 				}
 			
-				
+				printf("Codigo 16. Los datos introducidos son: idPartida=%d, fecha=%s, duracion=%s, ganador=%s",idPartida,fecha,duracion,ganador);
+			
 				
 				char idPartidaChar[100];
 				sprintf(idPartidaChar,"%d",idPartida);
