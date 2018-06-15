@@ -42,7 +42,8 @@ namespace MenuConsultas
         public void mostrarNombre(string nombre)
         {
             label1.Text = nombre;
-            label8.Text = DateTime.Today.ToShortDateString();
+
+            label8.Text = DateTime.Now.ToString("dd-MM-yyyy");
         }
         delegate void DelegadoParaEscribirNombre(string mensaje);
 
@@ -229,7 +230,7 @@ namespace MenuConsultas
 
                 }
 
-                string mensaje = "16/" + nombre + "/" + idPartida + "/" + puntosFinal + "/" + palos + "/" + numeros + "/" + turnoCliente + "/" + 1 + "/" + DateTime.Today.ToShortDateString() + "/" + label9.Text;
+                string mensaje = "16/" + nombre + "/" + idPartida + "/" + puntosFinal + "/" + palos + "/" + numeros + "/" + turnoCliente + "/" + 1 + "/" + DateTime.Now.ToString("dd-MM-yyyy") + "/" + label9.Text;
                 MessageBox.Show(mensaje);
                 byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);
                 server.Send(msg);
@@ -262,7 +263,7 @@ namespace MenuConsultas
             }
             this.quieroMasCartas = 1; //No quiero mas cartas
 
-            string mensaje = "16/" + nombre + "/" + idPartida + "/" + puntosFinal + "/" + paloss + "/" + numeross + "/" + turnoCliente + "/" + this.quieroMasCartas + "/" + DateTime.Today.ToShortDateString() + "/" + label9.Text; 
+            string mensaje = "16/" + nombre + "/" + idPartida + "/" + puntosFinal + "/" + paloss + "/" + numeross + "/" + turnoCliente + "/" + this.quieroMasCartas + "/" + DateTime.Now.ToString("dd-MM-yyyy") + "/" + label9.Text; 
             byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
         }
@@ -502,7 +503,7 @@ namespace MenuConsultas
                 if (listaAbandonar.Count == numeroJugadores)
                 {
                     //MessageBox.Show(" Todos los jugadores han aceptado abandonar");
-                    string mensaje = "14/" + nombre + "/" + idPartida + "/" + DateTime.Today.ToShortDateString() + "/" + label9.Text;
+                    string mensaje = "14/" + nombre + "/" + idPartida + "/" + DateTime.Now.ToString("dd-MM-yyyy") + "/" + label9.Text;
                     byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);
                     server.Send(msg);
                     DelegadoParaFinPartida delegadoFin = new DelegadoParaFinPartida(mostrarFinPartida);
