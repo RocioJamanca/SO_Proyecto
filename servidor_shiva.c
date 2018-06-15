@@ -925,11 +925,8 @@ void *atender_cliente(void *conectados)
 			{
 				if(turno <= lp->listaP[idPartida].numeroPersonas)
 				{
-<<<<<<< HEAD
-				//Comprobamos si al que le toca el turno no quiere mas cartas.
-=======
 					//Comprobamos si al que le toca el turno no quiere mas cartas.
->>>>>>> 5af35e56bd611f3220ec1549e0fc7062033b556b
+					//Comprobamos si al que le toca el turno no quiere mas cartas.
 					if(lp->listaP[idPartida].listaJugador[turno-1].quieroMasCartas == 1)
 						turno = turno + 1;
 				}
@@ -995,6 +992,7 @@ void *atender_cliente(void *conectados)
 		else if (codigo==16)//finalizar
 		{
 			//Recibo "16/nombre/idPartida/puntosFinal/paloss/numeross/turnoCliente/quieroMasCartas/fecha/duracion
+			
 			printf("Codigo 16.\n");
 			p = strtok( NULL, "/");
 			int idPartida=atoi(p); //extraemos idPartida
