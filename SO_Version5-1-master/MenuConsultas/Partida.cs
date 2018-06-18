@@ -28,6 +28,7 @@ namespace MenuConsultas
         int puntosFinal;
         string paloss = "";
         string numeross = "";
+        string ganador = "";
 
         //Variable para saber si quiero recibir mas cartas. 0->Si, 1->No
         int quieroMasCartas = 0;
@@ -113,6 +114,8 @@ namespace MenuConsultas
         {
             label_finPartida.Text = "Se ha finalizado la partida";
             label_finPartida.Visible = true;
+            label_ganador.Text = "El ganador es "+ this.ganador;
+            label_ganador.Visible = true;
             btn_emepezar.Visible = false;
             btn_nuevaCarta.Visible = false;
             btn_plantarse.Visible = false;
@@ -562,9 +565,11 @@ namespace MenuConsultas
         }
         public void tomaGanadorPartida(string ganador)
         {
+            this.ganador = ganador;
             DelegadoParaFinPartida delegadoFin = new DelegadoParaFinPartida(mostrarFinPartida);
-            label_finPartida.Invoke(delegadoFin, new object[] { });
+            label_finPartida.Invoke(delegadoFin, new object[] {});
         }
+
         public void tomaTurno(int turno)
         {
             this.turnoCliente = turno;
@@ -623,6 +628,11 @@ namespace MenuConsultas
             byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
          }
+
+        private void panel_tablero_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
 
     }
 }

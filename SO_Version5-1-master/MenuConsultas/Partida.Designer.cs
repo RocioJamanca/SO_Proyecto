@@ -405,11 +405,11 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Anklada™", 16.2F, System.Drawing.FontStyle.Bold);
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold);
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.label9.Location = new System.Drawing.Point(1028, 75);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(36, 39);
+            this.label9.Size = new System.Drawing.Size(32, 32);
             this.label9.TabIndex = 31;
             this.label9.Text = "0";
             // 
@@ -427,11 +427,11 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Anklada™", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.label8.Location = new System.Drawing.Point(971, 23);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(93, 39);
+            this.label8.Size = new System.Drawing.Size(99, 32);
             this.label8.TabIndex = 30;
             this.label8.Text = "label8";
             // 
@@ -500,7 +500,6 @@
             this.jugador2_carta4.TabIndex = 41;
             this.jugador2_carta4.TabStop = false;
             this.jugador2_carta4.Visible = false;
-            this.jugador2_carta4.Click += new System.EventHandler(this.jugador2_carta4_Click);
             // 
             // jugador2_carta3
             // 
@@ -539,7 +538,7 @@
             this.textBox_puntosFinal.Enabled = false;
             this.textBox_puntosFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_puntosFinal.ForeColor = System.Drawing.Color.Black;
-            this.textBox_puntosFinal.Location = new System.Drawing.Point(166, 477);
+            this.textBox_puntosFinal.Location = new System.Drawing.Point(206, 478);
             this.textBox_puntosFinal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox_puntosFinal.Name = "textBox_puntosFinal";
             this.textBox_puntosFinal.Size = new System.Drawing.Size(568, 22);
