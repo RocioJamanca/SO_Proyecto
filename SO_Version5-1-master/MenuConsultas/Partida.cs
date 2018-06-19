@@ -50,6 +50,7 @@ namespace MenuConsultas
         public void mostrarChat(string frase)
         {
             listBox_chat.Items.Add(frase);
+            listBox_chat.TopIndex = listBox_chat.Items.Count - 1;
         }
         delegate void DelegadoParaMostrarChat(string frase);
 
@@ -462,6 +463,12 @@ namespace MenuConsultas
             server.Send(msg);
 
         }
+
+        private void textBox_chat_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Char.IsPunctuation(e.KeyChar) || Char.IsSymbol(e.KeyChar);
+        }
+
         private void btn_enviar_Click(object sender, EventArgs e)
         {
             string frase = textBox_chat.Text;
@@ -633,6 +640,7 @@ namespace MenuConsultas
         {
 
         }
+
 
     }
 }

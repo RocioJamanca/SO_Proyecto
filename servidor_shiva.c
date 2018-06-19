@@ -201,7 +201,7 @@ void nuevaPartida(listaPartidas *lp, int idPartida,int numeroPersonas,char nombr
 		//Avisar si no concuerdan el numero de jugadores con la cantidad de jugadores
 		if(i!=numeroPersonas)
 		{
-			printf("La cantidad de personas deber￯﾿ﾭa ser %d pero hay %d nombres.\n",numeroPersonas,i);
+			printf("La cantidad de personas deber￯﾿ﾯ￯ﾾ﾿￯ﾾﾭa ser %d pero hay %d nombres.\n",numeroPersonas,i);
 		}
 		//anadimos a la lista el nuevo cliente
 		
@@ -361,14 +361,14 @@ void *atender_cliente(void *conectados)
 						printf("Aun no hay nadie en la lista de conectados\n");
 						strcat(respuesta,"1/");
 						printf("Codigo 1. Respuesta: %s\n",respuesta);
-						pthread_mutex_lock (&mutexsum); //Solo a￯﾿ﾯ￯ﾾ﾿￯ﾾﾱanadimos exclusion mutua si se edita la lista de clientas
+						pthread_mutex_lock (&mutexsum); //Solo a￯﾿ﾯ￯ﾾ﾿￯ﾾﾯ￯﾿ﾯ￯ﾾﾾ￯ﾾ﾿￯﾿ﾯ￯ﾾﾾ￯ﾾﾱanadimos exclusion mutua si se edita la lista de clientas
 						nuevoUsuario(cl,sock_conn,nombre);
 						pthread_mutex_unlock (&mutexsum);
 					}
 					
 					else
 					{
-						printf("La lista de conectados no est￡ vac￭a\n");
+						printf("La lista de conectados no est￯﾿ﾡ vac￯﾿ﾭa\n");
 						for (int i=0; i<cl->num && encontrado==0;i++)
 						{
 							if(strcmp(cl->lista[i].nombreUsuario,nombre)==0)
@@ -382,7 +382,7 @@ void *atender_cliente(void *conectados)
 								printf("El usuario se acaba de conectar\n");
 								strcat(respuesta,"1/");
 								printf("Codigo 1. Respuesta: %s\n",respuesta);
-								pthread_mutex_lock (&mutexsum); //Solo a￯﾿ﾯ￯ﾾ﾿￯ﾾﾱanadimos exclusion mutua si se edita la lista de clientas
+								pthread_mutex_lock (&mutexsum); //Solo a￯﾿ﾯ￯ﾾ﾿￯ﾾﾯ￯﾿ﾯ￯ﾾﾾ￯ﾾ﾿￯﾿ﾯ￯ﾾﾾ￯ﾾﾱanadimos exclusion mutua si se edita la lista de clientas
 								nuevoUsuario(cl,sock_conn,nombre);
 								pthread_mutex_unlock (&mutexsum);
 								encontrado=1;
@@ -402,7 +402,7 @@ void *atender_cliente(void *conectados)
 			printf("Codigo 1. Respuesta que envio: %s\n",respuesta);
 			write (sock_conn,respuesta, strlen(respuesta));
 		}
-		else if (codigo==2)		//Registar  recibo: 2/nombre/contrase￯﾿ﾯ￯ﾾ﾿￯ﾾﾃ￯﾿ﾯ￯ﾾﾾ￯ﾾﾱa
+		else if (codigo==2)		//Registar  recibo: 2/nombre/contrase￯﾿ﾯ￯ﾾ﾿￯ﾾﾯ￯﾿ﾯ￯ﾾﾾ￯ﾾ﾿￯﾿ﾯ￯ﾾﾾ￯ﾾﾃ￯﾿ﾯ￯ﾾ﾿￯ﾾﾯ￯﾿ﾯ￯ﾾﾾ￯ﾾﾾ￯﾿ﾯ￯ﾾﾾ￯ﾾﾱa
 		{
 			//  envio: 2/0  NO se ha realizado correctamente
 			//  envio: 2/1  Todo correcto
@@ -491,7 +491,7 @@ void *atender_cliente(void *conectados)
 			//Consulta
 			strcpy (consulta,"SELECT partida.fecha FROM jugador,partida,relacion WHERE jugador.nombre = '"); 
 			strcat (consulta, nombre);
-			strcat (consulta,"'AND relacion.idPartidaR= partida.idPartida AND relacion.idJugadorR = jugador.idJugador");
+			strcat (consulta,"'AND idPartidaR= idPartida AND idJugadorR = idJugador");
 			
 			//hacemos la consulta 
 			err=mysql_query (conn, consulta); 
@@ -636,7 +636,7 @@ void *atender_cliente(void *conectados)
 			//Envio: 6/nombre1*nombre2*...
 			
 			write (sock_conn,"7/", strlen("7/"));
-			pthread_mutex_lock (&mutexsum); //Solo a￯﾿ﾯ￯ﾾ﾿￯ﾾﾱanadimos exclusion mutua si se edita la lista de clientas
+			pthread_mutex_lock (&mutexsum); //Solo a￯﾿ﾯ￯ﾾ﾿￯ﾾﾯ￯﾿ﾯ￯ﾾﾾ￯ﾾ﾿￯﾿ﾯ￯ﾾﾾ￯ﾾﾱanadimos exclusion mutua si se edita la lista de clientas
 			eliminarUsuario(cl,nombre);
 			pthread_mutex_unlock (&mutexsum);
 			char notificacion[20];
@@ -714,17 +714,20 @@ void *atender_cliente(void *conectados)
 				}
 			}
 		}
-		else if (codigo==10) //Empezar p￯﾿ﾠrtida
+		else if (codigo==10) //Empezar p￯﾿ﾯ￯ﾾ﾿￯ﾾﾠrtida
 		{	
 			
 			printf("Codigo 10.\n");
 			//Recibo: 10/nombre/numeroJugadores/jugador1*jugador2*.......7
 			//Envio: 10/idPartida/nombreHost/nombreJugador1*nombreJugador2
+			
 			p = strtok( NULL, "/"); //Extraemos el numero de jugadores
 			int numJugadores=atoi(p);
 			char jugadores[max];
 			p = strtok( NULL, "/"); //Extraemos el numero de jugadores
 			strcpy(jugadores,p);
+			p = strtok( NULL, "/"); //Extraemos el numero de jugadores
+			int numForm=atoi(p);
 			printf("Codigo 10. Recibo-> nombre: %s / numeroJugadores: %d / jugadores: %s\n",nombre,numJugadores,jugadores);
 			//Comprobar que no hay mas partidas con el mismo id
 			int cont;
@@ -738,9 +741,9 @@ void *atender_cliente(void *conectados)
 				cont=atoi(row[0]);
 			}
 			printf("Codigo 10. ID ultima partida %d\n",cont);
-			int idPartida = cont +1;
+			int idPartida=numForm+cont+1;
 			lp->numPartidas=idPartida;
-			pthread_mutex_lock (&mutexsum); //Solo a￯﾿ﾯ￯ﾾ﾿￯ﾾﾱanadimos exclusion mutua si se edita la lista de clientas
+			pthread_mutex_lock (&mutexsum); //Solo a￯﾿ﾯ￯ﾾ﾿￯ﾾﾯ￯﾿ﾯ￯ﾾﾾ￯ﾾ﾿￯﾿ﾯ￯ﾾﾾ￯ﾾﾱanadimos exclusion mutua si se edita la lista de clientas
 			nuevaPartida(lp,idPartida,numJugadores,jugadores);
 			pthread_mutex_unlock (&mutexsum);
 			
@@ -866,46 +869,83 @@ void *atender_cliente(void *conectados)
 			if (row == NULL) //No hay datos en la consulta
 			{
 				printf("No existen datos en la consulta\n");
-	
-			
-			//Guardardatos de la partida en mysql
-			strcpy(consulta,"INSERT INTO partida(idPartida,fecha,duracionmin) VALUES (");	
-			strcat(consulta, "'");
-			strcat(consulta,idPartidaChar);
-			strcat(consulta,"',");
-			strcat(consulta, "'");
-			strcat(consulta,fecha);
-			strcat(consulta, "','");
-			strcat(consulta,duracion);
-			strcat(consulta, "');");
-			printf("Codigo 14. Formulacion de consulta de partida: %s\n",consulta);
-			
-			err=mysql_query (conn, consulta); 
-			if (err!=0) {
-				printf ("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
-				exit (1);
-			}
-			
-			
-			//Ahora lo hacemos para la tabla relacion
-			//Buscamos primero los jugadores de la partida
-			
+				
+				
+				//Guardardatos de la partida en mysql
+				strcpy(consulta,"INSERT INTO partida(idPartida,fecha,duracionmin) VALUES (");	
+				strcat(consulta, "'");
+				strcat(consulta,idPartidaChar);
+				strcat(consulta,"',");
+				strcat(consulta, "'");
+				strcat(consulta,fecha);
+				strcat(consulta, "','");
+				strcat(consulta,duracion);
+				strcat(consulta, "');");
+				printf("Codigo 14. Formulacion de consulta de partida: %s\n",consulta);
+				
+				err=mysql_query (conn, consulta); 
+				if (err!=0) {
+					printf ("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
+					exit (1);
+				}
+				
 				for (int i=0; i<lp->listaP[idPartida].numeroPersonas;i++)
 				{
 					
-					sprintf(consulta,"INSERT INTO relacion VALUES ('%d','%d')",idPartida,lp->listaP[idPartida].listaJugador[i].id);
+					sprintf(consulta,"INSERT INTO relacion VALUES ('%d','%d')",lp->listaP[idPartida].listaJugador[i].id,idPartida);
 					printf("Codigo 14. Formulacion de consulta de relacion: %s\n",consulta);
 					err=mysql_query (conn, consulta); 
 					if (err!=0) {
-						printf ("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
+						printf ("Error al consultar datos de la base relacion %u %s\n",mysql_errno(conn), mysql_error(conn));
 						exit (1);
 					}
+					else{
+						
+					}
 				}
+
 			}
 			else
 			{
-					printf("Ya se ha guardado la partida");
+				for (int i=0; i<lp->listaP[idPartida].numeroPersonas;i++)
+				{
+				sprintf(consulta,"SELECT idJugadorR FROM relacion where idJugadorR='%d'",lp->listaP[idPartida].listaJugador[i].id);
+				
+				err=mysql_query (conn, consulta);
+				if (err!=0) 
+				{
+					printf ("Error en la base de datos %u %s\n", mysql_errno(conn), mysql_error(conn));
+					exit (1);
+				}
+				//recogemos el resultado de la consulta  
+				resultado = mysql_store_result(conn);
+				row = mysql_fetch_row (resultado);
+				if(row==NULL)
+				{
+				printf("Ya se ha guardado la partida");
+				
+					
+					sprintf(consulta,"INSERT INTO relacion VALUES ('%d','%d')",lp->listaP[idPartida].listaJugador[i].id,idPartida);
+					printf("Codigo 14. Formulacion de consulta de relacion: %s\n",consulta);
+					err=mysql_query (conn, consulta); 
+					if (err!=0) {
+						printf ("Error al consultar datos de la base relacion %u %s\n",mysql_errno(conn), mysql_error(conn));
+						exit (1);
+					}
+					else{
+						
+					}
+				}
+				
+				
+				else
+				{
+					printf("El usuario ya se ha a￱adido");
+				}
+				}
 			}
+			
+			
 			
 			sprintf(respuesta,"14/%d/",idPartida);
 			write(sock_conn,respuesta,strlen(respuesta));
@@ -1120,56 +1160,91 @@ void *atender_cliente(void *conectados)
 				
 				if (row == NULL) //No hay datos en la consulta
 				{
-				
-				//Guardardatos de la partida en mysql
-				strcpy(consulta,"INSERT INTO partida(idPartida,fecha,duracionmin,ganador) VALUES (");	
-				strcat(consulta, "'");
-				strcat(consulta,idPartidaChar);
-				strcat(consulta,"',");
-				strcat(consulta, "'");
-				strcat(consulta,fecha);
-				strcat(consulta, "','");
-				strcat(consulta,duracion);
-				strcat(consulta, "','");
-				strcat(consulta,ganador);
-				strcat(consulta, "');");
-				printf("Codigo 16. Formulacion de consulta de partida: %s\n",consulta);
-				
-				err=mysql_query (conn, consulta); 
-				if (err!=0) {
-					printf ("Error al consultar datos de la base partida %u %s\n",mysql_errno(conn), mysql_error(conn));
-					exit (1);
-				}
-				else
-				{
 					
-				}
-				
-				
-				//Ahora lo hacemos para la tabla relacion
-				//Buscamos primero los jugadores de la partida
-				
-				for (int i=0; i<lp->listaP[idPartida].numeroPersonas;i++)
-				{
+					//Guardardatos de la partida en mysql
+					strcpy(consulta,"INSERT INTO partida(idPartida,fecha,duracionmin,ganador) VALUES (");	
+					strcat(consulta, "'");
+					strcat(consulta,idPartidaChar);
+					strcat(consulta,"',");
+					strcat(consulta, "'");
+					strcat(consulta,fecha);
+					strcat(consulta, "','");
+					strcat(consulta,duracion);
+					strcat(consulta, "','");
+					strcat(consulta,ganador);
+					strcat(consulta, "');");
+					printf("Codigo 16. Formulacion de consulta de partida: %s\n",consulta);
 					
-					sprintf(consulta,"INSERT INTO relacion (idPartidaR,idJugadorR)VALUES ('%d','%d')",idPartida,lp->listaP[idPartida].listaJugador[i].id);
-					printf("Codigo 14. Formulacion de consulta de relacion: %s\n",consulta);
 					err=mysql_query (conn, consulta); 
 					if (err!=0) {
-						printf ("Error al consultar datos de la base relacion %u %s\n",mysql_errno(conn), mysql_error(conn));
+						printf ("Error al consultar datos de la base partida %u %s\n",mysql_errno(conn), mysql_error(conn));
 						exit (1);
 					}
-					else{
-						
-					}
-				}
-				}
-			
-			
-				else
+					else
 					{
-						printf("Ya se ha guardado la partida");
+						for (int i=0; i<lp->listaP[idPartida].numeroPersonas;i++)
+						{
+							sprintf(consulta,"SELECT idJugadorR FROM relacion where idJugadorR='%d'",lp->listaP[idPartida].listaJugador[i].id);
+							
+							err=mysql_query (conn, consulta);
+							if (err!=0) 
+							{
+								printf ("Error en la base de datos %u %s\n", mysql_errno(conn), mysql_error(conn));
+								exit (1);
+							}
+							//recogemos el resultado de la consulta  
+							resultado = mysql_store_result(conn);
+							row = mysql_fetch_row (resultado);
+							if(row==NULL)
+							{
+								printf("Ya se ha guardado la partida");
+								
+								
+								sprintf(consulta,"INSERT INTO relacion VALUES ('%d','%d')",lp->listaP[idPartida].listaJugador[i].id,idPartida);
+								printf("Codigo 14. Formulacion de consulta de relacion: %s\n",consulta);
+								err=mysql_query (conn, consulta); 
+								if (err!=0) {
+									printf ("Error al consultar datos de la base relacion %u %s\n",mysql_errno(conn), mysql_error(conn));
+									exit (1);
+								}
+								else{
+									
+								}
+							}
+							
+							
+							else
+							{
+								printf("El usuario ya se ha a￱adido");
+							}
+						}
 					}
+				}
+				
+				
+				else
+				{
+					printf("Ya se ha guardado la partida");
+					//Ahora lo hacemos para la tabla relacion
+					//Buscamos primero los jugadores de la partida
+					
+					for (int i=0; i<lp->listaP[idPartida].numeroPersonas;i++)
+					{
+						
+						sprintf(consulta,"INSERT INTO relacion VALUES ('%d','%d')",lp->listaP[idPartida].listaJugador[i].id,idPartida);
+						printf("Codigo 14. Formulacion de consulta de relacion: %s\n",consulta);
+						err=mysql_query (conn, consulta); 
+						if (err!=0) {
+							printf ("Error al consultar datos de la base relacion %u %s\n",mysql_errno(conn), mysql_error(conn));
+							exit (1);
+						}
+						else{
+							
+						}
+					}
+				}
+				
+			
 			}
 			
 		}

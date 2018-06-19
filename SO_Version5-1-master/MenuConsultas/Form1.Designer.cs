@@ -47,6 +47,7 @@
             this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btn_empezar_partida = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.btn_ayuda = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbQueCambiaAlConectar)).BeginInit();
             this.panel_conectados.SuspendLayout();
@@ -76,7 +77,7 @@
             this.btnFecha.Location = new System.Drawing.Point(458, 276);
             this.btnFecha.Margin = new System.Windows.Forms.Padding(11, 10, 11, 10);
             this.btnFecha.Name = "btnFecha";
-            this.btnFecha.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnFecha.Padding = new System.Windows.Forms.Padding(4);
             this.btnFecha.Size = new System.Drawing.Size(184, 88);
             this.btnFecha.TabIndex = 1;
             this.btnFecha.Text = "Obtener fecha de la partida que jugó un jugador";
@@ -91,7 +92,7 @@
             this.btnContraseña.Location = new System.Drawing.Point(458, 376);
             this.btnContraseña.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnContraseña.Name = "btnContraseña";
-            this.btnContraseña.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnContraseña.Padding = new System.Windows.Forms.Padding(4);
             this.btnContraseña.Size = new System.Drawing.Size(184, 91);
             this.btnContraseña.TabIndex = 2;
             this.btnContraseña.Text = "Obtener la contraseña del jugador";
@@ -106,7 +107,7 @@
             this.btnGanador.Location = new System.Drawing.Point(458, 479);
             this.btnGanador.Margin = new System.Windows.Forms.Padding(11, 10, 11, 10);
             this.btnGanador.Name = "btnGanador";
-            this.btnGanador.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGanador.Padding = new System.Windows.Forms.Padding(4);
             this.btnGanador.Size = new System.Drawing.Size(184, 86);
             this.btnGanador.TabIndex = 3;
             this.btnGanador.Text = "Obtener número de partidas ganadas";
@@ -157,7 +158,7 @@
             this.btnRegistrar.Location = new System.Drawing.Point(458, 132);
             this.btnRegistrar.Margin = new System.Windows.Forms.Padding(11, 10, 11, 10);
             this.btnRegistrar.Name = "btnRegistrar";
-            this.btnRegistrar.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRegistrar.Padding = new System.Windows.Forms.Padding(4);
             this.btnRegistrar.Size = new System.Drawing.Size(184, 63);
             this.btnRegistrar.TabIndex = 7;
             this.btnRegistrar.Text = "Registrarse";
@@ -172,7 +173,7 @@
             this.btnLogear.Location = new System.Drawing.Point(458, 204);
             this.btnLogear.Margin = new System.Windows.Forms.Padding(11, 10, 11, 10);
             this.btnLogear.Name = "btnLogear";
-            this.btnLogear.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLogear.Padding = new System.Windows.Forms.Padding(4);
             this.btnLogear.Size = new System.Drawing.Size(184, 63);
             this.btnLogear.TabIndex = 8;
             this.btnLogear.Text = "Entrar";
@@ -181,6 +182,7 @@
             // 
             // panel_conectados
             // 
+            this.panel_conectados.Controls.Add(this.btn_ayuda);
             this.panel_conectados.Controls.Add(this.matriz);
             this.panel_conectados.Controls.Add(this.label2);
             this.panel_conectados.Location = new System.Drawing.Point(769, 130);
@@ -315,6 +317,19 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Lista de jugadores:";
             // 
+            // btn_ayuda
+            // 
+            this.btn_ayuda.BackColor = System.Drawing.Color.Silver;
+            this.btn_ayuda.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ayuda.ForeColor = System.Drawing.Color.Black;
+            this.btn_ayuda.Location = new System.Drawing.Point(200, 362);
+            this.btn_ayuda.Name = "btn_ayuda";
+            this.btn_ayuda.Size = new System.Drawing.Size(75, 29);
+            this.btn_ayuda.TabIndex = 13;
+            this.btn_ayuda.Text = "Ayuda";
+            this.btn_ayuda.UseVisualStyleBackColor = false;
+            this.btn_ayuda.Click += new System.EventHandler(this.btn_ayuda_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -375,6 +390,7 @@
         private System.Windows.Forms.Button btn_empezar_partida;
         private System.Windows.Forms.DataGridView jugadores;
         private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
+        private System.Windows.Forms.Button btn_ayuda;
     }
 }
 

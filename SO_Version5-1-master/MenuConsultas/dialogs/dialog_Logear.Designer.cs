@@ -46,6 +46,7 @@
             this.txtBox_Nombre.Name = "txtBox_Nombre";
             this.txtBox_Nombre.Size = new System.Drawing.Size(177, 30);
             this.txtBox_Nombre.TabIndex = 0;
+            this.txtBox_Nombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBox_Nombre_KeyPress);
             // 
             // txtBox_Contra
             // 
@@ -56,6 +57,9 @@
             this.txtBox_Contra.PasswordChar = '*';
             this.txtBox_Contra.Size = new System.Drawing.Size(177, 30);
             this.txtBox_Contra.TabIndex = 1;
+            this.txtBox_Contra.TextChanged += new System.EventHandler(this.txtBox_Contra_TextChanged);
+            this.txtBox_Contra.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_Contra_KeyDown);
+            this.txtBox_Contra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBox_Contra_KeyPress);
             // 
             // label1
             // 

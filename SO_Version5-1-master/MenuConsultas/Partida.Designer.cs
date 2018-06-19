@@ -146,6 +146,7 @@
             this.textBox_chat.Size = new System.Drawing.Size(344, 30);
             this.textBox_chat.TabIndex = 0;
             this.textBox_chat.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_Chat_KeyDown);
+            this.textBox_chat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_chat_KeyPress);
             // 
             // label1
             // 
@@ -217,6 +218,7 @@
             this.ocultarJugadores.TabIndex = 22;
             this.ocultarJugadores.Text = "Ocultar";
             this.ocultarJugadores.UseVisualStyleBackColor = false;
+            this.ocultarJugadores.Visible = false;
             this.ocultarJugadores.Click += new System.EventHandler(this.ocultarJugadores_Click);
             // 
             // dataGrid
@@ -228,10 +230,10 @@
             this.dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1});
+            this.dataGrid.Enabled = false;
             this.dataGrid.GridColor = System.Drawing.Color.White;
             this.dataGrid.Location = new System.Drawing.Point(9, 44);
             this.dataGrid.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dataGrid.MultiSelect = false;
             this.dataGrid.Name = "dataGrid";
             this.dataGrid.ReadOnly = true;
             this.dataGrid.RowTemplate.Height = 24;
@@ -244,7 +246,7 @@
             this.Column1.HeaderText = "Column1";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
-            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // label6
@@ -682,6 +684,7 @@
             this.Controls.Add(this.numero_partida);
             this.Controls.Add(this.panel_tablero);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Partida";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
@@ -727,7 +730,6 @@
         private System.Windows.Forms.Panel panel_ListaJugadores;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView dataGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.Button ocultarJugadores;
         private System.Windows.Forms.Label label_finPartida;
         private System.Windows.Forms.Button btn_plantarse;
@@ -762,5 +764,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label_ganador;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
     }
 }

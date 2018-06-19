@@ -401,6 +401,10 @@ namespace MenuConsultas
             }
         }
 
+
+
+
+
         //Funciones de Inicio de sesión y consultas. 
 
         //Boton Registrar
@@ -534,6 +538,8 @@ namespace MenuConsultas
             byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);    
         }
 
+
+
         private void matriz_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int i, j;
@@ -586,23 +592,50 @@ namespace MenuConsultas
 
         private void btn_empezar_partida_Click(object sender, EventArgs e)
         {
-            string nombreJugadores = "";
-            for (int i = 0; i < listaJugadores.Count; i++)
+            if (formularios.Count == 0)
             {
-                nombreJugadores =nombreJugadores+"*"+listaJugadores[i] ;
-            }
-            nombreJugadores = nombreJugadores + "*"+nombre+"*";
-            string mensaje = "10/" + nombre + "/" + (listaJugadores.Count+1) + "/" + nombreJugadores; 
-            byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);
-            server.Send(msg);
+                string nombreJugadores = "";
+                for (int i = 0; i < listaJugadores.Count; i++)
+                {
+                    nombreJugadores = nombreJugadores + "*" + listaJugadores[i];
+                }
+                nombreJugadores = nombreJugadores + "*" + nombre + "*";
+                string mensaje = "10/" + nombre + "/" + (listaJugadores.Count + 1) + "/" + nombreJugadores+"/0";
+                byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);
+                server.Send(msg);
 
-            listaJugadores.Clear();
-            jugadores.Columns.Clear();
-            jugadores.Rows.Clear();
-            if (listaJugadores.Count == 0)
-            {
-                panelJugadores.Hide();
+                listaJugadores.Clear();
+                jugadores.Columns.Clear();
+                jugadores.Rows.Clear();
+                if (listaJugadores.Count == 0)
+                {
+                    panelJugadores.Hide();
+                }
             }
+            else
+            {
+                for (int n = 0; n < formularios.Count; n++)
+                {
+                    string nombreJugadores = "";
+                    for (int i = 0; i < listaJugadores.Count; i++)
+                    {
+                        nombreJugadores = nombreJugadores + "*" + listaJugadores[i];
+                    }
+                    nombreJugadores = nombreJugadores + "*" + nombre + "*";
+                    string mensaje = "10/" + nombre + "/" + (listaJugadores.Count + 1) + "/" + nombreJugadores+"/"+(n+1);
+                    byte[] msg = System.Text.ASCIIEncoding.ASCII.GetBytes(mensaje);
+                    server.Send(msg);
+
+                    listaJugadores.Clear();
+                    jugadores.Columns.Clear();
+                    jugadores.Rows.Clear();
+                    if (listaJugadores.Count == 0)
+                    {
+                        panelJugadores.Hide();
+                    }
+                }
+            }
+            
         }
 
         private void PonerMarchaFormulario(string idPartida)
@@ -612,6 +645,12 @@ namespace MenuConsultas
             idsPartidas.Add(idPartida);
             formPartida.ShowDialog();
             //pongo en marcha el thread que atenderá los mensajes del servidor  
+        }
+
+        private void btn_ayuda_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Para invitar a un jugador clica dos veces sobre la persona deseada");
+
         }
     }
 }
